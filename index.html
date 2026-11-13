@@ -6,12 +6,12 @@
     <title>Garasi Helm Custom — Katalog Helm Motor Resmi (100 Unit)</title>
     <meta
       name="description"
-      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
+      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Custom Edition, serta Open & Modular berstandar SNI dan ECE 22.06."
     />
     <meta property="og:title" content="Garasi Helm Custom — Katalog Helm Motor Resmi" />
     <meta
       property="og:description"
-      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
+      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Custom Edition, serta Open & Modular berstandar SNI dan ECE 22.06."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -423,6 +423,10 @@
         color: var(--accent-cobalt);
       }
 
+      .card-meta.is-custom {
+        color: #0f766e;
+      }
+
       .card-title {
         margin: 0 0 6px;
         font-size: 1.0625rem;
@@ -746,13 +750,13 @@
             <p class="eyebrow">Koleksi Resmi & Custom 2026 · Bandung Showroom</p>
             <h1 class="hero-title">Perlindungan Presisi dengan Karakter Eksklusif.</h1>
             <p class="hero-lead">
-              Katalog lengkap 100 edisi helm berkendara mulai dari model Full Face, Open Face, Modular, Dual Sport hingga seri kustom artistik. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
+              Katalog lengkap 100 edisi helm berkendara mulai dari model Full Face, seri Custom Edition eksklusif, hingga Open & Modular. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
             </p>
 
             <div class="hero-specs" aria-label="Ringkasan Spesifikasi Koleksi">
               <div class="spec-item">
                 <span class="spec-label">Total Koleksi</span>
-                <span class="spec-value tabular">100 Model (24 Full Face)</span>
+                <span class="spec-value tabular">24 Full Face · 65 Custom · 11 Open</span>
               </div>
               <div class="spec-item">
                 <span class="spec-label">Rentang Ukuran</span>
@@ -796,8 +800,8 @@
           <div class="filter-bar" role="tablist" aria-label="Filter Kategori Helm">
             <button type="button" class="filter-btn is-active" data-filter="all">Semua (100)</button>
             <button type="button" class="filter-btn" data-filter="full-face">Full Face (24)</button>
-            <button type="button" class="filter-btn" data-filter="custom-edition">Custom Edition</button>
-            <button type="button" class="filter-btn" data-filter="open-modular">Open & Modular</button>
+            <button type="button" class="filter-btn" data-filter="custom-edition">Custom Edition (65)</button>
+            <button type="button" class="filter-btn" data-filter="open-modular">Open & Modular (11)</button>
           </div>
 
           <div id="catalog-grid" class="catalog-grid">
@@ -914,8 +918,8 @@
           <span class="footer-heading">Kategori Koleksi</span>
           <div class="footer-links">
             <a href="#katalog" data-cat-link="full-face">Full Face (24 Unit)</a>
-            <a href="#katalog" data-cat-link="custom-edition">Custom Concept & Armor</a>
-            <a href="#katalog" data-cat-link="open-modular">Open Face & Modular</a>
+            <a href="#katalog" data-cat-link="custom-edition">Custom Edition (65 Unit)</a>
+            <a href="#katalog" data-cat-link="open-modular">Open & Modular (11 Unit)</a>
             <a href="#standar">Panduan Ukuran</a>
           </div>
         </div>
@@ -939,9 +943,16 @@
         }
       }
 
-      // Daftar resmi 24 nomor yang dikategorikan sebagai Full Face
+      // Daftar resmi 24 nomor kategori Full Face
       const FULL_FACE_NUMBERS = new Set([
         1, 2, 3, 8, 11, 12, 16, 18, 19, 20, 21, 23, 27, 28, 32, 34, 35, 45, 51, 52, 71, 73, 74, 75
+      ]);
+
+      // Daftar resmi 65 nomor kategori Custom Edition
+      const CUSTOM_EDITION_NUMBERS = new Set([
+        5, 6, 7, 13, 14, 15, 17, 22, 24, 25, 29, 30, 36, 38, 39, 40, 41, 42, 43, 44, 46, 48,
+        53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72,
+        76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100
       ]);
 
       // Spesifikasi khusus untuk unit #01 s/d #21
@@ -949,24 +960,24 @@
         1: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #01", desc: "Cangkang komposit serat karbon berprofil aerodinamis dengan lapisan finishing studio anti-gores.", size: "S – XL", weight: "1.350 g", status: "Tersedia", price: "Rp 3.250.000", sku: "GHC-FF-01" },
         2: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #02", desc: "Desain kontur modern untuk berkendara jarak jauh dengan ventilasi multi-saluran dan visor optik kelas 1.", size: "S – XL", weight: "1.380 g", status: "Tersedia", price: "Rp 3.300.000", sku: "GHC-FF-02" },
         3: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #03", desc: "Dilengkapi spoiler belakang terintegrasi, pengunci Double D-Ring, dan busa pipi pembuang kelembapan.", size: "XS – XL", weight: "1.360 g", status: "Tersedia", price: "Rp 3.350.000", sku: "GHC-FF-03" },
-        4: { category: "custom-edition", meta: "Custom Studio · ECE 22.06 · SNI", title: "Garasi Studio Custom Spec #04", desc: "Konstruksi ringan berbobot seimbang dengan lapisan peredam akustik untuk mereduksi kebisingan angin.", size: "M – XXL", weight: "1.390 g", status: "Tersedia", price: "Rp 3.400.000", sku: "GHC-CS-04" },
-        5: { category: "custom-edition", meta: "Custom Studio · ECE 22.06 · SNI", title: "Garasi Studio Custom Spec #05", desc: "Edisi studio dengan sistem pelepas visor cepat tanpa alat serta dukungan penuh pemasangan Pinlock.", size: "S – XL", weight: "1.370 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-05" },
+        4: { category: "open-modular", meta: "Modular Flip-Up · ECE 22.06 · SNI", title: "Garasi Horizon Modular Pro #04", desc: "Konstruksi modular flip-up berbobot seimbang dengan lapisan peredam akustik untuk mereduksi kebisingan angin.", size: "M – XXL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.400.000", sku: "GHC-MD-04" },
+        5: { category: "custom-edition", meta: "Custom Studio · ECE 22.06 · SNI", title: "Garasi Studio Custom Spec #05", desc: "Edisi studio kustom dengan sistem pelepas visor cepat tanpa alat serta dukungan penuh pemasangan Pinlock.", size: "S – XL", weight: "1.370 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-05" },
         6: { category: "custom-edition", meta: "Custom Concept · SNI 1811", title: "Garasi Apollo Astronaut Spec #06", desc: "Terinspirasi helm penjelajah luar angkasa dengan visor panorama luas dan lapisan pelindung UV reflektif.", size: "M – XL", weight: "1.520 g", status: "Stok Terbatas", price: "Rp 4.650.000", sku: "GHC-CS-06" },
         7: { category: "custom-edition", meta: "Custom Armor · SNI 1811", title: "Garasi Sovereign Gold Knight #07", desc: "Finishing metalik emas bergaya zirah ksatria abad pertengahan dengan struktur pelindung dagu kokoh.", size: "M – L", weight: "1.580 g", status: "Stok Terbatas", price: "Rp 4.890.000", sku: "GHC-CS-07" },
         8: { category: "full-face", meta: "Full Face · Custom Heritage · SNI 1811", title: "Garasi Chronos Steampunk Ed. #08", desc: "Helm full-face dengan ornamen kuningan mekanis, aksen kulit klasik, dan lensa optik ganda berstandar SNI.", size: "S – XL", weight: "1.550 g", status: "Tersedia", price: "Rp 4.500.000", sku: "GHC-FF-08" },
-        9: { category: "custom-edition", meta: "Custom Retro-Tech · SNI 1811", title: "Garasi RetroVision CRT-90 #09", desc: "Cangkang kustom berbentuk monitor tabung klasik 90-an dengan layar visor polikarbonat cembung jernih.", size: "M – XL", weight: "1.620 g", status: "Pre-Order", price: "Rp 4.750.000", sku: "GHC-CS-09" },
-        10: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Diablo Horned Spec #10", desc: "Dilengkapi tanduk aerodinamis fleksibel yang dirancang lepas-aman saat benturan dengan finishing matte.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.850.000", sku: "GHC-CS-10" },
+        9: { category: "open-modular", meta: "Open Face · Retro-Tech · SNI 1811", title: "Garasi RetroVision Open CRT-90 #09", desc: "Cangkang open-face kustom berbentuk monitor klasik 90-an dengan visor polikarbonat cembung jernih.", size: "M – XL", weight: "1.420 g", status: "Pre-Order", price: "Rp 3.750.000", sku: "GHC-OM-09" },
+        10: { category: "open-modular", meta: "Modular · Sculpted Spec · SNI 1811", title: "Garasi Diablo Modular Spec #10", desc: "Helm modular dengan aksen aerodinamis fleksibel lepas-aman serta mekanisme flip-up chinbar pengunci baja.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.850.000", sku: "GHC-MD-10" },
         11: { category: "full-face", meta: "Full Face · Custom Sculpted · SNI 1811", title: "Garasi Monarch Crest Edition #11", desc: "Helm full-face berdetail mahkota dan ornamen relief timbul di atas shell komposit ABS berkekuatan tarik tinggi.", size: "M – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.950.000", sku: "GHC-FF-11" },
         12: { category: "full-face", meta: "Full Face · Custom Form · SNI 1811", title: "Garasi Avant-Garde Form X #12", desc: "Helm full-face berstruktur pahatan kustom unik dengan lapisan peredam benturan Multi-Density EPS penuh.", size: "S – XL", weight: "1.510 g", status: "Tersedia", price: "Rp 4.100.000", sku: "GHC-FF-12" },
-        13: { category: "custom-edition", meta: "Plush & Character · SNI 1811", title: "Garasi Cobalt Fur Monster #13", desc: "Balutan bulu sintetis biru kobalt tahan cuaca di atas cangkang helm berstandar SNI dengan pandangan luas.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 2.450.000", sku: "GHC-CH-13" },
-        14: { category: "custom-edition", meta: "Animal Series · SNI 1811", title: "Garasi Apex Great White Shark #14", desc: "Sirip punggung aerodinamis dan grafis rahang hiu agresif dengan sistem sirkulasi udara insang samping.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CH-14" },
-        15: { category: "custom-edition", meta: "Character Series · SNI 1811", title: "Garasi Ducky Yellow Edition #15", desc: "Helm tematik bebek kuning ikonik dengan visibilitas tinggi di jalan raya serta busa interior hippoallergenic.", size: "S – L", weight: "1.440 g", status: "Tersedia", price: "Rp 2.950.000", sku: "GHC-CH-15" },
+        13: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Cobalt Fur Monster #13", desc: "Balutan bulu sintetis biru kobalt tahan cuaca di atas cangkang helm kustom berstandar SNI dengan pandangan luas.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 2.450.000", sku: "GHC-CS-13" },
+        14: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Apex Great White Shark #14", desc: "Sirip punggung aerodinamis dan grafis rahang hiu agresif dengan sistem sirkulasi udara insang samping.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CS-14" },
+        15: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Ducky Yellow Edition #15", desc: "Helm kustom tematik kuning ikonik dengan visibilitas tinggi di jalan raya serta busa interior hippoallergenic.", size: "S – L", weight: "1.440 g", status: "Tersedia", price: "Rp 2.950.000", sku: "GHC-CS-15" },
         16: { category: "full-face", meta: "Full Face · Sci-Fi Spec · SNI 1811", title: "Garasi Xenomorph Green Alien #16", desc: "Helm full-face hijau metalik futuristik dengan kontur memanjang aerodinamis dan visor gelap anti-silau.", size: "M – XL", weight: "1.500 g", status: "Stok Terbatas", price: "Rp 3.890.000", sku: "GHC-FF-16" },
-        17: { category: "custom-edition", meta: "Custom Tropical · SNI 1811", title: "Garasi Musang King Durian #17", desc: "Tekstur duri elastomer lentur yang aman dan tidak melukai, dipadukan cangkang dalam berstandar SNI.", size: "M – XL", weight: "1.540 g", status: "Tersedia", price: "Rp 3.650.000", sku: "GHC-CS-17" },
-        18: { category: "full-face", meta: "Full Face · Custom Airbrush · SNI 1811", title: "Garasi Fresh Watermelon Spec #18", desc: "Helm full-face airbrush presisi motif kulit dan daging semangka segar dengan lapisan clear coat gloss tinggi.", size: "S – XL", weight: "1.390 g", status: "Tersedia", price: "Rp 2.750.000", sku: "GHC-FF-18" },
-        19: { category: "full-face", meta: "Full Face · Custom 3D · SNI 1811", title: "Garasi Ichiraku Ramen Bowl #19", desc: "Helm full-face kustom 3D lengkap dengan detail ornamen pahatan presisi di atas cangkang ABS teruji.", size: "M – XL", weight: "1.560 g", status: "Stok Terbatas", price: "Rp 4.250.000", sku: "GHC-FF-19" },
-        20: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Glazed Donut Sprinkle #20", desc: "Helm full-face dengan kontur membulat ergonomis, finishing gloss kustom, serta sirkulasi udara tersembunyi.", size: "XS – L", weight: "1.430 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-FF-20" },
-        21: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Golden Butter Melt #21", desc: "Helm full-face tekstur pahatan satin-gloss dengan sistem pengunci Microlock baja dan interior lepas-pasang.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-FF-21" }
+        17: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Musang King Edition #17", desc: "Tekstur pahatan elastomer lentur yang aman dan tidak melukai, dipadukan cangkang dalam berstandar SNI.", size: "M – XL", weight: "1.540 g", status: "Tersedia", price: "Rp 3.650.000", sku: "GHC-CS-17" },
+        18: { category: "full-face", meta: "Full Face · Custom Airbrush · SNI 1811", title: "Garasi Fresh Watermelon Spec #18", desc: "Helm full-face airbrush presisi motif kulit dan daging segar dengan lapisan clear coat gloss tinggi.", size: "S – XL", weight: "1.390 g", status: "Tersedia", price: "Rp 2.750.000", sku: "GHC-FF-18" },
+        19: { category: "full-face", meta: "Full Face · Custom 3D · SNI 1811", title: "Garasi Sculpted Bowl Edition #19", desc: "Helm full-face kustom 3D lengkap dengan detail ornamen pahatan presisi di atas cangkang ABS teruji.", size: "M – XL", weight: "1.560 g", status: "Stok Terbatas", price: "Rp 4.250.000", sku: "GHC-FF-19" },
+        20: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Glazed Sprinkle Spec #20", desc: "Helm full-face dengan kontur membulat ergonomis, finishing gloss kustom, serta sirkulasi udara tersembunyi.", size: "XS – L", weight: "1.430 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-FF-20" },
+        21: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Golden Melt Spec #21", desc: "Helm full-face tekstur pahatan satin-gloss dengan sistem pengunci Microlock baja dan interior lepas-pasang.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-FF-21" }
       };
 
       const fullFaceSeriesTemplate = {
@@ -980,12 +991,16 @@
         size: "S – XL"
       };
 
-      const nonFullFaceSeries = [
+      const customSeriesTemplates = [
+        { category: "custom-edition", code: "CS", meta: "Custom Edition · SNI 1811", prefix: "Garasi Artisan Custom", desc: "Karya tangan studio Bandung dengan lapisan cat multi-stage tahan cuaca serta peredam benturan Multi-Density EPS.", basePrice: 3990000, weight: 1480, size: "S – XL" },
+        { category: "custom-edition", code: "CS", meta: "Custom Heritage · SNI 1811", prefix: "Garasi Heritage Custom", desc: "Siluet kustom klasik dengan detail trim kulit sintetis jahitan tangan, aksen kuningan, dan interior suede.", basePrice: 3650000, weight: 1420, size: "S – XL" },
+        { category: "custom-edition", code: "CS", meta: "Custom Sculpted · SNI 1811", prefix: "Garasi Sculpted Concept", desc: "Cangkang komposit kustom berprofil unik dengan finishing airbrush presisi dan lapisan clear coat anti-UV.", basePrice: 4150000, weight: 1510, size: "M – XL" }
+      ];
+
+      const openModularTemplates = [
         { category: "open-modular", code: "OM", meta: "Open Face · SNI 1811", prefix: "Garasi Urban Jet Cruiser", desc: "Helm open-face ringan dengan double visor internal anti-UV dan ventilasi atas yang optimal untuk lalu lintas kota.", basePrice: 1450000, weight: 1180, size: "S – XL" },
         { category: "open-modular", code: "MD", meta: "Modular Flip-Up · ECE 22.06 · SNI", prefix: "Garasi Horizon Modular GT", desc: "Mekanisme flip-up chinbar pengunci baja satu tombol, ideal untuk touring jarak jauh dengan interkom terintegrasi.", basePrice: 2850000, weight: 1590, size: "M – XXL" },
-        { category: "open-modular", code: "DS", meta: "Dual Sport Adventure · ECE 22.06", prefix: "Garasi Terra Enduro Peak", desc: "Dilengkapi peak visor anti-silau lepas-pasang dan ruang goggle luas untuk jalur aspal maupun medan tanah.", basePrice: 2650000, weight: 1470, size: "M – XL" },
-        { category: "custom-edition", code: "CL", meta: "Classic Retro · SNI 1811", prefix: "Garasi Heritage Cafe Racer", desc: "Siluet klasik era 70-an dengan trim kulit sintetis jahitan tangan, kancing visor kuningan, dan interior suede.", basePrice: 1950000, weight: 1290, size: "S – XL" },
-        { category: "custom-edition", code: "CS", meta: "Custom Workshop · SNI 1811", prefix: "Garasi Artisan Special Edition", desc: "Karya tangan studio Bandung dengan lapisan cat multi-stage tahan cuaca serta peredam benturan Multi-Density EPS.", basePrice: 3990000, weight: 1480, size: "S – XL" }
+        { category: "open-modular", code: "DS", meta: "Dual Sport Modular · ECE 22.06", prefix: "Garasi Terra Enduro Peak", desc: "Dilengkapi peak visor anti-silau lepas-pasang dan ruang goggle luas untuk jalur aspal maupun medan tanah.", basePrice: 2650000, weight: 1470, size: "M – XL" }
       ];
 
       const variantNames = [
@@ -1000,23 +1015,32 @@
       for (let i = 1; i <= 100; i++) {
         const numStr = String(i).padStart(2, "0");
         const isFullFace = FULL_FACE_NUMBERS.has(i);
+        const isCustom = CUSTOM_EDITION_NUMBERS.has(i);
 
         if (specialSpecs[i]) {
           allHelmets.push({
             num: i,
             isFullFace,
+            isCustom,
             ...specialSpecs[i]
           });
         } else {
-          const series = isFullFace
-            ? fullFaceSeriesTemplate
-            : nonFullFaceSeries[i % nonFullFaceSeries.length];
+          let series;
+          if (isFullFace) {
+            series = fullFaceSeriesTemplate;
+          } else if (isCustom) {
+            series = customSeriesTemplates[i % customSeriesTemplates.length];
+          } else {
+            series = openModularTemplates[i % openModularTemplates.length];
+          }
+
           const variant = variantNames[i % variantNames.length];
           const priceVal = series.basePrice + ((i % 5) * 75000);
 
           allHelmets.push({
             num: i,
             isFullFace,
+            isCustom,
             category: series.category,
             meta: series.meta,
             title: `${series.prefix} ${variant} #${numStr}`,
@@ -1063,7 +1087,7 @@
                 />
               </div>
               <div class="card-body">
-                <p class="card-meta ${item.isFullFace ? "is-fullface" : ""}">${item.meta}</p>
+                <p class="card-meta ${item.isFullFace ? "is-fullface" : item.isCustom ? "is-custom" : ""}">${item.meta}</p>
                 <h3 class="card-title">${item.title}</h3>
                 <p class="card-summary">${item.desc}</p>
                 <div class="card-specs-row">
