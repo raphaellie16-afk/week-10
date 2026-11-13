@@ -8,6 +8,13 @@
       name="description"
       content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
     />
+    <meta property="og:title" content="Garasi Helm Custom — Katalog Helm Motor Resmi" />
+    <meta
+      property="og:description"
+      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <style>
       :root {
         --bg-canvas: #f5f6f8;
@@ -44,6 +51,12 @@
         -webkit-text-size-adjust: 100%;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
       body {
         margin: 0;
         background-color: var(--bg-canvas);
@@ -61,6 +74,12 @@
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--accent-cobalt);
+        outline-offset: 3px;
+        border-radius: 3px;
       }
 
       .tabular {
@@ -97,6 +116,7 @@
         letter-spacing: 0.04em;
         color: var(--ink-primary);
         white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .site-nav {
@@ -110,14 +130,22 @@
         font-weight: 500;
         color: var(--ink-secondary);
         white-space: nowrap;
+        flex-shrink: 0;
         padding-block: 6px;
         border-bottom: 1.5px solid transparent;
-        transition: color 150ms ease, border-color 150ms ease;
+        transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .nav-link:hover {
         color: var(--ink-primary);
         border-bottom-color: var(--ink-primary);
+      }
+
+      .header-action {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
       }
 
       .primary-anchor {
@@ -131,6 +159,8 @@
         background-color: var(--accent-cobalt);
         border-radius: var(--radius-sm);
         white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .primary-anchor:hover {
@@ -170,6 +200,7 @@
         line-height: 1.1;
         letter-spacing: -0.025em;
         color: var(--ink-primary);
+        text-wrap: balance;
       }
 
       .hero-lead {
@@ -204,6 +235,10 @@
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--ink-primary);
+      }
+
+      .hero-media {
+        display: flex;
       }
 
       .media-frame {
@@ -253,6 +288,7 @@
         letter-spacing: -0.02em;
         line-height: 1.2;
         color: var(--ink-primary);
+        text-wrap: balance;
       }
 
       .section-note {
@@ -276,7 +312,8 @@
         border-radius: var(--radius-md);
         overflow: hidden;
         scroll-margin-top: 96px;
-        transition: transform 180ms ease, box-shadow 180ms ease;
+        transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .helmet-card:hover {
@@ -299,25 +336,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 240ms ease;
+        transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .helmet-card:hover .card-image {
         transform: scale(1.02);
-      }
-
-      .img-missing-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        padding: 16px;
-        text-align: center;
-        background-color: #fef2f2;
-        color: #991b1b;
-        font-size: 0.75rem;
-        word-break: break-all;
       }
 
       .card-body {
@@ -419,6 +442,11 @@
         max-width: 56ch;
         font-size: 0.9375rem;
         color: var(--ink-secondary);
+      }
+
+      .pillar-list {
+        display: flex;
+        flex-direction: column;
       }
 
       .pillar-item {
@@ -563,12 +591,15 @@
           grid-template-columns: 1fr;
           gap: 32px;
         }
+
         .hero-frame {
           min-height: 0;
         }
+
         .catalog-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
         .standards-layout {
           grid-template-columns: 1fr;
           gap: 40px;
@@ -576,25 +607,51 @@
       }
 
       @media (max-width: 720px) {
+        .header-inner {
+          gap: 16px;
+          min-height: 60px;
+        }
+
         .site-nav {
           display: none;
         }
+
+        .hero-section {
+          padding-block: 36px 44px;
+        }
+
         .hero-specs {
           grid-template-columns: 1fr;
+          gap: 14px;
         }
+
         .section-header {
           flex-direction: column;
           align-items: flex-start;
+          gap: 12px;
         }
+
         .catalog-grid {
           grid-template-columns: 1fr;
         }
+
         .footer-inner {
           grid-template-columns: 1fr;
+          gap: 28px;
         }
+
         .footer-bottom {
           flex-direction: column;
           align-items: flex-start;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .helmet-card,
+        .card-image,
+        .nav-link,
+        .primary-anchor {
+          transition: none;
         }
       }
     </style>
@@ -603,6 +660,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="#top" class="brand-wordmark">GARASI HELM CUSTOM</a>
+
         <nav class="site-nav" aria-label="Kategori Katalog">
           <a href="#full-face" class="nav-link">Full Face</a>
           <a href="#custom-edition" class="nav-link">Custom Edition</a>
@@ -610,6 +668,7 @@
           <a href="#retro-tactical" class="nav-link">Retro & Tactical</a>
           <a href="#standar" class="nav-link">Standar</a>
         </nav>
+
         <div class="header-action">
           <a href="#katalog" class="primary-anchor">Katalog 2026 (100 Unit)</a>
         </div>
@@ -625,7 +684,8 @@
             <p class="hero-lead">
               Katalog lengkap 100 edisi helm berkendara mulai dari model studio full-face, carbon racing, modular, dual sport hingga seri kustom artistik. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
             </p>
-            <div class="hero-specs">
+
+            <div class="hero-specs" aria-label="Ringkasan Spesifikasi Koleksi">
               <div class="spec-item">
                 <span class="spec-label">Total Koleksi</span>
                 <span class="spec-value tabular">100 Model Studio & Custom</span>
@@ -665,7 +725,9 @@
             </p>
           </div>
 
-          <div id="catalog-grid" class="catalog-grid"></div>
+          <div id="catalog-grid" class="catalog-grid">
+            <!-- 100 item di-render secara otomatis ke dalam grid ini -->
+          </div>
         </div>
       </section>
 
@@ -677,6 +739,7 @@
             <p class="standards-intro">
               Setiap unit—baik edisi studio maupun kustom—melewati pengujian benturan multi-titik, ketahanan penetrasi visor polikarbonat anti-gores, dan uji keseimbangan bobot.
             </p>
+
             <div class="pillar-list">
               <div class="pillar-item">
                 <h3 class="pillar-title">Struktur Multi-Density EPS</h3>
@@ -714,12 +777,42 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td class="size-code">XS</td><td class="tabular">53 – 54 cm</td><td class="tabular">Shell 1</td><td>Kompak</td></tr>
-                <tr><td class="size-code">S</td><td class="tabular">55 – 56 cm</td><td class="tabular">Shell 1</td><td>Presisi Rapat</td></tr>
-                <tr><td class="size-code">M</td><td class="tabular">57 – 58 cm</td><td class="tabular">Shell 2</td><td>Standar Asia</td></tr>
-                <tr><td class="size-code">L</td><td class="tabular">59 – 60 cm</td><td class="tabular">Shell 2</td><td>Reguler</td></tr>
-                <tr><td class="size-code">XL</td><td class="tabular">61 – 62 cm</td><td class="tabular">Shell 3</td><td>Lapang</td></tr>
-                <tr><td class="size-code">XXL</td><td class="tabular">63 – 64 cm</td><td class="tabular">Shell 3</td><td>Ekstra</td></tr>
+                <tr>
+                  <td class="size-code">XS</td>
+                  <td class="tabular">53 – 54 cm</td>
+                  <td class="tabular">Shell 1</td>
+                  <td>Kompak</td>
+                </tr>
+                <tr>
+                  <td class="size-code">S</td>
+                  <td class="tabular">55 – 56 cm</td>
+                  <td class="tabular">Shell 1</td>
+                  <td>Presisi Rapat</td>
+                </tr>
+                <tr>
+                  <td class="size-code">M</td>
+                  <td class="tabular">57 – 58 cm</td>
+                  <td class="tabular">Shell 2</td>
+                  <td>Standar Asia</td>
+                </tr>
+                <tr>
+                  <td class="size-code">L</td>
+                  <td class="tabular">59 – 60 cm</td>
+                  <td class="tabular">Shell 2</td>
+                  <td>Reguler</td>
+                </tr>
+                <tr>
+                  <td class="size-code">XL</td>
+                  <td class="tabular">61 – 62 cm</td>
+                  <td class="tabular">Shell 3</td>
+                  <td>Lapang</td>
+                </tr>
+                <tr>
+                  <td class="size-code">XXL</td>
+                  <td class="tabular">63 – 64 cm</td>
+                  <td class="tabular">Shell 3</td>
+                  <td>Ekstra</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -735,11 +828,13 @@
             Katalog tampilan resmi 100 unit perlengkapan keselamatan berkendara roda dua dan edisi kustom.
           </p>
         </div>
+
         <div class="footer-info">
           <span class="footer-heading">Showroom Utama</span>
           <p>Jl. Asia Afrika No. 118, Bandung 40111</p>
           <p class="tabular">Senin – Sabtu · 09.00 – 19.00 WIB</p>
         </div>
+
         <div class="footer-info">
           <span class="footer-heading">Kategori Koleksi</span>
           <div class="footer-links">
@@ -751,6 +846,7 @@
           </div>
         </div>
       </div>
+
       <div class="container footer-bottom">
         <span>© 2026 Garasi Helm Custom Indonesia.</span>
         <span>Katalog Resmi · Edisi 2026 (100 Unit)</span>
@@ -819,10 +915,10 @@
         { file: "Marble_and_gold_helmet_8408db0f.jpg", cat: "Stone & Gold · SNI 1811", title: "Garasi Carrara Marble & Gold", desc: "Motif urat marmer putih alami dipadukan garis urat emas elegan untuk tampilan mewah berkelas.", size: "S – XL", weight: "1.410 g", status: "Tersedia", price: "Rp 3.690.000", sku: "GHC-FN-49" },
         { file: "Wooden_veneer_helmet_studio_photo_ff6ca4b7.jpg", cat: "Natural Veneer · SNI 1811", title: "Garasi Mahogany Wood Veneer", desc: "Lapisan serat kayu alami asli yang dipress vakum di atas cangkang komposit dengan pelindung resin marine.", size: "M – XL", weight: "1.440 g", status: "Stok Terbatas", price: "Rp 3.890.000", sku: "GHC-FN-50" },
 
-        // 51 - 60
+        // 51 - 60 (Retro, Vintage & Classic)
         { id: "retro-tactical", file: "Retro_cafe_racer_helmet_57a994f7.jpg", cat: "Cafe Racer · SNI 1811", title: "Garasi Ace Cafe Racer Classic", desc: "Siluet full-face klasik era 70-an dengan bukaan mata lebar dan trim karet krom autentik.", size: "S – XL", weight: "1.320 g", status: "Tersedia", price: "Rp 2.550.000", sku: "GHC-RT-51" },
         { file: "Retro_racing_helmet_studio_showcase_ef2782d5.jpg", cat: "Heritage GP · SNI 1811", title: "Garasi Monza 1975 Retro Race", desc: "Livery garis balap klasik dengan kancing visor kuningan dan interior kain suede breathable.", size: "S – XL", weight: "1.340 g", status: "Tersedia", price: "Rp 2.690.000", sku: "GHC-RT-52" },
-        { file: "Vintage_racing_helmet_with_visor_40fa56ac.jpg", cat: "Heritage GP · SNI 1811", title: "Garasi Silverstone Vintage Visor", desc: "Dilengkapi visor cembung klasik dengan pengunci kancing samping serta busa pipi ergonomis.", size: "S – XL", weight: "1.350 g", status: "Tersedia", price: "Rp 2.650.000", sku: "GHC-RT-53" },
+        { file: "Vintage_racing_helmet_studio_visor_40fa56ac.jpg", cat: "Heritage GP · SNI 1811", title: "Garasi Silverstone Vintage Visor", desc: "Dilengkapi visor cembung klasik dengan pengunci kancing samping serta busa pipi ergonomis.", size: "S – XL", weight: "1.350 g", status: "Tersedia", price: "Rp 2.650.000", sku: "GHC-RT-53" },
         { file: "Leather_wrapped_vintage_helmet_1b6056b1.jpg", cat: "Artisan Leather · SNI 1811", title: "Garasi Saddle Leather Wrapped", desc: "Balutan kulit nabati jahitan tangan dengan patina klasik yang semakin berkarakter seiring pemakaian.", size: "M – XL", weight: "1.450 g", status: "Stok Terbatas", price: "Rp 3.750.000", sku: "GHC-RT-54" },
         { file: "Vespa_helmet_on_studio_showcase_3c4e5657.jpg", cat: "Urban Scooter · SNI 1811", title: "Garasi Dolce Vita Scooter Jet", desc: "Helm open-face ringkas yang muat di bagasi skuter klasik dengan inner visor anti-silau.", size: "XS – XL", weight: "1.150 g", status: "Tersedia", price: "Rp 1.650.000", sku: "GHC-RT-55" },
         { file: "Red_custom_bubble_motorcycle_helmet_b5539304.jpg", cat: "Custom Bubble · SNI 1811", title: "Garasi Crimson Bubble Visor", desc: "Cangkang open-face merah metalik dengan bubble visor polikarbonat anti-angin dan UV400.", size: "S – XL", weight: "1.220 g", status: "Tersedia", price: "Rp 1.890.000", sku: "GHC-RT-56" },
@@ -831,7 +927,7 @@
         { file: "Vintage_copper_helmet_with_goggles_5c1a23c9.jpg", cat: "Heritage Copper · SNI 1811", title: "Garasi Nautilus Copper Goggles", desc: "Finishing tembaga tua brushed-metal dilengkapi kacamata goggle berlensa bening tahan bentur.", size: "S – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.990.000", sku: "GHC-SP-59" },
         { file: "Vintage_helmet_with_dragon_artwork_26de2b2d.jpg", cat: "Oriental Art · SNI 1811", title: "Garasi Heritage Oriental Dragon", desc: "Ilustrasi naga klasik bergaya lukisan tinta tradisional di atas cangkang vintage berfinishing satin.", size: "S – XL", weight: "1.370 g", status: "Tersedia", price: "Rp 3.190.000", sku: "GHC-RT-60" },
 
-        // 61 - 70
+        // 61 - 70 (Retro Objects & Tech)
         { file: "Custom_CRT_TV_motorcycle_helmet_ae389405.jpg", cat: "Custom Retro-Tech · SNI 1811", title: "Garasi RetroVision CRT-90", desc: "Cangkang kustom berbentuk monitor tabung klasik 90-an dengan layar visor polikarbonat cembung jernih.", size: "M – XL", weight: "1.620 g", status: "Pre-Order", price: "Rp 4.750.000", sku: "GHC-OB-61" },
         { file: "Custom_motorcycle_helmet_arcade_._2d238f6e.jpg", cat: "Retro Gaming · SNI 1811", title: "Garasi Pixel Arcade Cabinet", desc: "Terinspirasi mesin dingdong klasik era 80-an lengkap dengan detail tombol dan grafis retro.", size: "M – XL", weight: "1.590 g", status: "Pre-Order", price: "Rp 4.650.000", sku: "GHC-OB-62" },
         { file: "Retro_cassette_tape_motorcycle_h._f3c5a156.jpg", cat: "Retro Audio · SNI 1811", title: "Garasi Mixtape C-90 Cassette", desc: "Desain kaset pita analog ikonik dengan jendela visor transparan di bagian reel pita.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.890.000", sku: "GHC-OB-63" },
@@ -843,7 +939,7 @@
         { file: "Helmet_aquarium_with_swimming_fish_870805d1.jpg", cat: "Art Diorama · SNI 1811", title: "Garasi Reef Aquarium Diorama", desc: "Cangkang ganda transparan berisi diorama terumbu karang dan ikan hias tanpa cairan sehingga tetap ringan.", size: "M – XL", weight: "1.570 g", status: "Pre-Order", price: "Rp 4.950.000", sku: "GHC-NT-69" },
         { file: "Custom_sunflower_motorcycle_helmet_12c4a3dc.jpg", cat: "Botanical Series · SNI 1811", title: "Garasi Helianthus Sunflower Ed.", desc: "Kelopak bunga matahari kuning cerah berbahan elastomer fleksibel dengan visibilitas tinggi di jalan.", size: "XS – L", weight: "1.450 g", status: "Tersedia", price: "Rp 3.290.000", sku: "GHC-NT-70" },
 
-        // 71 - 83
+        // 71 - 83 (Fauna & Character Series)
         { file: "Blue_monster_fur_motorcycle_helmet_260a845e.jpg", cat: "Plush & Character · SNI 1811", title: "Garasi Cobalt Fur Monster", desc: "Balutan bulu sintetis biru kobalt tahan cuaca di atas helm full-face berstandar SNI dengan pandangan luas.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 2.450.000", sku: "GHC-FN-71" },
         { file: "Custom_shark_motorcycle_helmet_c._26b26786.jpg", cat: "Animal Series · SNI 1811", title: "Garasi Apex Great White Shark", desc: "Sirip punggung aerodinamis dan grafis rahang hiu agresif dengan sistem sirkulasi udara insang samping.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-FN-72" },
         { file: "Giant_yellow_duck_motorcycle_helmet_e10a5413.jpg", cat: "Character Series · SNI 1811", title: "Garasi Ducky Yellow Edition", desc: "Helm tematik bebek kuning ikonik dengan visibilitas tinggi di jalan raya serta busa interior hippoallergenic.", size: "S – L", weight: "1.440 g", status: "Tersedia", price: "Rp 2.950.000", sku: "GHC-FN-73" },
@@ -858,7 +954,7 @@
         { file: "Custom_jellyfish_motorcycle_helm._2966a788.jpg", cat: "Aquatic Series · SNI 1811", title: "Garasi Aurelia Translucent Jellyfish", desc: "Kubah semi-transparan bioluminesensi dengan aksen tentakel lembut di bagian belakang leher.", size: "S – L", weight: "1.470 g", status: "Stok Terbatas", price: "Rp 4.190.000", sku: "GHC-FN-82" },
         { file: "Red_toadstool_helmet_catalog_photo_149f376d.jpg", cat: "Forest Series · SNI 1811", title: "Garasi Amanita Red Toadstool", desc: "Tudung jamur merah berbintik putih klasik dengan profil membulat stabil dan busa pipi nyaman.", size: "XS – L", weight: "1.440 g", status: "Tersedia", price: "Rp 3.090.000", sku: "GHC-NT-83" },
 
-        // 84 - 96
+        // 84 - 96 (Culinary & Tropical Fruit Series)
         { id: "food-series", file: "Durian_shaped_motorcycle_helmet_._c43ce0d8.jpg", cat: "Tropical Series · SNI 1811", title: "Garasi Musang King Durian", desc: "Tekstur duri elastomer lentur yang aman dan tidak melukai, dipadukan cangkang dalam berstandar SNI.", size: "M – XL", weight: "1.540 g", status: "Tersedia", price: "Rp 3.650.000", sku: "GHC-FD-84" },
         { file: "Custom_watermelon_motorcycle_hel._6fa9b59c.jpg", cat: "Tropical Series · SNI 1811", title: "Garasi Fresh Watermelon Spec", desc: "Pengecatan airbrush presisi motif kulit dan daging semangka segar dengan lapisan clear coat gloss tinggi.", size: "S – XL", weight: "1.390 g", status: "Tersedia", price: "Rp 2.750.000", sku: "GHC-FD-85" },
         { file: "Alpukat_helm_motor_bentuk_buah_c187971a.jpg", cat: "Tropical Series · SNI 1811", title: "Garasi Hass Avocado Edition", desc: "Tekstur kulit alpukat hijau tua berpadu aksen daging buah lembut di bagian tepi visor.", size: "S – XL", weight: "1.430 g", status: "Tersedia", price: "Rp 2.950.000", sku: "GHC-FD-86" },
@@ -873,7 +969,7 @@
         { file: "Custom_helmet_shaped_like_cinnam._a6b5d132.jpg", cat: "Dessert Series · SNI 1811", title: "Garasi Swirl Cinnamon Roll", desc: "Gulungan roti kayu manis bertekstur spiral dengan glasir gula putih glossy di atas shell komposit.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.550.000", sku: "GHC-FD-95" },
         { file: "Ice_cream_helmet_studio_photo_ee29a331.jpg", cat: "Dessert Series · SNI 1811", title: "Garasi Gelato Swirl Cone", desc: "Tekstur es krim lembut berlapis dengan aksen wafel renyah dan sistem ventilasi tersembunyi.", size: "XS – L", weight: "1.440 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-FD-96" },
 
-        // 97 - 100
+        // 97 - 100 (Limited Flagship Studio Editions)
         { file: "Custom_motorcycle_helmet_studio_._40f4bc2f.jpg", cat: "Signature Studio · ECE 22.06", title: "Garasi Flagship Carbon Edition 97", desc: "Edisi kolektor bernomor seri dengan cangkang karbon-kevlar dan visor anti-embun Pinlock MaxVision.", size: "S – XL", weight: "1.320 g", status: "Stok Terbatas", price: "Rp 4.590.000", sku: "GHC-SG-97" },
         { file: "Custom_motorcycle_helmet_studio_._5b8b197e.jpg", cat: "Signature Studio · ECE 22.06", title: "Garasi Flagship Aero Edition 98", desc: "Kalibrasi terowongan angin khusus untuk touring kecepatan tinggi dengan peredam akustik ekstra.", size: "S – XL", weight: "1.340 g", status: "Stok Terbatas", price: "Rp 4.650.000", sku: "GHC-SG-98" },
         { file: "Custom_motorcycle_helmet_studio_._6b03ef43.jpg", cat: "Signature Studio · ECE 22.06", title: "Garasi Flagship Track Edition 99", desc: "Dilengkapi sistem emergency cheek-pad release, tali titanium Double D-Ring, dan tas helm hardcase.", size: "XS – XL", weight: "1.310 g", status: "Stok Terbatas", price: "Rp 4.750.000", sku: "GHC-SG-99" },
@@ -892,7 +988,6 @@
                 alt="${item.title}"
                 class="card-image"
                 loading="lazy"
-                onerror="this.parentElement.innerHTML='<div class=\\'img-missing-box\\'><strong>File tidak ditemukan:</strong><br/>helm/${item.file}</div>'"
               />
             </div>
             <div class="card-body">
