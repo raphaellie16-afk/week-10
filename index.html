@@ -1,408 +1,1630 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Katalog Helm Custom — Garasi Kustom</title>
-  <style>
-    :root {
-      --bg-page: #f4f1ea;
-      --bg-card: #ffffff;
-      --bg-dark: #1c1b19;
-      --text-main: #22211e;
-      --text-muted: #66635b;
-      --accent: #c84b24;
-      --border-color: #dcd7cc;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taruna Helm — Katalog Helm Motor Resmi</title>
+    <meta
+      name="description"
+      content="Webstore tampilan katalog resmi helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
+    />
+    <meta property="og:title" content="Taruna Helm — Katalog Helm Motor Resmi" />
+    <meta
+      property="og:description"
+      content="Webstore tampilan katalog resmi helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        --bg-canvas: #f5f6f8;
+        --bg-surface: #ffffff;
+        --bg-studio: #e9ecf1;
+        --bg-subtle: #eef1f5;
+        --ink-primary: #111317;
+        --ink-secondary: #434b57;
+        --ink-muted: #5d6675;
+        --accent-cobalt: #1d4ed8;
+        --accent-cobalt-hover: #1e40af;
+        --border-hairline: #dce1e8;
+        --border-strong: #c6cdd8;
+        --shadow-card: 0 10px 28px -12px rgba(17, 19, 23, 0.12);
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-page);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --container-max: 1200px;
+      }
 
-    .container {
-      width: 90%;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-    /* Header */
-    .site-header {
-      background-color: var(--bg-dark);
-      color: #ffffff;
-      padding: 20px 0;
-      border-bottom: 4px solid var(--accent);
-    }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+      }
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
 
-    .brand-tag {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      color: var(--accent);
-      font-weight: bold;
-    }
+      body {
+        margin: 0;
+        background-color: var(--bg-canvas);
+        color: var(--ink-primary);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
 
-    .brand h1 {
-      font-size: 1.6rem;
-      letter-spacing: 1.5px;
-    }
+      img {
+        display: block;
+        max-width: 100%;
+      }
 
-    .header-note {
-      font-size: 0.9rem;
-      color: #b8b3a8;
-    }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    /* Hero Banner */
-    .hero {
-      background-color: #292724;
-      color: #f4f1ea;
-      padding: 48px 0;
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
-    }
+      a:focus-visible {
+        outline: 2px solid var(--accent-cobalt);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
 
-    .hero h2 {
-      font-size: 2rem;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
+      .tabular {
+        font-variant-numeric: tabular-nums;
+      }
 
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto;
-      color: #ccc7bc;
-      font-size: 0.98rem;
-    }
+      .container {
+        width: 100%;
+        max-width: var(--container-max);
+        margin-inline: auto;
+        padding-inline: 24px;
+      }
 
-    /* Katalog Section */
-    .catalog-section {
-      padding: 48px 0 64px;
-    }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background-color: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border-hairline);
+      }
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 2px solid var(--text-main);
-      padding-bottom: 10px;
-      margin-bottom: 30px;
-    }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        min-height: 68px;
+      }
 
-    .section-title h3 {
-      font-size: 1.25rem;
-      letter-spacing: 1px;
-    }
+      .brand-wordmark {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--ink-primary);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
 
-    .item-count {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
 
-    /* Grid Produk */
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
+      .nav-link {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--ink-secondary);
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding-block: 6px;
+        border-bottom: 1.5px solid transparent;
+        transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-    /* Kartu Produk */
-    .product-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-    }
+      .nav-link:hover {
+        color: var(--ink-primary);
+        border-bottom-color: var(--ink-primary);
+      }
 
-    .product-image {
-      background-color: #ebe6dc;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-bottom: 1px solid var(--border-color);
-      padding: 20px;
-    }
+      .header-action {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
 
-    .product-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background-color: var(--bg-dark);
-      color: #ffffff;
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-    }
+      .primary-anchor {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 18px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: var(--accent-cobalt);
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-    .product-info {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
+      .primary-anchor:hover {
+        background-color: var(--accent-cobalt-hover);
+      }
 
-    .product-category {
-      font-size: 0.75rem;
-      color: var(--accent);
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
+      .hero-section {
+        padding-block: 56px 64px;
+        border-bottom: 1px solid var(--border-hairline);
+      }
 
-    .product-title {
-      font-size: 1.15rem;
-      margin-bottom: 8px;
-      color: var(--text-main);
-    }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+        gap: 48px;
+        align-items: stretch;
+      }
 
-    .product-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      flex-grow: 1;
-    }
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
-    .product-meta {
-      border-top: 1px dashed var(--border-color);
-      padding-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      .eyebrow {
+        margin: 0 0 14px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: var(--accent-cobalt);
+      }
 
-    .product-price {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: var(--text-main);
-    }
+      .hero-title {
+        margin: 0 0 18px;
+        font-size: clamp(2.125rem, 3.6vw, 3.25rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        color: var(--ink-primary);
+        text-wrap: balance;
+      }
 
-    .product-status {
-      font-size: 0.78rem;
-      color: #3a6b4c;
-      background-color: #e4efe8;
-      padding: 3px 8px;
-      font-weight: 600;
-    }
+      .hero-lead {
+        margin: 0 0 32px;
+        max-width: 54ch;
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--ink-secondary);
+      }
 
-    .product-status.preorder {
-      color: #8a5a19;
-      background-color: #f7ebd9;
-    }
+      .hero-specs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border-hairline);
+      }
 
-    /* Footer */
-    .site-footer {
-      background-color: var(--bg-dark);
-      color: #b8b3a8;
-      padding: 32px 0;
-      font-size: 0.88rem;
-    }
+      .spec-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
 
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+      .spec-label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--ink-muted);
+      }
 
-    .site-footer h4 {
-      color: #ffffff;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
+      .spec-value {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
 
-    .footer-info {
-      text-align: right;
-    }
+      .hero-media {
+        display: flex;
+      }
 
-    @media (max-width: 600px) {
-      .footer-info {
+      .media-frame {
+        position: relative;
+        width: 100%;
+        background-color: var(--bg-studio);
+        border: 1px solid var(--border-hairline);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+
+      .hero-frame {
+        aspect-ratio: 16 / 9;
+        height: 100%;
+        min-height: 340px;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .catalog-section {
+        padding-block: 72px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 32px;
+        margin-bottom: 36px;
+      }
+
+      .section-kicker {
+        margin: 0 0 8px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--ink-muted);
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--ink-primary);
+        text-wrap: balance;
+      }
+
+      .section-note {
+        margin: 0;
+        max-width: 44ch;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .helmet-card {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-hairline);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        scroll-margin-top: 96px;
+        transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .helmet-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-card);
+      }
+
+      .card-media {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        background-color: var(--bg-studio);
+        border-bottom: 1px solid var(--border-hairline);
+        overflow: hidden;
+        border-radius: 0;
+        border-top: 0;
+        border-inline: 0;
+      }
+
+      .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .helmet-card:hover .card-image {
+        transform: scale(1.02);
+      }
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        padding: 20px 22px 22px;
+      }
+
+      .card-meta {
+        margin: 0 0 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+      }
+
+      .card-title {
+        margin: 0 0 6px;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        line-height: 1.35;
+        color: var(--ink-primary);
+      }
+
+      .card-summary {
+        margin: 0 0 18px;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: var(--ink-secondary);
+      }
+
+      .card-specs-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        padding-block: 14px;
+        margin-top: auto;
+        border-top: 1px solid var(--border-hairline);
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .card-spec-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .card-spec-key {
+        font-size: 0.6875rem;
+        color: var(--ink-muted);
+      }
+
+      .card-spec-val {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .card-footer-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 16px;
+      }
+
+      .card-price {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--ink-primary);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .card-sku {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--ink-muted);
+      }
+
+      .standards-section {
+        padding-block: 72px;
+        background-color: var(--bg-surface);
+        border-top: 1px solid var(--border-hairline);
+        border-bottom: 1px solid var(--border-hairline);
+        scroll-margin-top: 68px;
+      }
+
+      .standards-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 56px;
+        align-items: start;
+      }
+
+      .standards-intro {
+        margin: 14px 0 32px;
+        max-width: 56ch;
+        font-size: 0.9375rem;
+        color: var(--ink-secondary);
+      }
+
+      .pillar-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pillar-item {
+        padding-block: 20px;
+        border-top: 1px solid var(--border-hairline);
+      }
+
+      .pillar-item:last-child {
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .pillar-title {
+        margin: 0 0 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .pillar-desc {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .sizing-panel {
+        background-color: var(--bg-canvas);
+        border: 1px solid var(--border-hairline);
+        border-radius: var(--radius-md);
+        padding: 28px;
+      }
+
+      .sizing-title {
+        margin: 0 0 6px;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .sizing-subtitle {
+        margin: 0 0 20px;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .sizing-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+      }
+
+      .sizing-table th {
+        padding: 10px 8px;
         text-align: left;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--ink-muted);
+        border-bottom: 1px solid var(--border-strong);
       }
-    }
-  </style>
-</head>
-<body>
 
-  <!-- Header Toko -->
-  <header class="site-header">
-    <div class="container header-content">
-      <div class="brand">
-        <span class="brand-tag">EST. 2024 • HANDCRAFTED</span>
-        <h1>GARASI KUSTOM</h1>
-      </div>
-      <p class="header-note">Katalog Resmi Helm Custom &amp; Pinstriping</p>
-    </div>
-  </header>
-
-  <!-- Banner Utama -->
-  <section class="hero">
-    <div class="container">
-      <h2>KOLEKSI HELM CUSTOM</h2>
-      <p>Dibuat secara manual dengan material fiberglass pilihan, cat tahan cuaca, dan sentuhan seni klasik untuk pengendara berkarakter.</p>
-    </div>
-  </section>
-
-  <!-- Bagian Katalog Produk -->
-  <main class="container catalog-section">
-    <div class="section-title">
-      <h3>DAFTAR PRODUK</h3>
-      <span class="item-count" id="item-count">0 Model Tersedia</span>
-    </div>
-
-    <!-- Grid Katalog -->
-    <div class="catalog-grid" id="catalog-grid"></div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div>
-        <h4>GARASI KUSTOM HELMETS</h4>
-        <p>Jl. Bengkel Klasik No. 45, Bandung</p>
-      </div>
-      <div class="footer-info">
-        <p>Jam Operasional: Senin – Sabtu (09.00 – 18.00 WIB)</p>
-        <p>&copy; 2024 Garasi Kustom. Tampilan Katalog.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const helmetCatalog = [
-      {
-        name: "Valkyrie Cafe Racer",
-        category: "Full Face Klasik",
-        badge: "Best Seller",
-        description: "Shell fiberglass ringan dengan cat matte black dan garis pinstripe emas manual.",
-        price: "Rp 1.650.000",
-        status: "Ready Stock",
-        colorMain: "#2b2b2b",
-        colorAccent: "#d4af37",
-        visorColor: "#111111"
-      },
-      {
-        name: "Sunset Metal Flake",
-        category: "Open Face 3/4",
-        badge: "Limited",
-        description: "Finishing glitter metalik oranye retro tahun 70-an dengan busa kulit sintetis cokelat.",
-        price: "Rp 1.350.000",
-        status: "Ready Stock",
-        colorMain: "#c84b24",
-        colorAccent: "#f4b942",
-        visorColor: "#3d2c24"
-      },
-      {
-        name: "Scrambler Olive Matte",
-        category: "Cross Retro",
-        badge: "Kustom",
-        description: "Desain petualang dengan warna hijau militer doff, dilengkapi kancing pet klasik.",
-        price: "Rp 1.480.000",
-        status: "Pre-Order",
-        colorMain: "#4b5338",
-        colorAccent: "#d9d2c5",
-        visorColor: "#1e1e1e"
-      },
-      {
-        name: "Ivory Trackside 74",
-        category: "Full Face Klasik",
-        badge: "Handmade",
-        description: "Warna krem gading dengan double racing stripe merah marun dan ventilasi kuningan.",
-        price: "Rp 1.750.000",
-        status: "Ready Stock",
-        colorMain: "#e8e0cf",
-        colorAccent: "#8c271e",
-        visorColor: "#222222"
-      },
-      {
-        name: "Chopper Cobalt Blue",
-        category: "Open Face 3/4",
-        badge: "Custom Paint",
-        description: "Biru kobalt mengkilap dengan efek gradasi api klasik di bagian samping.",
-        price: "Rp 1.290.000",
-        status: "Pre-Order",
-        colorMain: "#1f4e79",
-        colorAccent: "#70a9d6",
-        visorColor: "#1a1a1a"
-      },
-      {
-        name: "Bogo Heritage Espresso",
-        category: "Half Face",
-        badge: "Klasik",
-        description: "Helm harian bergaya vintage dengan warna cokelat tua dan jahitan pinggir kulit asli.",
-        price: "Rp 950.000",
-        status: "Ready Stock",
-        colorMain: "#4a3222",
-        colorAccent: "#c29b61",
-        visorColor: "#2b211a"
+      .sizing-table td {
+        padding: 11px 8px;
+        color: var(--ink-secondary);
+        border-bottom: 1px solid var(--border-hairline);
       }
-    ];
 
-    function createHelmetSVG(mainColor, accentColor, visorColor) {
-      return `
-        <svg width="150" height="140" viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="75" cy="128" rx="48" ry="6" fill="#cfc9bc" />
-          <path d="M 28 75 C 28 32, 122 32, 122 75 C 122 98, 112 115, 95 118 L 45 118 C 32 112, 28 95, 28 75 Z" 
-                fill="${mainColor}" stroke="#1c1b19" stroke-width="3"/>
-          <path d="M 70 43 L 80 43 L 80 118 L 70 118 Z" fill="${accentColor}" />
-          <path d="M 82 65 L 120 65 C 122 82, 115 95, 98 98 L 82 95 Z" 
-                fill="${visorColor}" stroke="#1c1b19" stroke-width="2.5"/>
-          <path d="M 88 70 L 110 70 L 104 82 L 88 82 Z" fill="#ffffff" opacity="0.25"/>
-          <path d="M 43 116 L 97 116" stroke="#1c1b19" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="62" cy="82" r="4" fill="${accentColor}" stroke="#1c1b19" stroke-width="1.5"/>
-        </svg>
-      `;
-    }
+      .sizing-table tbody tr:last-child td {
+        border-bottom: none;
+      }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const gridContainer = document.getElementById("catalog-grid");
-      const countElement = document.getElementById("item-count");
+      .size-code {
+        font-weight: 700;
+        color: var(--ink-primary) !important;
+      }
 
-      countElement.textContent = `${helmetCatalog.length} Model Tersedia`;
+      .site-footer {
+        padding-block: 48px 32px;
+        background-color: var(--bg-canvas);
+      }
 
-      helmetCatalog.forEach(function (item) {
-        const card = document.createElement("article");
-        card.className = "product-card";
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 40px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid var(--border-hairline);
+      }
 
-        const statusClass = item.status === "Pre-Order" ? "product-status preorder" : "product-status";
+      .footer-wordmark {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--ink-primary);
+      }
 
-        card.innerHTML = `
-          <div class="product-image">
-            <span class="product-badge">${item.badge}</span>
-            ${createHelmetSVG(item.colorMain, item.colorAccent, item.visorColor)}
-          </div>
-          <div class="product-info">
-            <span class="product-category">${item.category}</span>
-            <h4 class="product-title">${item.name}</h4>
-            <p class="product-desc">${item.description}</p>
-            <div class="product-meta">
-              <span class="product-price">${item.price}</span>
-              <span class="${statusClass}">${item.status}</span>
+      .footer-copy {
+        margin: 0;
+        max-width: 38ch;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .footer-heading {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .footer-info p {
+        margin: 0 0 6px;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-cobalt);
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 22px;
+        font-size: 0.8125rem;
+        color: var(--ink-muted);
+      }
+
+      @media (max-width: 1024px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .hero-frame {
+          min-height: 0;
+        }
+
+        .catalog-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .standards-layout {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .header-inner {
+          gap: 16px;
+          min-height: 60px;
+        }
+
+        .site-nav {
+          display: none;
+        }
+
+        .hero-section {
+          padding-block: 36px 44px;
+        }
+
+        .hero-specs {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .catalog-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .helmet-card,
+        .card-image,
+        .nav-link,
+        .primary-anchor {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand-wordmark">TARUNA HELM</a>
+
+        <nav class="site-nav" aria-label="Kategori Katalog">
+          <a href="#full-face" class="nav-link">Full Face</a>
+          <a href="#custom-edition" class="nav-link">Custom Edition</a>
+          <a href="#food-series" class="nav-link">Culinary Series</a>
+          <a href="#standar" class="nav-link">Standar</a>
+        </nav>
+
+        <div class="header-action">
+          <a href="#katalog" class="primary-anchor">Katalog 2026 (21 Unit)</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Koleksi Resmi &amp; Custom 2026 · Bandung Showroom</p>
+            <h1 class="hero-title">Perlindungan Presisi dengan Karakter Eksklusif.</h1>
+            <p class="hero-lead">
+              Katalog kurasi 21 edisi helm berkendara mulai dari model studio full-face hingga seri kustom artistik. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
+            </p>
+
+            <div class="hero-specs" aria-label="Ringkasan Spesifikasi Koleksi">
+              <div class="spec-item">
+                <span class="spec-label">Total Koleksi</span>
+                <span class="spec-value tabular">21 Model Studio &amp; Custom</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Rentang Ukuran</span>
+                <span class="spec-value tabular">XS – XXL (53–64 cm)</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Sertifikasi</span>
+                <span class="spec-value">SNI 1811 · ECE 22.06</span>
+              </div>
             </div>
           </div>
-        `;
 
-        gridContainer.appendChild(card);
-      });
-    });
-  </script>
-</body>
+          <div class="hero-media">
+            <div class="media-frame hero-frame">
+              <img
+                src="helm/Custom_motorcycle_helmet_studio_._40f4bc2f.jpg"
+                alt="Helm Custom Studio Taruna Helm Showcase"
+                class="hero-image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="katalog" class="catalog-section" aria-labelledby="catalog-heading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">01. Etalase Produk Lengkap (21 Item)</p>
+              <h2 id="catalog-heading" class="section-title">Katalog Resmi &amp; Edisi Kustom</h2>
+            </div>
+            <p class="section-note">
+              Seluruh model ditampilkan sesuai spesifikasi pabrik dan workshop resmi. Harga tercantum dalam Rupiah dan sudah termasuk tas pelindung helm.
+            </p>
+          </div>
+
+          <div class="catalog-grid">
+            <!-- 01 -->
+            <article id="full-face" class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_studio_._40f4bc2f.jpg"
+                  alt="Custom Motorcycle Helmet Studio Edition I"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Full Face Studio · ECE 22.06 · SNI</p>
+                <h3 class="card-title">Taruna Studio Pro Series 01</h3>
+                <p class="card-summary">
+                  Cangkang komposit serat karbon berprofil aerodinamis dengan lapisan finishing studio anti-gores.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.350 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.250.000</span>
+                  <span class="card-sku">TRN-ST-01</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 02 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_studio_._5b8b197e.jpg"
+                  alt="Custom Motorcycle Helmet Studio Edition II"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Full Face Studio · ECE 22.06 · SNI</p>
+                <h3 class="card-title">Taruna Studio Pro Series 02</h3>
+                <p class="card-summary">
+                  Desain kontur modern untuk berkendara jarak jauh dengan ventilasi multi-saluran dan visor optik kelas 1.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.380 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.300.000</span>
+                  <span class="card-sku">TRN-ST-02</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 03 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_studio_._6b03ef43.jpg"
+                  alt="Custom Motorcycle Helmet Studio Edition III"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Full Face Studio · ECE 22.06 · SNI</p>
+                <h3 class="card-title">Taruna Studio Pro Series 03</h3>
+                <p class="card-summary">
+                  Dilengkapi spoiler belakang terintegrasi, pengunci Double D-Ring, dan busa pipi pembuang kelembapan.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">XS – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.360 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.350.000</span>
+                  <span class="card-sku">TRN-ST-03</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 04 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_studio_._6f6e72fd.jpg"
+                  alt="Custom Motorcycle Helmet Studio Edition IV"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Full Face Studio · ECE 22.06 · SNI</p>
+                <h3 class="card-title">Taruna Studio Pro Series 04</h3>
+                <p class="card-summary">
+                  Konstruksi ringan berbobot seimbang dengan lapisan peredam akustik untuk mereduksi kebisingan angin.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XXL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.390 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.400.000</span>
+                  <span class="card-sku">TRN-ST-04</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 05 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_studio_._c0603853.jpg"
+                  alt="Custom Motorcycle Helmet Studio Edition V"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Full Face Studio · ECE 22.06 · SNI</p>
+                <h3 class="card-title">Taruna Studio Pro Series 05</h3>
+                <p class="card-summary">
+                  Edisi studio dengan sistem pelepas visor cepat tanpa alat serta dukungan penuh pemasangan Pinlock.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.370 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.450.000</span>
+                  <span class="card-sku">TRN-ST-05</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 06 -->
+            <article id="custom-edition" class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_astronaut_helmet_studio_p._d36f4c4a.jpg"
+                  alt="Custom Astronaut Helmet Studio Edition"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Concept · SNI 1811</p>
+                <h3 class="card-title">Taruna Apollo Astronaut Spec</h3>
+                <p class="card-summary">
+                  Terinspirasi helm penjelajah luar angkasa dengan visor panorama luas dan lapisan pelindung UV reflektif.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.520 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Stok Terbatas</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 4.650.000</span>
+                  <span class="card-sku">TRN-CS-06</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 07 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_gold_knight_motorcycle_he._1e85dc74.jpg"
+                  alt="Custom Gold Knight Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Armor · SNI 1811</p>
+                <h3 class="card-title">Taruna Sovereign Gold Knight</h3>
+                <p class="card-summary">
+                  Finishing metalik emas bergaya zirah ksatria abad pertengahan dengan struktur pelindung dagu kokoh.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – L</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.580 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Stok Terbatas</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 4.890.000</span>
+                  <span class="card-sku">TRN-CS-07</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 08 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_steampunk_motorcycle_helmet_e6bfeca2.jpg"
+                  alt="Custom Steampunk Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Heritage · SNI 1811</p>
+                <h3 class="card-title">Taruna Chronos Steampunk Ed.</h3>
+                <p class="card-summary">
+                  Ornamen kuningan mekanis, aksen kulit klasik, dan lensa optik ganda dengan standar keselamatan harian.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.550 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 4.500.000</span>
+                  <span class="card-sku">TRN-CS-08</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 09 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_CRT_TV_motorcycle_helmet_ae389405.jpg"
+                  alt="Custom CRT TV Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Retro-Tech · SNI 1811</p>
+                <h3 class="card-title">Taruna RetroVision CRT-90</h3>
+                <p class="card-summary">
+                  Cangkang kustom berbentuk monitor tabung klasik 90-an dengan layar visor polikarbonat cembung jernih.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.620 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Pre-Order</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 4.750.000</span>
+                  <span class="card-sku">TRN-CS-09</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 10 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_with_horns_0ab56296.jpg"
+                  alt="Custom Motorcycle Helmet with Horns"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Sculpted · SNI 1811</p>
+                <h3 class="card-title">Taruna Diablo Horned Spec</h3>
+                <p class="card-summary">
+                  Dilengkapi tanduk aerodinamis fleksibel yang dirancang lepas-aman saat benturan dengan finishing matte.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.460 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.850.000</span>
+                  <span class="card-sku">TRN-CS-10</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 11 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_with_cr._59df90c2.jpg"
+                  alt="Custom Motorcycle Helmet Crown Edition"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Sculpted · SNI 1811</p>
+                <h3 class="card-title">Taruna Monarch Crest Edition</h3>
+                <p class="card-summary">
+                  Detail mahkota dan ornamen relief timbul di atas shell komposit ABS berkekuatan tarik tinggi.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.490 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.950.000</span>
+                  <span class="card-sku">TRN-CS-11</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 12 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_motorcycle_helmet_shaped_._6e25d45b.jpg"
+                  alt="Custom Sculpted Shape Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Custom Art Form · SNI 1811</p>
+                <h3 class="card-title">Taruna Avant-Garde Form X</h3>
+                <p class="card-summary">
+                  Siluet pahatan kustom berkarakter unik dengan lapisan peredam benturan Multi-Density EPS penuh di bagian dalam.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.510 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 4.100.000</span>
+                  <span class="card-sku">TRN-CS-12</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 13 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Blue_monster_fur_motorcycle_helmet_260a845e.jpg"
+                  alt="Blue Monster Fur Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Plush &amp; Character · SNI 1811</p>
+                <h3 class="card-title">Taruna Cobalt Fur Monster</h3>
+                <p class="card-summary">
+                  Balutan bulu sintetis biru kobalt tahan cuaca di atas helm full-face berstandar SNI dengan pandangan luas.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.450 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 2.450.000</span>
+                  <span class="card-sku">TRN-CH-13</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 14 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_shark_motorcycle_helmet_c._26b26786.jpg"
+                  alt="Custom Shark Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Animal Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Apex Great White Shark</h3>
+                <p class="card-summary">
+                  Sirip punggung aerodinamis dan grafis rahang hiu agresif dengan sistem sirkulasi udara insang samping.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.480 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.790.000</span>
+                  <span class="card-sku">TRN-CH-14</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 15 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Giant_yellow_duck_motorcycle_helmet_e10a5413.jpg"
+                  alt="Giant Yellow Duck Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Character Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Ducky Yellow Edition</h3>
+                <p class="card-summary">
+                  Helm tematik bebek kuning ikonik dengan visibilitas tinggi di jalan raya serta busa interior hippoallergenic.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – L</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.440 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 2.950.000</span>
+                  <span class="card-sku">TRN-CH-15</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 16 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Green_alien_helmet_studio_photo_3a72dcc5.jpg"
+                  alt="Green Alien Helmet Studio Photo"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Sci-Fi Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Xenomorph Green Alien</h3>
+                <p class="card-summary">
+                  Finishing hijau metalik futuristik dengan kontur kepala memanjang aerodinamis dan visor gelap anti-silau.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.500 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Stok Terbatas</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.890.000</span>
+                  <span class="card-sku">TRN-CH-16</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 17 -->
+            <article id="food-series" class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Durian_shaped_motorcycle_helmet_._c43ce0d8.jpg"
+                  alt="Durian Shaped Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Tropical Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Musang King Durian</h3>
+                <p class="card-summary">
+                  Tekstur duri elastomer lentur yang aman dan tidak melukai, dipadukan cangkang dalam berstandar SNI.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.540 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.650.000</span>
+                  <span class="card-sku">TRN-FD-17</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 18 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_watermelon_motorcycle_hel._6fa9b59c.jpg"
+                  alt="Custom Watermelon Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Tropical Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Fresh Watermelon Spec</h3>
+                <p class="card-summary">
+                  Pengecatan airbrush presisi motif kulit dan daging semangka segar dengan lapisan clear coat gloss tinggi.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.390 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 2.750.000</span>
+                  <span class="card-sku">TRN-FD-18</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 19 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_ramen_bowl_motorcycle_helmet_4b0b2fce.jpg"
+                  alt="Custom Ramen Bowl Motorcycle Helmet"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Culinary Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Ichiraku Ramen Bowl</h3>
+                <p class="card-summary">
+                  Detail 3D mangkuk ramen lengkap dengan ornamen mie, telur, dan sumpit di atas cangkang ABS teruji.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">M – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.560 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Stok Terbatas</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 4.250.000</span>
+                  <span class="card-sku">TRN-FD-19</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 20 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Motorcycle_helmet_shaped_like_donut_8d9a15cb.jpg"
+                  alt="Motorcycle Helmet Shaped Like Donut"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Culinary Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Glazed Donut Sprinkle</h3>
+                <p class="card-summary">
+                  Desain donat glasir warna-warni dengan kontur membulat ergonomis serta sirkulasi udara tersembunyi.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">XS – L</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.430 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.490.000</span>
+                  <span class="card-sku">TRN-FD-20</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 21 -->
+            <article class="helmet-card">
+              <div class="media-frame card-media">
+                <img
+                  src="helm/Custom_helmet_with_butter_texture_f7dd8c08.jpg"
+                  alt="Custom Helmet with Butter Texture"
+                  class="card-image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <p class="card-meta">Culinary Series · SNI 1811</p>
+                <h3 class="card-title">Taruna Golden Butter Melt</h3>
+                <p class="card-summary">
+                  Tekstur pahatan mentega lumer satin-gloss dengan sistem pengunci Microlock baja dan interior lepas-pasang.
+                </p>
+                <div class="card-specs-row">
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Ukuran</span>
+                    <span class="card-spec-val tabular">S – XL</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Bobot</span>
+                    <span class="card-spec-val tabular">1.420 g</span>
+                  </div>
+                  <div class="card-spec-cell">
+                    <span class="card-spec-key">Status</span>
+                    <span class="card-spec-val">Tersedia</span>
+                  </div>
+                </div>
+                <div class="card-footer-row">
+                  <span class="card-price">Rp 3.390.000</span>
+                  <span class="card-sku">TRN-FD-21</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="standar" class="standards-section" aria-labelledby="standards-heading">
+        <div class="container standards-layout">
+          <div class="standards-pillars">
+            <p class="section-kicker">02. Standar &amp; Konstruksi</p>
+            <h2 id="standards-heading" class="section-title">Spesifikasi Teknis &amp; Keselamatan</h2>
+            <p class="standards-intro">
+              Setiap unit—baik edisi studio maupun kustom—melewati pengujian benturan multi-titik, ketahanan penetrasi visor polikarbonat anti-gores, dan uji keseimbangan bobot.
+            </p>
+
+            <div class="pillar-list">
+              <div class="pillar-item">
+                <h3 class="pillar-title">Struktur Multi-Density EPS</h3>
+                <p class="pillar-desc">
+                  Lapisan peredam benturan berdensitas ganda yang menyerap energi kinetik secara progresif pada kecepatan rendah maupun tinggi.
+                </p>
+              </div>
+              <div class="pillar-item">
+                <h3 class="pillar-title">Sertifikasi SNI 1811 &amp; ECE 22.06</h3>
+                <p class="pillar-desc">
+                  Lolos uji standar nasional Indonesia serta regulasi Eropa terbaru untuk ketahanan tali dagu Double D-Ring dan Microlock baja.
+                </p>
+              </div>
+              <div class="pillar-item">
+                <h3 class="pillar-title">Interior Hippoallergenic Lepas-Pasang</h3>
+                <p class="pillar-desc">
+                  Busa pipi dan mahkota berbahan kain breathable cepat kering, dilengkapi alur khusus pengguna kacamata dan slot interkom.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sizing-panel">
+            <h3 class="sizing-title">Panduan Lingkar Kepala</h3>
+            <p class="sizing-subtitle">
+              Ukur lingkar kepala tepat 2 cm di atas alis untuk menentukan ukuran cangkang yang presisi.
+            </p>
+            <table class="sizing-table">
+              <thead>
+                <tr>
+                  <th scope="col">Ukuran</th>
+                  <th scope="col">Lingkar Kepala</th>
+                  <th scope="col">Shell</th>
+                  <th scope="col">Kesesuaian</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="size-code">XS</td>
+                  <td class="tabular">53 – 54 cm</td>
+                  <td class="tabular">Shell 1</td>
+                  <td>Kompak</td>
+                </tr>
+                <tr>
+                  <td class="size-code">S</td>
+                  <td class="tabular">55 – 56 cm</td>
+                  <td class="tabular">Shell 1</td>
+                  <td>Presisi Rapat</td>
+                </tr>
+                <tr>
+                  <td class="size-code">M</td>
+                  <td class="tabular">57 – 58 cm</td>
+                  <td class="tabular">Shell 2</td>
+                  <td>Standar Asia</td>
+                </tr>
+                <tr>
+                  <td class="size-code">L</td>
+                  <td class="tabular">59 – 60 cm</td>
+                  <td class="tabular">Shell 2</td>
+                  <td>Reguler</td>
+                </tr>
+                <tr>
+                  <td class="size-code">XL</td>
+                  <td class="tabular">61 – 62 cm</td>
+                  <td class="tabular">Shell 3</td>
+                  <td>Lapang</td>
+                </tr>
+                <tr>
+                  <td class="size-code">XXL</td>
+                  <td class="tabular">63 – 64 cm</td>
+                  <td class="tabular">Shell 3</td>
+                  <td>Ekstra</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="footer-wordmark">TARUNA HELM</span>
+          <p class="footer-copy">
+            Katalog tampilan resmi perlengkapan keselamatan berkendara roda dua dan edisi kustom.
+          </p>
+        </div>
+
+        <div class="footer-info">
+          <span class="footer-heading">Showroom Utama</span>
+          <p>Jl. Asia Afrika No. 118, Bandung 40111</p>
+          <p class="tabular">Senin – Sabtu · 09.00 – 19.00 WIB</p>
+        </div>
+
+        <div class="footer-info">
+          <span class="footer-heading">Kategori Koleksi</span>
+          <div class="footer-links">
+            <a href="#full-face">Full Face Studio</a>
+            <a href="#custom-edition">Custom Concept &amp; Armor</a>
+            <a href="#food-series">Culinary &amp; Character Series</a>
+            <a href="#standar">Panduan Ukuran</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span>&copy; 2026 Taruna Helm Indonesia.</span>
+        <span>Katalog Resmi · Edisi 2026</span>
+      </div>
+    </footer>
+  </body>
 </html>
+
