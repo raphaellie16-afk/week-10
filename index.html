@@ -8,13 +8,6 @@
       name="description"
       content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
     />
-    <meta property="og:title" content="Garasi Helm Custom — Katalog Helm Motor Resmi" />
-    <meta
-      property="og:description"
-      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Open Face, Modular, Dual Sport, dan Custom Edition berstandar SNI dan ECE 22.06."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
     <style>
       :root {
         --bg-canvas: #f5f6f8;
@@ -51,12 +44,6 @@
         -webkit-text-size-adjust: 100%;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-
       body {
         margin: 0;
         background-color: var(--bg-canvas);
@@ -74,12 +61,6 @@
       a {
         color: inherit;
         text-decoration: none;
-      }
-
-      a:focus-visible {
-        outline: 2px solid var(--accent-cobalt);
-        outline-offset: 3px;
-        border-radius: 3px;
       }
 
       .tabular {
@@ -116,7 +97,6 @@
         letter-spacing: 0.04em;
         color: var(--ink-primary);
         white-space: nowrap;
-        flex-shrink: 0;
       }
 
       .site-nav {
@@ -130,22 +110,14 @@
         font-weight: 500;
         color: var(--ink-secondary);
         white-space: nowrap;
-        flex-shrink: 0;
         padding-block: 6px;
         border-bottom: 1.5px solid transparent;
-        transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1),
-          border-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+        transition: color 150ms ease, border-color 150ms ease;
       }
 
       .nav-link:hover {
         color: var(--ink-primary);
         border-bottom-color: var(--ink-primary);
-      }
-
-      .header-action {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
       }
 
       .primary-anchor {
@@ -159,8 +131,6 @@
         background-color: var(--accent-cobalt);
         border-radius: var(--radius-sm);
         white-space: nowrap;
-        flex-shrink: 0;
-        transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .primary-anchor:hover {
@@ -200,7 +170,6 @@
         line-height: 1.1;
         letter-spacing: -0.025em;
         color: var(--ink-primary);
-        text-wrap: balance;
       }
 
       .hero-lead {
@@ -235,10 +204,6 @@
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--ink-primary);
-      }
-
-      .hero-media {
-        display: flex;
       }
 
       .media-frame {
@@ -288,7 +253,6 @@
         letter-spacing: -0.02em;
         line-height: 1.2;
         color: var(--ink-primary);
-        text-wrap: balance;
       }
 
       .section-note {
@@ -312,8 +276,7 @@
         border-radius: var(--radius-md);
         overflow: hidden;
         scroll-margin-top: 96px;
-        transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 180ms ease, box-shadow 180ms ease;
       }
 
       .helmet-card:hover {
@@ -336,11 +299,25 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 240ms ease;
       }
 
       .helmet-card:hover .card-image {
         transform: scale(1.02);
+      }
+
+      .img-missing-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 16px;
+        text-align: center;
+        background-color: #fef2f2;
+        color: #991b1b;
+        font-size: 0.75rem;
+        word-break: break-all;
       }
 
       .card-body {
@@ -442,11 +419,6 @@
         max-width: 56ch;
         font-size: 0.9375rem;
         color: var(--ink-secondary);
-      }
-
-      .pillar-list {
-        display: flex;
-        flex-direction: column;
       }
 
       .pillar-item {
@@ -591,15 +563,12 @@
           grid-template-columns: 1fr;
           gap: 32px;
         }
-
         .hero-frame {
           min-height: 0;
         }
-
         .catalog-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-
         .standards-layout {
           grid-template-columns: 1fr;
           gap: 40px;
@@ -607,51 +576,25 @@
       }
 
       @media (max-width: 720px) {
-        .header-inner {
-          gap: 16px;
-          min-height: 60px;
-        }
-
         .site-nav {
           display: none;
         }
-
-        .hero-section {
-          padding-block: 36px 44px;
-        }
-
         .hero-specs {
           grid-template-columns: 1fr;
-          gap: 14px;
         }
-
         .section-header {
           flex-direction: column;
           align-items: flex-start;
-          gap: 12px;
         }
-
         .catalog-grid {
           grid-template-columns: 1fr;
         }
-
         .footer-inner {
           grid-template-columns: 1fr;
-          gap: 28px;
         }
-
         .footer-bottom {
           flex-direction: column;
           align-items: flex-start;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .helmet-card,
-        .card-image,
-        .nav-link,
-        .primary-anchor {
-          transition: none;
         }
       }
     </style>
@@ -660,7 +603,6 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="#top" class="brand-wordmark">GARASI HELM CUSTOM</a>
-
         <nav class="site-nav" aria-label="Kategori Katalog">
           <a href="#full-face" class="nav-link">Full Face</a>
           <a href="#custom-edition" class="nav-link">Custom Edition</a>
@@ -668,7 +610,6 @@
           <a href="#retro-tactical" class="nav-link">Retro & Tactical</a>
           <a href="#standar" class="nav-link">Standar</a>
         </nav>
-
         <div class="header-action">
           <a href="#katalog" class="primary-anchor">Katalog 2026 (100 Unit)</a>
         </div>
@@ -684,8 +625,7 @@
             <p class="hero-lead">
               Katalog lengkap 100 edisi helm berkendara mulai dari model studio full-face, carbon racing, modular, dual sport hingga seri kustom artistik. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
             </p>
-
-            <div class="hero-specs" aria-label="Ringkasan Spesifikasi Koleksi">
+            <div class="hero-specs">
               <div class="spec-item">
                 <span class="spec-label">Total Koleksi</span>
                 <span class="spec-value tabular">100 Model Studio & Custom</span>
@@ -737,7 +677,6 @@
             <p class="standards-intro">
               Setiap unit—baik edisi studio maupun kustom—melewati pengujian benturan multi-titik, ketahanan penetrasi visor polikarbonat anti-gores, dan uji keseimbangan bobot.
             </p>
-
             <div class="pillar-list">
               <div class="pillar-item">
                 <h3 class="pillar-title">Struktur Multi-Density EPS</h3>
@@ -775,42 +714,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="size-code">XS</td>
-                  <td class="tabular">53 – 54 cm</td>
-                  <td class="tabular">Shell 1</td>
-                  <td>Kompak</td>
-                </tr>
-                <tr>
-                  <td class="size-code">S</td>
-                  <td class="tabular">55 – 56 cm</td>
-                  <td class="tabular">Shell 1</td>
-                  <td>Presisi Rapat</td>
-                </tr>
-                <tr>
-                  <td class="size-code">M</td>
-                  <td class="tabular">57 – 58 cm</td>
-                  <td class="tabular">Shell 2</td>
-                  <td>Standar Asia</td>
-                </tr>
-                <tr>
-                  <td class="size-code">L</td>
-                  <td class="tabular">59 – 60 cm</td>
-                  <td class="tabular">Shell 2</td>
-                  <td>Reguler</td>
-                </tr>
-                <tr>
-                  <td class="size-code">XL</td>
-                  <td class="tabular">61 – 62 cm</td>
-                  <td class="tabular">Shell 3</td>
-                  <td>Lapang</td>
-                </tr>
-                <tr>
-                  <td class="size-code">XXL</td>
-                  <td class="tabular">63 – 64 cm</td>
-                  <td class="tabular">Shell 3</td>
-                  <td>Ekstra</td>
-                </tr>
+                <tr><td class="size-code">XS</td><td class="tabular">53 – 54 cm</td><td class="tabular">Shell 1</td><td>Kompak</td></tr>
+                <tr><td class="size-code">S</td><td class="tabular">55 – 56 cm</td><td class="tabular">Shell 1</td><td>Presisi Rapat</td></tr>
+                <tr><td class="size-code">M</td><td class="tabular">57 – 58 cm</td><td class="tabular">Shell 2</td><td>Standar Asia</td></tr>
+                <tr><td class="size-code">L</td><td class="tabular">59 – 60 cm</td><td class="tabular">Shell 2</td><td>Reguler</td></tr>
+                <tr><td class="size-code">XL</td><td class="tabular">61 – 62 cm</td><td class="tabular">Shell 3</td><td>Lapang</td></tr>
+                <tr><td class="size-code">XXL</td><td class="tabular">63 – 64 cm</td><td class="tabular">Shell 3</td><td>Ekstra</td></tr>
               </tbody>
             </table>
           </div>
@@ -826,13 +735,11 @@
             Katalog tampilan resmi 100 unit perlengkapan keselamatan berkendara roda dua dan edisi kustom.
           </p>
         </div>
-
         <div class="footer-info">
           <span class="footer-heading">Showroom Utama</span>
           <p>Jl. Asia Afrika No. 118, Bandung 40111</p>
           <p class="tabular">Senin – Sabtu · 09.00 – 19.00 WIB</p>
         </div>
-
         <div class="footer-info">
           <span class="footer-heading">Kategori Koleksi</span>
           <div class="footer-links">
@@ -844,7 +751,6 @@
           </div>
         </div>
       </div>
-
       <div class="container footer-bottom">
         <span>© 2026 Garasi Helm Custom Indonesia.</span>
         <span>Katalog Resmi · Edisi 2026 (100 Unit)</span>
@@ -986,6 +892,7 @@
                 alt="${item.title}"
                 class="card-image"
                 loading="lazy"
+                onerror="this.parentElement.innerHTML='<div class=\\'img-missing-box\\'><strong>File tidak ditemukan:</strong><br/>helm/${item.file}</div>'"
               />
             </div>
             <div class="card-body">
