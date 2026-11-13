@@ -1,1 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Helm Custom — Garasi Kustom</title>
+  <style>
+    :root {
+      --bg-page: #f4f1ea;
+      --bg-card: #ffffff;
+      --bg-dark: #1c1b19;
+      --text-main: #22211e;
+      --text-muted: #66635b;
+      --accent: #c84b24;
+      --border-color: #dcd7cc;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      padding: 20px 0;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand-tag {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .brand h1 {
+      font-size: 1.6rem;
+      letter-spacing: 1.5px;
+    }
+
+    .header-note {
+      font-size: 0.9rem;
+      color: #b8b3a8;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background-color: #292724;
+      color: #f4f1ea;
+      padding: 48px 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #ccc7bc;
+      font-size: 0.98rem;
+    }
+
+    /* Katalog Section */
+    .catalog-section {
+      padding: 48px 0 64px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .section-title h3 {
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+    }
+
+    .item-count {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Grid Produk */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* Kartu Produk */
+    .product-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-image {
+      background-color: #ebe6dc;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+    }
+
+    .product-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .product-title {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .product-meta {
+      border-top: 1px dashed var(--border-color);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--text-main);
+    }
+
+    .product-status {
+      font-size: 0.78rem;
+      color: #3a6b4c;
+      background-color: #e4efe8;
+      padding: 3px 8px;
+      font-weight: 600;
+    }
+
+    .product-status.preorder {
+      color: #8a5a19;
+      background-color: #f7ebd9;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--bg-dark);
+      color: #b8b3a8;
+      padding: 32px 0;
+      font-size: 0.88rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .site-footer h4 {
+      color: #ffffff;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .footer-info {
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .footer-info {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Toko -->
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="brand">
+        <span class="brand-tag">EST. 2024 • HANDCRAFTED</span>
+        <h1>GARASI KUSTOM</h1>
+      </div>
+      <p class="header-note">Katalog Resmi Helm Custom &amp; Pinstriping</p>
+    </div>
+  </header>
+
+  <!-- Banner Utama -->
+  <section class="hero">
+    <div class="container">
+      <h2>KOLEKSI HELM CUSTOM</h2>
+      <p>Dibuat secara manual dengan material fiberglass pilihan, cat tahan cuaca, dan sentuhan seni klasik untuk pengendara berkarakter.</p>
+    </div>
+  </section>
+
+  <!-- Bagian Katalog Produk -->
+  <main class="container catalog-section">
+    <div class="section-title">
+      <h3>DAFTAR PRODUK</h3>
+      <span class="item-count" id="item-count">0 Model Tersedia</span>
+    </div>
+
+    <!-- Grid Katalog -->
+    <div class="catalog-grid" id="catalog-grid"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <h4>GARASI KUSTOM HELMETS</h4>
+        <p>Jl. Bengkel Klasik No. 45, Bandung</p>
+      </div>
+      <div class="footer-info">
+        <p>Jam Operasional: Senin – Sabtu (09.00 – 18.00 WIB)</p>
+        <p>&copy; 2024 Garasi Kustom. Tampilan Katalog.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const helmetCatalog = [
+      {
+        name: "Valkyrie Cafe Racer",
+        category: "Full Face Klasik",
+        badge: "Best Seller",
+        description: "Shell fiberglass ringan dengan cat matte black dan garis pinstripe emas manual.",
+        price: "Rp 1.650.000",
+        status: "Ready Stock",
+        colorMain: "#2b2b2b",
+        colorAccent: "#d4af37",
+        visorColor: "#111111"
+      },
+      {
+        name: "Sunset Metal Flake",
+        category: "Open Face 3/4",
+        badge: "Limited",
+        description: "Finishing glitter metalik oranye retro tahun 70-an dengan busa kulit sintetis cokelat.",
+        price: "Rp 1.350.000",
+        status: "Ready Stock",
+        colorMain: "#c84b24",
+        colorAccent: "#f4b942",
+        visorColor: "#3d2c24"
+      },
+      {
+        name: "Scrambler Olive Matte",
+        category: "Cross Retro",
+        badge: "Kustom",
+        description: "Desain petualang dengan warna hijau militer doff, dilengkapi kancing pet klasik.",
+        price: "Rp 1.480.000",
+        status: "Pre-Order",
+        colorMain: "#4b5338",
+        colorAccent: "#d9d2c5",
+        visorColor: "#1e1e1e"
+      },
+      {
+        name: "Ivory Trackside 74",
+        category: "Full Face Klasik",
+        badge: "Handmade",
+        description: "Warna krem gading dengan double racing stripe merah marun dan ventilasi kuningan.",
+        price: "Rp 1.750.000",
+        status: "Ready Stock",
+        colorMain: "#e8e0cf",
+        colorAccent: "#8c271e",
+        visorColor: "#222222"
+      },
+      {
+        name: "Chopper Cobalt Blue",
+        category: "Open Face 3/4",
+        badge: "Custom Paint",
+        description: "Biru kobalt mengkilap dengan efek gradasi api klasik di bagian samping.",
+        price: "Rp 1.290.000",
+        status: "Pre-Order",
+        colorMain: "#1f4e79",
+        colorAccent: "#70a9d6",
+        visorColor: "#1a1a1a"
+      },
+      {
+        name: "Bogo Heritage Espresso",
+        category: "Half Face",
+        badge: "Klasik",
+        description: "Helm harian bergaya vintage dengan warna cokelat tua dan jahitan pinggir kulit asli.",
+        price: "Rp 950.000",
+        status: "Ready Stock",
+        colorMain: "#4a3222",
+        colorAccent: "#c29b61",
+        visorColor: "#2b211a"
+      }
+    ];
+
+    function createHelmetSVG(mainColor, accentColor, visorColor) {
+      return `
+        <svg width="150" height="140" viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="75" cy="128" rx="48" ry="6" fill="#cfc9bc" />
+          <path d="M 28 75 C 28 32, 122 32, 122 75 C 122 98, 112 115, 95 118 L 45 118 C 32 112, 28 95, 28 75 Z" 
+                fill="${mainColor}" stroke="#1c1b19" stroke-width="3"/>
+          <path d="M 70 43 L 80 43 L 80 118 L 70 118 Z" fill="${accentColor}" />
+          <path d="M 82 65 L 120 65 C 122 82, 115 95, 98 98 L 82 95 Z" 
+                fill="${visorColor}" stroke="#1c1b19" stroke-width="2.5"/>
+          <path d="M 88 70 L 110 70 L 104 82 L 88 82 Z" fill="#ffffff" opacity="0.25"/>
+          <path d="M 43 116 L 97 116" stroke="#1c1b19" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="62" cy="82" r="4" fill="${accentColor}" stroke="#1c1b19" stroke-width="1.5"/>
+        </svg>
+      `;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const gridContainer = document.getElementById("catalog-grid");
+      const countElement = document.getElementById("item-count");
+
+      countElement.textContent = `${helmetCatalog.length} Model Tersedia`;
+
+      helmetCatalog.forEach(function (item) {
+        const card = document.createElement("article");
+        card.className = "product-card";
+
+        const statusClass = item.status === "Pre-Order" ? "product-status preorder" : "product-status";
+
+        card.innerHTML = `
+          <div class="product-image">
+            <span class="product-badge">${item.badge}</span>
+            ${createHelmetSVG(item.colorMain, item.colorAccent, item.visorColor)}
+          </div>
+          <div class="product-info">
+            <span class="product-category">${item.category}</span>
+            <h4 class="product-title">${item.name}</h4>
+            <p class="product-desc">${item.description}</p>
+            <div class="product-meta">
+              <span class="product-price">${item.price}</span>
+              <span class="${statusClass}">${item.status}</span>
+            </div>
+          </div>
+        `;
+
+        gridContainer.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
