@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang & Checkout QRIS — Garasi Helm Custom</title>
+    <meta
+      name="description"
+      content="Halaman keranjang belanja, pengaturan quantity, formulir pengiriman, dan pembayaran QRIS resmi Garasi Helm Custom."
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      :root {
+        --bg-canvas: #f5f6f8;
+        --bg-surface: #ffffff;
+        --bg-studio: #e9ecf1;
+        --bg-subtle: #eef1f5;
+        --ink-primary: #111317;
+        --ink-secondary: #434b57;
+        --ink-muted: #5d6675;
+        --accent-cobalt: #1d4ed8;
+        --accent-cobalt-hover: #1e40af;
+        --border-hairline: #dce1e8;
+        --border-strong: #c6cdd8;
+        --shadow-card: 0 10px 28px -12px rgba(17, 19, 23, 0.12);
+
+        --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --container-max: 1200px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-canvas);
+        color: var(--ink-primary);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 2px solid var(--accent-cobalt);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+
+      .tabular {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--container-max);
+        margin-inline: auto;
+        padding-inline: 24px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background-color: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        min-height: 68px;
+      }
+
+      .brand-wordmark {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--ink-primary);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-link {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--ink-secondary);
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding-block: 6px;
+        border-bottom: 1.5px solid transparent;
+        transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .nav-link:hover {
+        color: var(--ink-primary);
+        border-bottom-color: var(--ink-primary);
+      }
+
+      .header-action {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .primary-anchor {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 18px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: var(--accent-cobalt);
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .primary-anchor:hover {
+        background-color: var(--accent-cobalt-hover);
+      }
+
+      .primary-anchor:disabled {
+        background-color: var(--ink-muted);
+        cursor: not-allowed;
+        opacity: 0.65;
+      }
+
+      .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 16px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .secondary-btn:hover {
+        background-color: var(--bg-subtle);
+      }
+
+      .checkout-section {
+        padding-block: 48px 72px;
+      }
+
+      .section-kicker {
+        margin: 0 0 8px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--accent-cobalt);
+      }
+
+      .section-title {
+        margin: 0 0 8px;
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--ink-primary);
+      }
+
+      .section-subtitle {
+        margin: 0 0 32px;
+        font-size: 0.9375rem;
+        color: var(--ink-secondary);
+      }
+
+      .checkout-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 32px;
+        align-items: start;
+      }
+
+      .panel-card {
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-hairline);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .panel-heading {
+        margin: 0 0 18px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border-hairline);
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: var(--ink-primary);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-block: 16px;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+
+      .cart-thumb {
+        width: 72px;
+        height: 56px;
+        border-radius: var(--radius-sm);
+        background-color: var(--bg-studio);
+        border: 1px solid var(--border-hairline);
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .cart-item-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .cart-item-title {
+        margin: 0 0 2px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .cart-item-sku {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--ink-muted);
+      }
+
+      .cart-item-price {
+        margin-top: 4px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--accent-cobalt);
+      }
+
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .qty-btn {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--border-strong);
+        background-color: var(--bg-canvas);
+        color: var(--ink-primary);
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .qty-btn:hover {
+        background-color: var(--bg-subtle);
+      }
+
+      .qty-value {
+        min-width: 24px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+
+      .remove-btn {
+        background: none;
+        border: none;
+        color: var(--ink-muted);
+        font-size: 0.75rem;
+        cursor: pointer;
+        padding: 4px 6px;
+      }
+
+      .remove-btn:hover {
+        color: #b91c1c;
+        text-decoration: underline;
+      }
+
+      .add-more-bar {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border-hairline);
+      }
+
+      .form-select,
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 10px 12px;
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        color: var(--ink-primary);
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+      }
+
+      .form-group {
+        margin-bottom: 14px;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 8px;
+        font-size: 0.875rem;
+        color: var(--ink-secondary);
+      }
+
+      .summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 14px;
+        margin-top: 8px;
+        border-top: 1px solid var(--border-hairline);
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: var(--ink-primary);
+      }
+
+      /* QRIS & Receipt Panels */
+      .qris-box {
+        text-align: center;
+        padding: 20px;
+        background-color: var(--bg-canvas);
+        border: 1px solid var(--border-hairline);
+        border-radius: var(--radius-md);
+        margin-top: 16px;
+      }
+
+      .qris-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12px;
+        margin-bottom: 16px;
+        border-bottom: 1px dashed var(--border-strong);
+      }
+
+      #qris-canvas-wrap {
+        display: inline-block;
+        padding: 14px;
+        background-color: #ffffff;
+        border: 1px solid var(--border-hairline);
+        border-radius: var(--radius-sm);
+      }
+
+      .success-banner {
+        padding: 20px;
+        background-color: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: var(--radius-md);
+        color: #14532d;
+        margin-top: 16px;
+      }
+
+      .receipt-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 14px;
+        font-size: 0.8125rem;
+      }
+
+      .receipt-table td {
+        padding: 6px 0;
+        vertical-align: top;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .receipt-table td:first-child {
+        color: var(--ink-muted);
+        width: 38%;
+      }
+
+      .receipt-table td:last-child {
+        font-weight: 600;
+        color: var(--ink-primary);
+      }
+
+      .site-footer {
+        padding-block: 48px 32px;
+        background-color: var(--bg-canvas);
+        border-top: 1px solid var(--border-hairline);
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 0.8125rem;
+        color: var(--ink-muted);
+      }
+
+      @media (max-width: 900px) {
+        .checkout-layout {
+          grid-template-columns: 1fr;
+        }
+        .site-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand-wordmark">GARASI HELM CUSTOM</a>
+
+        <nav class="site-nav" aria-label="Navigasi Halaman">
+          <a href="index.html#katalog" class="nav-link">Katalog Helm</a>
+          <a href="index.html#standar" class="nav-link">Standar & Ukuran</a>
+          <a href="transaksi.html" class="nav-link" style="color: var(--ink-primary); border-bottom-color: var(--ink-primary);">Keranjang & Checkout</a>
+        </nav>
+
+        <div class="header-action">
+          <a href="index.html#katalog" class="primary-anchor">← Kembali ke Katalog</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="checkout-section">
+      <div class="container">
+        <p class="section-kicker">Transaksi & Pembayaran Resmi</p>
+        <h1 class="section-title">Keranjang Belanja & Checkout QRIS</h1>
+        <p class="section-subtitle">
+          Atur jumlah (quantity) unit helm pilihan Anda, lengkapi data pengiriman, lalu pindai kode QRIS untuk menyelesaikan pembayaran.
+        </p>
+
+        <div class="checkout-layout">
+          <!-- KOLOM KIRI: KERANJANG & QUANTITY -->
+          <div class="panel-card">
+            <h2 class="panel-heading">
+              <span>Daftar Unit di Keranjang</span>
+              <span id="cart-total-items" class="tabular" style="font-size: 0.8125rem; color: var(--ink-muted); font-weight: 600;">0 Unit</span>
+            </h2>
+
+            <div id="cart-items-container"></div>
+
+            <!-- Tambah unit langsung dari halaman transaksi -->
+            <div class="add-more-bar">
+              <select id="quick-add-select" class="form-select" aria-label="Pilih Helm untuk Ditambahkan">
+                <option value="">-- Pilih unit helm lain untuk ditambahkan --</option>
+              </select>
+              <button type="button" class="secondary-btn" onclick="quickAddSelected()" style="white-space: nowrap;">+ Tambah</button>
+            </div>
+          </div>
+
+          <!-- KOLOM KANAN: FORM KETERANGAN, QRIS & STATUS BERHASIL -->
+          <div class="panel-card">
+            <!-- TAHAP 1: FORM DATA CHECKOUT -->
+            <div id="checkout-form-panel">
+              <h2 class="panel-heading">Keterangan Pengiriman & Checkout</h2>
+
+              <div class="summary-row">
+                <span>Subtotal Produk</span>
+                <span id="summary-subtotal" class="tabular">Rp 0</span>
+              </div>
+              <div class="summary-row">
+                <span>Asuransi & Tas Pelindung</span>
+                <span>Termasuk (Rp 0)</span>
+              </div>
+              <div class="summary-total">
+                <span>Total Pembayaran</span>
+                <span id="summary-grandtotal" class="tabular" style="color: var(--accent-cobalt);">Rp 0</span>
+              </div>
+
+              <form id="order-form" onsubmit="handleGenerateQris(event)" style="margin-top: 20px;">
+                <div class="form-group">
+                  <label class="form-label" for="cust-name">Nama Lengkap Penerima *</label>
+                  <input type="text" id="cust-name" class="form-input" required placeholder="Contoh: Samuel Erwin" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="cust-phone">Nomor Telepon / WhatsApp *</label>
+                  <input type="tel" id="cust-phone" class="form-input" required placeholder="Contoh: 081234567890" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="cust-address">Alamat Lengkap Pengiriman *</label>
+                  <textarea id="cust-address" class="form-textarea" rows="3" required placeholder="Nama jalan, nomor rumah, kelurahan, kecamatan, kota, kode pos"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="cust-desc">Deskripsi / Catatan Tambahan (Ukuran Helm, dll)</label>
+                  <textarea id="cust-desc" class="form-textarea" rows="2" placeholder="Contoh: Ukuran L (59-60 cm), visor dark smoke, packing kayu"></textarea>
+                </div>
+
+                <button type="submit" id="btn-submit-checkout" class="primary-anchor" style="width: 100%; padding: 12px 18px; font-size: 0.875rem;">
+                  Lanjut ke Pembayaran QRIS
+                </button>
+              </form>
+            </div>
+
+            <!-- TAHAP 2: TAMPILAN QR CODE QRIS -->
+            <div id="qris-payment-panel" style="display: none;">
+              <h2 class="panel-heading">
+                <span>Pembayaran QRIS</span>
+                <span id="qris-invoice-id" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted);"></span>
+              </h2>
+
+              <div class="qris-box">
+                <div class="qris-badge-row">
+                  <strong style="font-size: 1.125rem; letter-spacing: 0.06em;">QRIS</strong>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent-cobalt);">QR Code Standar Indonesia</span>
+                </div>
+
+                <div style="font-size: 0.8125rem; color: var(--ink-secondary);">GARASI HELM CUSTOM BANDUNG</div>
+                <div id="qris-nominal-label" class="tabular" style="font-size: 1.375rem; font-weight: 700; margin: 4px 0 16px; color: var(--ink-primary);">
+                  Rp 0
+                </div>
+
+                <div id="qris-canvas-wrap"></div>
+
+                <p style="font-size: 0.8125rem; color: var(--ink-secondary); margin: 14px 0 0;">
+                  Pindai kode QR di atas menggunakan aplikasi e-Wallet (GoPay, OVO, DANA, ShopeePay), Mobile Banking, atau kamera ponsel Anda.
+                </p>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+                <button type="button" class="primary-anchor" onclick="handleQrisScannedSuccess()" style="width: 100%; padding: 12px 18px; background-color: #15803d;">
+                  ✓ Simulasi Scan QRIS Berhasil (Konfirmasi Lunas)
+                </button>
+                <button type="button" class="secondary-btn" onclick="backToForm()" style="width: 100%;">
+                  ← Ubah Data Pengiriman
+                </button>
+              </div>
+            </div>
+
+            <!-- TAHAP 3: PEMBAYARAN BERHASIL -->
+            <div id="payment-success-panel" style="display: none;">
+              <h2 class="panel-heading">Status Transaksi</h2>
+
+              <div class="success-banner">
+                <div style="font-size: 1.125rem; font-weight: 700; margin-bottom: 4px;">
+                  ✓ Pembayaran Berhasil
+                </div>
+                <p style="margin: 0; font-size: 0.875rem;">
+                  Terima kasih! Pembayaran QRIS Anda telah diterima dan pesanan segera diproses oleh workshop kami.
+                </p>
+              </div>
+
+              <table class="receipt-table" id="receipt-table-body"></table>
+
+              <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <a href="index.html#katalog" class="primary-anchor" style="flex: 1; padding: 11px;">Kembali ke Katalog</a>
+                <button type="button" class="secondary-btn" onclick="resetTransactionPage()">Transaksi Baru</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        <span>© 2026 Garasi Helm Custom Indonesia.</span>
+        <span>Halaman Transaksi & Pembayaran QRIS Resmi</span>
+      </div>
+    </footer>
+
+    <script>
+      const CART_KEY = "ghc_cart_v1";
+      const CATALOG_KEY = "ghc_catalog_v1";
+
+      // Fallback katalog dasar jika transaksi.html dibuka langsung sebelum index.html
+      const fallbackSpecs = {
+        1: { num: 1, title: "Garasi Studio Pro Series #01", price: "Rp 3.250.000", sku: "GHC-FF-01" },
+        4: { num: 4, title: "Garasi Xenomorph Green Visor #04", price: "Rp 3.400.000", sku: "GHC-CS-04" },
+        5: { num: 5, title: "Garasi Golden Carnival Mask #05", price: "Rp 3.450.000", sku: "GHC-CS-05" },
+        15: { num: 15, title: "Garasi Fresh Strawberry Custom #15", price: "Rp 2.950.000", sku: "GHC-CS-15" },
+        29: { num: 29, title: "Garasi Shiba Inu Edition #29", price: "Rp 3.550.000", sku: "GHC-CS-29" },
+        48: { num: 48, title: "Garasi Rubik Cube 3D Spec #48", price: "Rp 3.850.000", sku: "GHC-CS-48" },
+        53: { num: 53, title: "Garasi Alpaca Fluffy Custom #53", price: "Rp 3.450.000", sku: "GHC-CS-53" },
+        54: { num: 54, title: "Garasi Fresh Avocado Spec #54", price: "Rp 3.390.000", sku: "GHC-CS-54" },
+        56: { num: 56, title: "Garasi Capybara Chill Edition #56", price: "Rp 3.590.000", sku: "GHC-CS-56" },
+        82: { num: 82, title: "Garasi Japanese Ramen Bowl #82", price: "Rp 4.290.000", sku: "GHC-CS-82" }
+      };
+
+      function parsePriceNumber(priceStr) {
+        if (typeof priceStr === "number") return priceStr;
+        return parseInt(String(priceStr).replace(/[^0-9]/g, ""), 10) || 3500000;
+      }
+
+      function formatRupiah(num) {
+        return "Rp " + Number(num).toLocaleString("id-ID");
+      }
+
+      function getCatalogList() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(CATALOG_KEY) || "[]");
+          if (Array.isArray(stored) && stored.length > 0) return stored;
+        } catch (e) {}
+        return Object.values(fallbackSpecs);
+      }
+
+      function getProductByNum(num) {
+        const list = getCatalogList();
+        const found = list.find((item) => Number(item.num) === Number(num));
+        if (found) {
+          return {
+            num: Number(found.num),
+            title: found.title,
+            sku: found.sku || `GHC-${String(num).padStart(2, "0")}`,
+            priceNum: parsePriceNumber(found.price)
+          };
+        }
+        return {
+          num: Number(num),
+          title: `Garasi Helm Custom Edition #${String(num).padStart(2, "0")}`,
+          sku: `GHC-CS-${String(num).padStart(2, "0")}`,
+          priceNum: 3500000
+        };
+      }
+
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      } catch (e) {
+        cart = [];
+      }
+
+      let activeOrder = null;
+
+      function saveCart() {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      }
+
+      function addProductToCart(num) {
+        const prod = getProductByNum(num);
+        const existing = cart.find((c) => Number(c.num) === Number(num));
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({
+            num: prod.num,
+            title: prod.title,
+            sku: prod.sku,
+            priceNum: prod.priceNum,
+            qty: 1
+          });
+        }
+        saveCart();
+      }
+
+      // Cek parameter URL ?add=<nomor_helm> dari direct link katalog
+      (function handleQueryParamAdd() {
+        const params = new URLSearchParams(window.location.search);
+        const addNum = params.get("add");
+        if (addNum) {
+          addProductToCart(Number(addNum));
+          // Bersihkan query string agar refresh tidak menambah quantity berulang kali
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      })();
+
+      function updateItemQty(num, delta) {
+        const idx = cart.findIndex((c) => Number(c.num) === Number(num));
+        if (idx === -1) return;
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) {
+          cart.splice(idx, 1);
+        }
+        saveCart();
+        renderCart();
+      }
+
+      function removeCartItem(num) {
+        cart = cart.filter((c) => Number(c.num) !== Number(num));
+        saveCart();
+        renderCart();
+      }
+
+      function populateQuickSelect() {
+        const sel = document.getElementById("quick-add-select");
+        const list = getCatalogList();
+        list.forEach((item) => {
+          const opt = document.createElement("option");
+          opt.value = item.num;
+          opt.textContent = `#${String(item.num).padStart(2, "0")} — ${item.title} (${formatRupiah(parsePriceNumber(item.price))})`;
+          sel.appendChild(opt);
+        });
+      }
+
+      function quickAddSelected() {
+        const sel = document.getElementById("quick-add-select");
+        if (!sel.value) return;
+        addProductToCart(Number(sel.value));
+        sel.value = "";
+        renderCart();
+      }
+
+      function renderCart() {
+        const container = document.getElementById("cart-items-container");
+        const totalItemsEl = document.getElementById("cart-total-items");
+        const subtotalEl = document.getElementById("summary-subtotal");
+        const grandtotalEl = document.getElementById("summary-grandtotal");
+        const checkoutBtn = document.getElementById("btn-submit-checkout");
+
+        const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        const totalPrice = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
+
+        totalItemsEl.textContent = `${totalQty} Unit`;
+        subtotalEl.textContent = formatRupiah(totalPrice);
+        grandtotalEl.textContent = formatRupiah(totalPrice);
+        checkoutBtn.disabled = cart.length === 0;
+
+        if (cart.length === 0) {
+          container.innerHTML = `
+            <div style="padding: 32px 16px; text-align: center; color: var(--ink-muted);">
+              <p style="margin: 0 0 12px;">Keranjang belanja masih kosong.</p>
+              <a href="index.html#katalog" class="primary-anchor">Pilih Helm di Katalog</a>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = cart
+          .map(
+            (item) => `
+            <div class="cart-item">
+              <img src="gambar/${item.num}.jpg" alt="${item.title}" class="cart-thumb" />
+              <div class="cart-item-info">
+                <h3 class="cart-item-title">${item.title}</h3>
+                <span class="cart-item-sku">${item.sku}</span>
+                <div class="cart-item-price tabular">${formatRupiah(item.priceNum)}</div>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+                <div class="qty-controls">
+                  <button type="button" class="qty-btn" onclick="updateItemQty(${item.num}, -1)" aria-label="Kurangi jumlah">−</button>
+                  <span class="qty-value tabular">${item.qty}</span>
+                  <button type="button" class="qty-btn" onclick="updateItemQty(${item.num}, 1)" aria-label="Tambah jumlah">+</button>
+                </div>
+                <button type="button" class="remove-btn" onclick="removeCartItem(${item.num})">Hapus</button>
+              </div>
+            </div>
+          `
+          )
+          .join("");
+      }
+
+      function handleGenerateQris(e) {
+        e.preventDefault();
+        if (cart.length === 0) return;
+
+        const totalAmount = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
+        const invoiceId = "INV-" + Date.now().toString().slice(-6);
+
+        activeOrder = {
+          invoiceId,
+          name: document.getElementById("cust-name").value.trim(),
+          phone: document.getElementById("cust-phone").value.trim(),
+          address: document.getElementById("cust-address").value.trim(),
+          desc: document.getElementById("cust-desc").value.trim() || "-",
+          totalAmount,
+          items: cart.map((c) => ({ ...c }))
+        };
+
+        document.getElementById("qris-invoice-id").textContent = invoiceId;
+        document.getElementById("qris-nominal-label").textContent = formatRupiah(totalAmount);
+
+        // Payload QRIS Standar EMVCo Indonesia (Merchant: GARASI HELM CUSTOM, Nominal Otomatis)
+        const amtStr = String(totalAmount);
+        const qrisPayload =
+          `00020101021226580014ID.CO.QRIS.WWW01189360091430000000000210${invoiceId}0303UMI` +
+          `51440014ID.CO.QRIS.WWW0215ID10200000000010303UMI520459995303360` +
+          `54${String(amtStr.length).padStart(2, "0")}${amtStr}` +
+          `5802ID5918GARASI HELM CUSTOM6007BANDUNG6105401116304C91E`;
+
+        const qrWrap = document.getElementById("qris-canvas-wrap");
+        qrWrap.innerHTML = "";
+        new QRCode(qrWrap, {
+          text: qrisPayload,
+          width: 210,
+          height: 210,
+          colorDark: "#111317",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+
+        document.getElementById("checkout-form-panel").style.display = "none";
+        document.getElementById("payment-success-panel").style.display = "none";
+        document.getElementById("qris-payment-panel").style.display = "block";
+      }
+
+      function backToForm() {
+        document.getElementById("qris-payment-panel").style.display = "none";
+        document.getElementById("checkout-form-panel").style.display = "block";
+      }
+
+      function handleQrisScannedSuccess() {
+        if (!activeOrder) return;
+
+        const itemsSummary = activeOrder.items
+          .map((i) => `${i.title} (${i.qty}x)`)
+          .join("<br>");
+
+        document.getElementById("receipt-table-body").innerHTML = `
+          <tr><td>No. Invoice</td><td style="font-family: var(--font-mono);">${activeOrder.invoiceId}</td></tr>
+          <tr><td>Status</td><td style="color: #15803d;">LUNAS (QRIS Verified)</td></tr>
+          <tr><td>Nama Penerima</td><td>${activeOrder.name}</td></tr>
+          <tr><td>Nomor HP / WA</td><td class="tabular">${activeOrder.phone}</td></tr>
+          <tr><td>Alamat</td><td>${activeOrder.address}</td></tr>
+          <tr><td>Deskripsi / Catatan</td><td>${activeOrder.desc}</td></tr>
+          <tr><td>Unit Helm</td><td>${itemsSummary}</td></tr>
+          <tr><td>Total Dibayar</td><td class="tabular" style="color: var(--accent-cobalt);">${formatRupiah(activeOrder.totalAmount)}</td></tr>
+        `;
+
+        // Kosongkan keranjang setelah pembayaran berhasil
+        cart = [];
+        saveCart();
+        renderCart();
+
+        document.getElementById("qris-payment-panel").style.display = "none";
+        document.getElementById("payment-success-panel").style.display = "block";
+      }
+
+      function resetTransactionPage() {
+        document.getElementById("order-form").reset();
+        document.getElementById("payment-success-panel").style.display = "none";
+        document.getElementById("qris-payment-panel").style.display = "none";
+        document.getElementById("checkout-form-panel").style.display = "block";
+      }
+
+      populateQuickSelect();
+      renderCart();
+    </script>
+  </body>
+</html>
