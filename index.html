@@ -1,1211 +1,2298 @@
+
+Percakapan dengan Gemini
 <!doctype html>
+
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Garasi Helm Custom — Katalog Helm Motor Resmi (100 Unit)</title>
-    <meta
-      name="description"
-      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Custom Edition, dan Half Face berstandar SNI dan ECE 22.06."
-    />
-    <meta property="og:title" content="Garasi Helm Custom — Katalog Helm Motor Resmi" />
-    <meta
-      property="og:description"
-      content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Custom Edition, dan Half Face berstandar SNI dan ECE 22.06."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <style>
-      :root {
-        --bg-canvas: #f5f6f8;
-        --bg-surface: #ffffff;
-        --bg-studio: #e9ecf1;
-        --bg-subtle: #eef1f5;
-        --ink-primary: #111317;
-        --ink-secondary: #434b57;
-        --ink-muted: #5d6675;
-        --accent-cobalt: #1d4ed8;
-        --accent-cobalt-hover: #1e40af;
-        --border-hairline: #dce1e8;
-        --border-strong: #c6cdd8;
-        --shadow-card: 0 10px 28px -12px rgba(17, 19, 23, 0.12);
-
-        --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-
-        --radius-sm: 6px;
-        --radius-md: 10px;
-        --radius-lg: 14px;
-        --container-max: 1200px;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        font-size: 16px;
-        -webkit-text-size-adjust: 100%;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-
-      body {
-        margin: 0;
-        background-color: var(--bg-canvas);
-        color: var(--ink-primary);
-        font-family: var(--font-sans);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid var(--accent-cobalt);
-        outline-offset: 3px;
-        border-radius: 3px;
-      }
-
-      .tabular {
-        font-variant-numeric: tabular-nums;
-      }
-
-      .container {
-        width: 100%;
-        max-width: var(--container-max);
-        margin-inline: auto;
-        padding-inline: 24px;
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background-color: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--border-hairline);
-      }
-
-      .header-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 32px;
-        min-height: 68px;
-      }
-
-      .brand-wordmark {
-        font-size: 1.0625rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: var(--ink-primary);
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-
-      .site-nav {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-      }
-
-      .nav-link {
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--ink-secondary);
-        white-space: nowrap;
-        flex-shrink: 0;
-        padding-block: 6px;
-        border-bottom: 1.5px solid transparent;
-        transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1),
-          border-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .nav-link:hover {
-        color: var(--ink-primary);
-        border-bottom-color: var(--ink-primary);
-      }
-
-      .header-action {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-      }
-
-      .primary-anchor {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 9px 18px;
-        font-size: 0.8125rem;
-        font-weight: 600;
-        color: #ffffff;
-        background-color: var(--accent-cobalt);
-        border-radius: var(--radius-sm);
-        white-space: nowrap;
-        flex-shrink: 0;
-        transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .primary-anchor:hover {
-        background-color: var(--accent-cobalt-hover);
-      }
-
-      .hero-section {
-        padding-block: 56px 64px;
-        border-bottom: 1px solid var(--border-hairline);
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-        gap: 48px;
-        align-items: stretch;
-      }
-
-      .hero-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .eyebrow {
-        margin: 0 0 14px;
-        font-size: 0.8125rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        color: var(--accent-cobalt);
-      }
-
-      .hero-title {
-        margin: 0 0 18px;
-        font-size: clamp(2.125rem, 3.6vw, 3.25rem);
-        font-weight: 700;
-        line-height: 1.1;
-        letter-spacing: -0.025em;
-        color: var(--ink-primary);
-        text-wrap: balance;
-      }
-
-      .hero-lead {
-        margin: 0 0 32px;
-        max-width: 54ch;
-        font-size: 1rem;
-        line-height: 1.65;
-        color: var(--ink-secondary);
-      }
-
-      .hero-specs {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
-        padding-top: 24px;
-        border-top: 1px solid var(--border-hairline);
-      }
-
-      .spec-item {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .spec-label {
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--ink-muted);
-      }
-
-      .spec-value {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--ink-primary);
-      }
-
-      .hero-media {
-        display: flex;
-      }
-
-      .media-frame {
-        position: relative;
-        width: 100%;
-        background-color: var(--bg-studio);
-        border: 1px solid var(--border-hairline);
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-      }
-
-      .hero-frame {
-        aspect-ratio: 16 / 9;
-        height: 100%;
-        min-height: 340px;
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .catalog-section {
-        padding-block: 72px;
-        scroll-margin-top: 68px;
-      }
-
-      .section-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 32px;
-        margin-bottom: 24px;
-      }
-
-      .section-kicker {
-        margin: 0 0 8px;
-        font-size: 0.8125rem;
-        font-weight: 600;
-        color: var(--ink-muted);
-      }
-
-      .count-badge {
-        display: inline-block;
-        margin-left: 8px;
-        padding: 2px 10px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--accent-cobalt);
-        background-color: rgba(29, 78, 216, 0.08);
-        border-radius: 999px;
-      }
-
-      .section-title {
-        margin: 0;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        line-height: 1.2;
-        color: var(--ink-primary);
-        text-wrap: balance;
-      }
-
-      .section-note {
-        margin: 0;
-        max-width: 44ch;
-        font-size: 0.875rem;
-        color: var(--ink-secondary);
-      }
-
-      .filter-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 32px;
-      }
-
-      .filter-btn {
-        appearance: none;
-        border: 1px solid var(--border-hairline);
-        background-color: var(--bg-surface);
-        color: var(--ink-secondary);
-        font-family: var(--font-sans);
-        font-size: 0.8125rem;
-        font-weight: 600;
-        padding: 8px 16px;
-        border-radius: 999px;
-        cursor: pointer;
-        transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .filter-btn:hover {
-        border-color: var(--border-strong);
-        color: var(--ink-primary);
-      }
-
-      .filter-btn.is-active {
-        background-color: var(--accent-cobalt);
-        border-color: var(--accent-cobalt);
-        color: #ffffff;
-      }
-
-      .catalog-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 28px;
-      }
-
-      .helmet-card {
-        display: flex;
-        flex-direction: column;
-        background-color: var(--bg-surface);
-        border: 1px solid var(--border-hairline);
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        scroll-margin-top: 96px;
-        transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .helmet-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-card);
-      }
-
-      .card-media {
-        position: relative;
-        aspect-ratio: 4 / 3;
-        background-color: var(--bg-studio);
-        border-bottom: 1px solid var(--border-hairline);
-        overflow: hidden;
-        border-radius: 0;
-        border-top: 0;
-        border-inline: 0;
-      }
-
-      .unit-pill {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        z-index: 2;
-        padding: 3px 9px;
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--ink-primary);
-        background-color: rgba(255, 255, 255, 0.92);
-        border: 1px solid var(--border-hairline);
-        border-radius: var(--radius-sm);
-      }
-
-      .card-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .helmet-card:hover .card-image {
-        transform: scale(1.02);
-      }
-
-      .card-body {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-        padding: 20px 22px 22px;
-      }
-
-      .card-meta {
-        margin: 0 0 8px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: var(--ink-muted);
-      }
-
-      .card-meta.is-fullface {
-        color: var(--accent-cobalt);
-      }
-
-      .card-meta.is-custom {
-        color: #0f766e;
-      }
-
-      .card-meta.is-halfface {
-        color: #b45309;
-      }
-
-      .card-title {
-        margin: 0 0 6px;
-        font-size: 1.0625rem;
-        font-weight: 600;
-        line-height: 1.35;
-        color: var(--ink-primary);
-      }
-
-      .card-summary {
-        margin: 0 0 18px;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        color: var(--ink-secondary);
-      }
-
-      .card-specs-row {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        padding-block: 14px;
-        margin-top: auto;
-        border-top: 1px solid var(--border-hairline);
-        border-bottom: 1px solid var(--border-hairline);
-      }
-
-      .card-spec-cell {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .card-spec-key {
-        font-size: 0.6875rem;
-        color: var(--ink-muted);
-      }
-
-      .card-spec-val {
-        font-size: 0.8125rem;
-        font-weight: 600;
-        color: var(--ink-primary);
-      }
-
-      .card-footer-row {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 12px;
-        padding-top: 16px;
-      }
-
-      .card-price {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--ink-primary);
-        font-variant-numeric: tabular-nums;
-      }
-
-      .card-sku {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--ink-muted);
-      }
-
-      .standards-section {
-        padding-block: 72px;
-        background-color: var(--bg-surface);
-        border-top: 1px solid var(--border-hairline);
-        border-bottom: 1px solid var(--border-hairline);
-        scroll-margin-top: 68px;
-      }
-
-      .standards-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-        gap: 56px;
-        align-items: start;
-      }
-
-      .standards-intro {
-        margin: 14px 0 32px;
-        max-width: 56ch;
-        font-size: 0.9375rem;
-        color: var(--ink-secondary);
-      }
-
-      .pillar-list {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .pillar-item {
-        padding-block: 20px;
-        border-top: 1px solid var(--border-hairline);
-      }
-
-      .pillar-item:last-child {
-        border-bottom: 1px solid var(--border-hairline);
-      }
-
-      .pillar-title {
-        margin: 0 0 6px;
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--ink-primary);
-      }
-
-      .pillar-desc {
-        margin: 0;
-        font-size: 0.875rem;
-        color: var(--ink-secondary);
-      }
-
-      .sizing-panel {
-        background-color: var(--bg-canvas);
-        border: 1px solid var(--border-hairline);
-        border-radius: var(--radius-md);
-        padding: 28px;
-      }
-
-      .sizing-title {
-        margin: 0 0 6px;
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--ink-primary);
-      }
-
-      .sizing-subtitle {
-        margin: 0 0 20px;
-        font-size: 0.875rem;
-        color: var(--ink-secondary);
-      }
-
-      .sizing-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.875rem;
-      }
-
-      .sizing-table th {
-        padding: 10px 8px;
-        text-align: left;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--ink-muted);
-        border-bottom: 1px solid var(--border-strong);
-      }
-
-      .sizing-table td {
-        padding: 11px 8px;
-        color: var(--ink-secondary);
-        border-bottom: 1px solid var(--border-hairline);
-      }
-
-      .sizing-table tbody tr:last-child td {
-        border-bottom: none;
-      }
-
-      .size-code {
-        font-weight: 700;
-        color: var(--ink-primary) !important;
-      }
-
-      .site-footer {
-        padding-block: 48px 32px;
-        background-color: var(--bg-canvas);
-      }
-
-      .footer-inner {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr;
-        gap: 40px;
-        padding-bottom: 36px;
-        border-bottom: 1px solid var(--border-hairline);
-      }
-
-      .footer-wordmark {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: var(--ink-primary);
-      }
-
-      .footer-copy {
-        margin: 0;
-        max-width: 38ch;
-        font-size: 0.875rem;
-        color: var(--ink-secondary);
-      }
-
-      .footer-heading {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 0.8125rem;
-        font-weight: 600;
-        color: var(--ink-primary);
-      }
-
-      .footer-info p {
-        margin: 0 0 6px;
-        font-size: 0.875rem;
-        color: var(--ink-secondary);
-      }
-
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 0.875rem;
-        color: var(--ink-secondary);
-      }
-
-      .footer-links a:hover {
-        color: var(--accent-cobalt);
-      }
-
-      .footer-bottom {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding-top: 22px;
-        font-size: 0.8125rem;
-        color: var(--ink-muted);
-      }
-
-      @media (max-width: 1024px) {
-        .hero-grid {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-
-        .hero-frame {
-          min-height: 0;
-        }
-
-        .catalog-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .standards-layout {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-      }
-
-      @media (max-width: 720px) {
-        .header-inner {
-          gap: 16px;
-          min-height: 60px;
-        }
-
-        .site-nav {
-          display: none;
-        }
-
-        .hero-section {
-          padding-block: 36px 44px;
-        }
-
-        .hero-specs {
-          grid-template-columns: 1fr;
-          gap: 14px;
-        }
-
-        .section-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-        }
-
-        .catalog-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .footer-inner {
-          grid-template-columns: 1fr;
-          gap: 28px;
-        }
-
-        .footer-bottom {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .helmet-card,
-        .card-image,
-        .nav-link,
-        .primary-anchor,
-        .filter-btn {
-          transition: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="#top" class="brand-wordmark">GARASI HELM CUSTOM</a>
-
-        <nav class="site-nav" aria-label="Kategori Katalog">
-          <a href="#katalog" class="nav-link" data-cat-link="full-face">Full Face</a>
-          <a href="#katalog" class="nav-link" data-cat-link="custom-edition">Custom Edition</a>
-          <a href="#katalog" class="nav-link" data-cat-link="half-face">Half Face</a>
-          <a href="#standar" class="nav-link">Standar</a>
-        </nav>
-
-        <div class="header-action">
-          <a href="transaksi.html" class="nav-link" style="margin-right: 18px;" id="header-cart-link">Keranjang (<span id="header-cart-count" class="tabular">0</span>)</a>
-          <a href="#katalog" class="primary-anchor" data-cat-link="all">Katalog 2026 (100 Unit)</a>
-        </div>
-      </div>
-    </header>
-
-    <main id="top">
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <p class="eyebrow">Koleksi Resmi & Custom 2026 · Bandung Showroom</p>
-            <h1 class="hero-title">Perlindungan Presisi dengan Karakter Eksklusif.</h1>
-            <p class="hero-lead">
-              Katalog lengkap 100 edisi helm berkendara mulai dari model Full Face, seri Custom Edition eksklusif, hingga Half Face. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
-            </p>
-
-            <div class="hero-specs" aria-label="Ringkasan Spesifikasi Koleksi">
-              <div class="spec-item">
-                <span class="spec-label">Total Koleksi</span>
-                <span class="spec-value tabular">24 Full Face · 66 Custom · 10 Half Face</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Rentang Ukuran</span>
-                <span class="spec-value tabular">XS – XXL (53–64 cm)</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Sertifikasi</span>
-                <span class="spec-value">SNI 1811 · ECE 22.06</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-media">
-            <div class="media-frame hero-frame">
-              <img
-                src="gambar/1.jpg"
-                alt="Helm Custom Studio Garasi Helm Custom Showcase"
-                class="hero-image"
-                onerror="handleImgError(this, 1)"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="katalog" class="catalog-section" aria-labelledby="catalog-heading">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <p class="section-kicker">
-                01. Etalase Produk Lengkap
-                <span id="total-rendered-badge" class="count-badge tabular">Menampilkan 100 Unit</span>
-              </p>
-              <h2 id="catalog-heading" class="section-title">Katalog Resmi & Edisi Kustom</h2>
-            </div>
-            <p class="section-note">
-              Seluruh 100 model ditampilkan sesuai spesifikasi pabrik dan workshop resmi. Harga tercantum dalam Rupiah dan sudah termasuk tas pelindung helm.
-            </p>
-          </div>
-
-          <div class="filter-bar" role="tablist" aria-label="Filter Kategori Helm">
-            <button type="button" class="filter-btn is-active" data-filter="all">Semua (100)</button>
-            <button type="button" class="filter-btn" data-filter="full-face">Full Face (24)</button>
-            <button type="button" class="filter-btn" data-filter="custom-edition">Custom Edition (66)</button>
-            <button type="button" class="filter-btn" data-filter="half-face">Half Face (10)</button>
-          </div>
-
-          <div id="catalog-grid" class="catalog-grid">
-            <!-- Seluruh 100 item di-render ke dalam grid ini -->
-          </div>
-        </div>
-      </section>
-
-      <section id="standar" class="standards-section" aria-labelledby="standards-heading">
-        <div class="container standards-layout">
-          <div class="standards-pillars">
-            <p class="section-kicker">02. Standar & Konstruksi</p>
-            <h2 id="standards-heading" class="section-title">Spesifikasi Teknis & Keselamatan</h2>
-            <p class="standards-intro">
-              Setiap unit—baik edisi studio maupun kustom—melewati pengujian benturan multi-titik, ketahanan penetrasi visor polikarbonat anti-gores, dan uji keseimbangan bobot.
-            </p>
-
-            <div class="pillar-list">
-              <div class="pillar-item">
-                <h3 class="pillar-title">Struktur Multi-Density EPS</h3>
-                <p class="pillar-desc">
-                  Lapisan peredam benturan berdensitas ganda yang menyerap energi kinetik secara progresif pada kecepatan rendah maupun tinggi.
-                </p>
-              </div>
-              <div class="pillar-item">
-                <h3 class="pillar-title">Sertifikasi SNI 1811 & ECE 22.06</h3>
-                <p class="pillar-desc">
-                  Lolos uji standar nasional Indonesia serta regulasi Eropa terbaru untuk ketahanan tali dagu Double D-Ring dan Microlock baja.
-                </p>
-              </div>
-              <div class="pillar-item">
-                <h3 class="pillar-title">Interior Hippoallergenic Lepas-Pasang</h3>
-                <p class="pillar-desc">
-                  Busa pipi dan mahkota berbahan kain breathable cepat kering, dilengkapi alur khusus pengguna kacamata dan slot interkom.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="sizing-panel">
-            <h3 class="sizing-title">Panduan Lingkar Kepala</h3>
-            <p class="sizing-subtitle">
-              Ukur lingkar kepala tepat 2 cm di atas alis untuk menentukan ukuran cangkang yang presisi.
-            </p>
-            <table class="sizing-table">
-              <thead>
-                <tr>
-                  <th scope="col">Ukuran</th>
-                  <th scope="col">Lingkar Kepala</th>
-                  <th scope="col">Shell</th>
-                  <th scope="col">Kesesuaian</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="size-code">XS</td>
-                  <td class="tabular">53 – 54 cm</td>
-                  <td class="tabular">Shell 1</td>
-                  <td>Kompak</td>
-                </tr>
-                <tr>
-                  <td class="size-code">S</td>
-                  <td class="tabular">55 – 56 cm</td>
-                  <td class="tabular">Shell 1</td>
-                  <td>Presisi Rapat</td>
-                </tr>
-                <tr>
-                  <td class="size-code">M</td>
-                  <td class="tabular">57 – 58 cm</td>
-                  <td class="tabular">Shell 2</td>
-                  <td>Standar Asia</td>
-                </tr>
-                <tr>
-                  <td class="size-code">L</td>
-                  <td class="tabular">59 – 60 cm</td>
-                  <td class="tabular">Shell 2</td>
-                  <td>Reguler</td>
-                </tr>
-                <tr>
-                  <td class="size-code">XL</td>
-                  <td class="tabular">61 – 62 cm</td>
-                  <td class="tabular">Shell 3</td>
-                  <td>Lapang</td>
-                </tr>
-                <tr>
-                  <td class="size-code">XXL</td>
-                  <td class="tabular">63 – 64 cm</td>
-                  <td class="tabular">Shell 3</td>
-                  <td>Ekstra</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <span class="footer-wordmark">GARASI HELM CUSTOM</span>
-          <p class="footer-copy">
-            Katalog tampilan resmi 100 unit perlengkapan keselamatan berkendara roda dua dan edisi kustom.
-          </p>
-        </div>
-
-        <div class="footer-info">
-          <span class="footer-heading">Showroom Utama</span>
-          <p>Jl. Asia Afrika No. 118, Bandung 40111</p>
-          <p class="tabular">Senin – Sabtu · 09.00 – 19.00 WIB</p>
-        </div>
-
-        <div class="footer-info">
-          <span class="footer-heading">Kategori Koleksi</span>
-          <div class="footer-links">
-            <a href="#katalog" data-cat-link="full-face">Full Face (24 Unit)</a>
-            <a href="#katalog" data-cat-link="custom-edition">Custom Edition (66 Unit)</a>
-            <a href="#katalog" data-cat-link="half-face">Half Face (10 Unit)</a>
-            <a href="#standar">Panduan Ukuran</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="container footer-bottom">
-        <span>© 2026 Garasi Helm Custom Indonesia.</span>
-        <span>Katalog Resmi · Edisi 2026 (100 Unit)</span>
-      </div>
-    </footer>
-
-    <script>
-      function handleImgError(imgEl, num) {
-        const fallbackExts = ["jpeg", "png", "webp", "JPG"];
-        const step = Number(imgEl.dataset.retry || 0);
-        if (step < fallbackExts.length) {
-          imgEl.dataset.retry = String(step + 1);
-          imgEl.src = `gambar/${num}.${fallbackExts[step]}`;
-        } else {
-          imgEl.onerror = null;
-        }
-      }
-
-      // Daftar resmi 24 nomor kategori Full Face
-      const FULL_FACE_NUMBERS = new Set([
-        1, 2, 3, 8, 11, 12, 16, 18, 19, 20, 21, 23, 27, 28, 32, 34, 35, 45, 51, 52, 71, 73, 74, 75
-      ]);
-
-      // Daftar resmi 66 nomor kategori Custom Edition (termasuk nomor 4)
-      const CUSTOM_EDITION_NUMBERS = new Set([
-        4, 5, 6, 7, 13, 14, 15, 17, 22, 24, 25, 29, 30, 36, 38, 39, 40, 41, 42, 43, 44, 46, 48,
-        53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72,
-        76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100
-      ]);
-
-      // Spesifikasi khusus yang disesuaikan dengan gambar asli helm
-      const specialSpecs = {
-        1: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #01", desc: "Cangkang komposit serat karbon berprofil aerodinamis dengan lapisan finishing studio anti-gores.", size: "S – XL", weight: "1.350 g", status: "Tersedia", price: "Rp 3.250.000", sku: "GHC-FF-01" },
-        2: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #02", desc: "Desain kontur modern untuk berkendara jarak jauh dengan ventilasi multi-saluran dan visor optik kelas 1.", size: "S – XL", weight: "1.380 g", status: "Tersedia", price: "Rp 3.300.000", sku: "GHC-FF-02" },
-        3: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #03", desc: "Dilengkapi spoiler belakang terintegrasi, pengunci Double D-Ring, dan busa pipi pembuang kelembapan.", size: "XS – XL", weight: "1.360 g", status: "Tersedia", price: "Rp 3.350.000", sku: "GHC-FF-03" },
-        4: { category: "custom-edition", meta: "Custom Sci-Fi · ECE 22.06 · SNI", title: "Garasi Xenomorph Green Visor #04", desc: "Helm kustom bertema alien futuristik dengan visor hijau neon anti-silau dan lapisan peredam akustik.", size: "M – XXL", weight: "1.390 g", status: "Tersedia", price: "Rp 3.400.000", sku: "GHC-CS-04" },
-        5: { category: "custom-edition", meta: "Custom Artisan · ECE 22.06 · SNI", title: "Garasi Golden Carnival Mask #05", desc: "Helm kustom artistik terinspirasi topeng karnaval Venesia dengan ukiran ornamen emas mewah dan finishing studio gloss.", size: "S – XL", weight: "1.370 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-05" },
-        6: { category: "custom-edition", meta: "Custom Concept · SNI 1811", title: "Garasi Apollo Astronaut Spec #06", desc: "Terinspirasi helm penjelajah luar angkasa dengan visor panorama luas dan lapisan pelindung UV reflektif.", size: "M – XL", weight: "1.520 g", status: "Stok Terbatas", price: "Rp 4.650.000", sku: "GHC-CS-06" },
-        7: { category: "custom-edition", meta: "Custom Armor · SNI 1811", title: "Garasi Sovereign Gold Knight #07", desc: "Finishing metalik emas bergaya zirah ksatria abad pertengahan dengan struktur pelindung dagu kokoh.", size: "M – L", weight: "1.580 g", status: "Stok Terbatas", price: "Rp 4.890.000", sku: "GHC-CS-07" },
-        8: { category: "full-face", meta: "Full Face · Custom Heritage · SNI 1811", title: "Garasi Chronos Steampunk Ed. #08", desc: "Helm full-face dengan ornamen kuningan mekanis, aksen kulit klasik, dan lensa optik ganda berstandar SNI.", size: "S – XL", weight: "1.550 g", status: "Tersedia", price: "Rp 4.500.000", sku: "GHC-FF-08" },
-        9: { category: "half-face", meta: "Half Face · Retro-Tech · SNI 1811", title: "Garasi RetroVision Half Face CRT-90 #09", desc: "Cangkang half-face kustom bergaya retro klasik 90-an dengan visor polikarbonat cembung jernih.", size: "M – XL", weight: "1.280 g", status: "Pre-Order", price: "Rp 2.750.000", sku: "GHC-HF-09" },
-        10: { category: "half-face", meta: "Half Face · Sculpted Spec · SNI 1811", title: "Garasi Diablo Half Face Spec #10", desc: "Helm half-face dengan aksen aerodinamis fleksibel lepas-aman serta pengunci Microlock baja.", size: "S – XL", weight: "1.260 g", status: "Tersedia", price: "Rp 2.850.000", sku: "GHC-HF-10" },
-        11: { category: "full-face", meta: "Full Face · Custom Sculpted · SNI 1811", title: "Garasi Monarch Crest Edition #11", desc: "Helm full-face berdetail mahkota dan ornamen relief timbul di atas shell komposit ABS berkekuatan tarik tinggi.", size: "M – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.950.000", sku: "GHC-FF-11" },
-        12: { category: "full-face", meta: "Full Face · Custom Form · SNI 1811", title: "Garasi Avant-Garde Form X #12", desc: "Helm full-face berstruktur pahatan kustom unik dengan lapisan peredam benturan Multi-Density EPS penuh.", size: "S – XL", weight: "1.510 g", status: "Tersedia", price: "Rp 4.100.000", sku: "GHC-FF-12" },
-        13: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Cobalt Fur Monster #13", desc: "Balutan bulu sintetis biru kobalt tahan cuaca di atas cangkang helm kustom berstandar SNI dengan pandangan luas.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 2.450.000", sku: "GHC-CS-13" },
-        14: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Apex Great White Shark #14", desc: "Sirip punggung aerodinamis dan grafis rahang hiu agresif dengan sistem sirkulasi udara insang samping.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CS-14" },
-        15: { category: "custom-edition", meta: "Custom Fruit Edition · SNI 1811", title: "Garasi Fresh Strawberry Custom #15", desc: "Helm kustom berbentuk buah stroberi merah merona dengan tekstur bintik biji dan mahkota daun hijau di puncak cangkang.", size: "S – L", weight: "1.440 g", status: "Tersedia", price: "Rp 2.950.000", sku: "GHC-CS-15" },
-        16: { category: "full-face", meta: "Full Face · Sci-Fi Spec · SNI 1811", title: "Garasi Xenomorph Green Alien #16", desc: "Helm full-face hijau metalik futuristik dengan kontur memanjang aerodinamis dan visor gelap anti-silau.", size: "M – XL", weight: "1.500 g", status: "Stok Terbatas", price: "Rp 3.890.000", sku: "GHC-FF-16" },
-        17: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Musang King Edition #17", desc: "Tekstur pahatan elastomer lentur yang aman dan tidak melukai, dipadukan cangkang dalam berstandar SNI.", size: "M – XL", weight: "1.540 g", status: "Tersedia", price: "Rp 3.650.000", sku: "GHC-CS-17" },
-        18: { category: "full-face", meta: "Full Face · Custom Airbrush · SNI 1811", title: "Garasi Fresh Watermelon Spec #18", desc: "Helm full-face airbrush presisi motif kulit dan daging semangka segar dengan lapisan clear coat gloss tinggi.", size: "S – XL", weight: "1.390 g", status: "Tersedia", price: "Rp 2.750.000", sku: "GHC-FF-18" },
-        19: { category: "full-face", meta: "Full Face · Custom 3D · SNI 1811", title: "Garasi Sculpted Bowl Edition #19", desc: "Helm full-face kustom 3D lengkap dengan detail ornamen pahatan presisi di atas cangkang ABS teruji.", size: "M – XL", weight: "1.560 g", status: "Stok Terbatas", price: "Rp 4.250.000", sku: "GHC-FF-19" },
-        20: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Glazed Sprinkle Spec #20", desc: "Helm full-face dengan kontur membulat ergonomis, finishing gloss kustom, serta sirkulasi udara tersembunyi.", size: "XS – L", weight: "1.430 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-FF-20" },
-        21: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Golden Melt Spec #21", desc: "Helm full-face tekstur pahatan satin-gloss dengan sistem pengunci Microlock baja dan interior lepas-pasang.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-FF-21" },
-        29: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Shiba Inu Edition #29", desc: "Helm karakter anjing Shiba Inu Jepang berwarna cokelat keemasan dengan telinga tegak dan interior hippoallergenic.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.550.000", sku: "GHC-CS-29" },
-        48: { category: "custom-edition", meta: "Custom Geometric · SNI 1811", title: "Garasi Rubik Cube 3D Spec #48", desc: "Helm kustom berbentuk kubus teka-teki Rubik warna-warni primer mengilap dengan ventilasi tersembunyi.", size: "M – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.850.000", sku: "GHC-CS-48" },
-        53: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Alpaca Fluffy Custom #53", desc: "Helm karakter Alpaca berbulu lembut warna krem dengan telinga tegak dan pandangan visor lebar.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-53" },
-        54: { category: "custom-edition", meta: "Custom Fruit Edition · SNI 1811", title: "Garasi Fresh Avocado Spec #54", desc: "Helm kustom berbentuk belahan buah alpukat hijau lengkap dengan tekstur biji 3D di bagian atas cangkang.", size: "S – XL", weight: "1.430 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-CS-54" },
-        55: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Blue Fur Monster #55", desc: "Helm berbalut bulu sintetis biru elektrik dengan aksen tanduk mini dan busa dalam empuk berstandar SNI.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.290.000", sku: "GHC-CS-55" },
-        56: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Capybara Chill Edition #56", desc: "Helm karakter Capybara dengan ekspresi tenang ikonik dan sistem sirkulasi udara multi-saluran.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.590.000", sku: "GHC-CS-56" },
-        57: { category: "custom-edition", meta: "Custom Concept · SNI 1811", title: "Garasi Nimbus White Cloud #57", desc: "Helm berbentuk gumpalan awan putih lembut yang ringan dan aerodinamis untuk berkendara santai.", size: "S – XL", weight: "1.410 g", status: "Tersedia", price: "Rp 3.350.000", sku: "GHC-CS-57" },
-        58: { category: "custom-edition", meta: "Custom Concept · SNI 1811", title: "Garasi Apollo Astronaut Studio #58", desc: "Replika helm penjelajah luar angkasa dengan visor panorama luas dan modul komunikasi samping.", size: "M – XL", weight: "1.520 g", status: "Stok Terbatas", price: "Rp 4.650.000", sku: "GHC-CS-58" },
-        59: { category: "custom-edition", meta: "Custom Retro-Tech · SNI 1811", title: "Garasi Retro CRT-90 TV Spec #59", desc: "Helm kustom berbentuk televisi tabung retro era 90-an lengkap dengan antena dan visor layar kaca jernih.", size: "M – XL", weight: "1.510 g", status: "Tersedia", price: "Rp 4.150.000", sku: "GHC-CS-59" },
-        60: { category: "custom-edition", meta: "Custom Armor · SNI 1811", title: "Garasi Sovereign Gold Knight #60", desc: "Helm zirah kesatria abad pertengahan berlapis cat metalik emas dengan pelindung dagu kokoh.", size: "M – L", weight: "1.580 g", status: "Stok Terbatas", price: "Rp 4.890.000", sku: "GHC-CS-60" },
-        61: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Cheeseburger Deluxe #61", desc: "Helm bertema hamburger lengkap dengan lapisan roti wijen, patty daging, keju leleh, dan selada hijau.", size: "M – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.750.000", sku: "GHC-CS-61" },
-        62: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Bamboo Dimsum Steamer #62", desc: "Helm kreatif berbentuk bakpao dan dimsum hangat di dalam wadah kukusan anyaman bambu.", size: "M – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.850.000", sku: "GHC-CS-62" },
-        63: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Glazed Cinnamon Roll #63", desc: "Helm berbentuk gulungan roti kayu manis dengan lapisan glasir gula putih bertekstur realistis.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 3.590.000", sku: "GHC-CS-63" },
-        64: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Golden Butter Texture #64", desc: "Helm minimalis bertekstur olesan mentega lembut warna kuning pastel dengan kilau satin anti-gores.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-64" },
-        65: { category: "custom-edition", meta: "Custom Marine Series · SNI 1811", title: "Garasi Translucent Jellyfish #65", desc: "Helm kubah transparan menyerupai ubur-ubur laut dengan aksen tentakel lembut di bagian belakang.", size: "M – XL", weight: "1.470 g", status: "Stok Terbatas", price: "Rp 4.190.000", sku: "GHC-CS-65" },
-        66: { category: "custom-edition", meta: "Custom Retro-Tech · SNI 1811", title: "Garasi Retro Arcade Machine #66", desc: "Helm bertema mesin game arcade klasik lengkap dengan detail tombol joystick dan grafis piksel.", size: "M – XL", weight: "1.520 g", status: "Tersedia", price: "Rp 4.250.000", sku: "GHC-CS-66" },
-        67: { category: "custom-edition", meta: "Custom Marine Series · SNI 1811", title: "Garasi Kraken Octopus 3D #67", desc: "Helm karakter gurita dengan delapan tentakel melingkar di sekeliling batok helm berstandar SNI.", size: "M – XL", weight: "1.530 g", status: "Tersedia", price: "Rp 4.150.000", sku: "GHC-CS-67" },
-        68: { category: "custom-edition", meta: "Custom Geometric · SNI 1811", title: "Garasi Geometric Origami White #68", desc: "Helm dengan lekukan poligonal tajam bergaya seni lipat kertas origami modern warna putih doff.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CS-68" },
-        69: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Sculpted Concept Alpha #69", desc: "Helm kustom pahatan aerodinamis dengan kontur organik presisi dan sistem pengunci Double D-Ring.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.890.000", sku: "GHC-CS-69" },
-        70: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Sculpted Concept Studio #70", desc: "Helm kustom berprofil pahatan modern finishing studio putih bersih dengan ventilasi tersembunyi.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 3.850.000", sku: "GHC-CS-70" },
-        71: { category: "full-face", meta: "Full Face · Studio Spec · SNI 1811", title: "Garasi Studio Aero Full Face #71", desc: "Helm full-face studio berprofil aerodinamis dengan cangkang komposit ringan dan visor optik kelas 1.", size: "S – XL", weight: "1.370 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-FF-71" },
-        72: { category: "custom-edition", meta: "Custom Studio · SNI 1811", title: "Garasi Artisan Custom Studio #72", desc: "Helm edisi kustom studio dengan kombinasi warna hangat dan lapisan clear coat tahan cuaca.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.750.000", sku: "GHC-CS-72" },
-        73: { category: "full-face", meta: "Full Face · Studio Spec · SNI 1811", title: "Garasi Studio Carbon Track #73", desc: "Helm full-face berperforma tinggi dengan spoiler belakang terintegrasi dan peredam akustik.", size: "S – XL", weight: "1.360 g", status: "Tersedia", price: "Rp 3.550.000", sku: "GHC-FF-73" },
-        74: { category: "full-face", meta: "Full Face · Studio Spec · SNI 1811", title: "Garasi Studio Cobalt Full Face #74", desc: "Helm full-face balap harian dengan visor anti-gores dan busa pipi pembuang kelembapan.", size: "S – XL", weight: "1.380 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-FF-74" },
-        75: { category: "full-face", meta: "Full Face · Studio Spec · SNI 1811", title: "Garasi Studio Stealth Full Face #75", desc: "Helm full-face berdesain minimalis modern dengan sistem pelepas visor cepat tanpa alat.", size: "S – XL", weight: "1.375 g", status: "Tersedia", price: "Rp 3.520.000", sku: "GHC-FF-75" },
-        76: { category: "custom-edition", meta: "Custom Retro-Tech · SNI 1811", title: "Garasi Retro Cassette Tape #76", desc: "Helm bergaya kaset pita musik klasik era 80-an lengkap dengan detail gulungan pita.", size: "M – XL", weight: "1.470 g", status: "Tersedia", price: "Rp 3.950.000", sku: "GHC-CS-76" },
-        77: { category: "custom-edition", meta: "Custom Artisan · SNI 1811", title: "Garasi Ceramic Teapot Spec #77", desc: "Helm berbentuk teko teh keramik klasik lengkap dengan corong dan gagang melengkung ikonik.", size: "M – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.890.000", sku: "GHC-CS-77" },
-        78: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Crowned Monarch Custom #78", desc: "Helm kustom berdetail mahkota ukiran timbul di atas shell komposit ABS berkekuatan tinggi.", size: "M – XL", weight: "1.500 g", status: "Tersedia", price: "Rp 4.050.000", sku: "GHC-CS-78" },
-        79: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Diablo Horned Custom #79", desc: "Helm hitam matte dengan sepasang tanduk melengkung kokoh di bagian atas untuk tampilan tegas.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.750.000", sku: "GHC-CS-79" },
-        80: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Maple Pancake Stack #80", desc: "Helm berbentuk tumpukan kue pancake cokelat keemasan dengan lelehan sirup maple dan mentega.", size: "M – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CS-80" },
-        81: { category: "custom-edition", meta: "Custom Marine Series · SNI 1811", title: "Garasi Spiky Pufferfish Spec #81", desc: "Helm bulat karakter ikan buntal mengembang dengan duri lunak elastomer aman dan sirip samping.", size: "S – XL", weight: "1.470 g", status: "Tersedia", price: "Rp 3.850.000", sku: "GHC-CS-81" },
-        82: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Japanese Ramen Bowl #82", desc: "Helm berbentuk mangkuk mie ramen Jepang lengkap dengan topping telur rebus, narutomaki, dan sumpit.", size: "M – XL", weight: "1.540 g", status: "Stok Terbatas", price: "Rp 4.290.000", sku: "GHC-CS-82" },
-        83: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Great White Shark #83", desc: "Helm karakter ikan hiu dengan sirip punggung 3D dan grafis rahang tajam di sekeliling visor.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.890.000", sku: "GHC-CS-83" },
-        84: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Cozy Sloth Fur Spec #84", desc: "Helm berwajah kukang (sloth) dengan detail bulu cokelat lembut dan tatapan mata ramah.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.550.000", sku: "GHC-CS-84" },
-        85: { category: "custom-edition", meta: "Custom Heritage · SNI 1811", title: "Garasi Chronos Steampunk Gear #85", desc: "Helm bergaya retro-futuristik Steampunk berbalut warna tembaga antik, kacamata goggle, dan roda gigi.", size: "S – XL", weight: "1.550 g", status: "Tersedia", price: "Rp 4.450.000", sku: "GHC-CS-85" },
-        86: { category: "custom-edition", meta: "Custom Botanical · SNI 1811", title: "Garasi Sunny Sunflower Bloom #86", desc: "Helm dikelilingi kelopak bunga matahari kuning cerah yang memberikan kesan ceria di jalan.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-CS-86" },
-        87: { category: "custom-edition", meta: "Custom Fruit Edition · SNI 1811", title: "Garasi Fresh Watermelon Slice #87", desc: "Helm motif kulit semangka hijau bergaris dengan detail bagian dalam merah berbiji.", size: "S – XL", weight: "1.410 g", status: "Tersedia", price: "Rp 3.350.000", sku: "GHC-CS-87" },
-        89: { category: "custom-edition", meta: "Custom Fruit Edition · SNI 1811", title: "Garasi King Durian Sculpted #89", desc: "Helm berbentuk buah durian lengkap dengan tekstur kulit berduri tumpul berbahan karet lentur.", size: "M – XL", weight: "1.530 g", status: "Tersedia", price: "Rp 3.950.000", sku: "GHC-CS-89" },
-        90: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Giant Yellow Duck #90", desc: "Helm karakter bebek karet kuning raksasa dengan paruh oranye ikonik di bagian depan.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-90" },
-        91: { category: "custom-edition", meta: "Custom Sci-Fi · SNI 1811", title: "Garasi Classic Green Alien #91", desc: "Helm kepala alien hijau klasik dengan mata hitam besar dan sepasang antena lentur di atasnya.", size: "S – XL", weight: "1.460 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CS-91" },
-        92: { category: "custom-edition", meta: "Custom Retro-Tech · SNI 1811", title: "Garasi Vintage Typewriter Spec #92", desc: "Helm unik dengan detail tuts huruf mesin tik antik dan rol kertas di bagian mahkota helm.", size: "M – XL", weight: "1.520 g", status: "Stok Terbatas", price: "Rp 4.190.000", sku: "GHC-CS-92" },
-        93: { category: "custom-edition", meta: "Custom Concept · SNI 1811", title: "Garasi Mini Aquarium Fish #93", desc: "Helm transparan konsep akuarium mini lengkap dengan ornamen terumbu karang dan ikan hias.", size: "M – XL", weight: "1.560 g", status: "Stok Terbatas", price: "Rp 4.690.000", sku: "GHC-CS-93" },
-        94: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Sunny Side Fried Egg #94", desc: "Helm putih bersih dengan bagian tengah kuning telur cembung menyerupai telur mata sapi.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-CS-94" },
-        95: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Melting Waffle Ice Cream #95", desc: "Helm bertema es krim stroberi dan vanila lengkap dengan cone wafel renyah di puncak helm.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 3.590.000", sku: "GHC-CS-95" },
-        96: { category: "custom-edition", meta: "Custom Culinary 3D · SNI 1811", title: "Garasi Strawberry Glazed Donut #96", desc: "Helm berbentuk donat manis berlapis glasir stroberi pink dan taburan meses warna-warni.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.550.000", sku: "GHC-CS-96" },
-        97: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Pink Axolotl Cute #97", desc: "Helm karakter salamander Axolotl merah muda lengkap dengan insang luar berbulu di sisi kanan-kiri.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 3.690.000", sku: "GHC-CS-97" },
-        98: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Pink Piggy Coin Bank #98", desc: "Helm berbentuk celengan babi merah muda mengilap dengan telinga mungil dan hidung khas.", size: "S – XL", weight: "1.430 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-98" },
-        99: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Red Glossy Bubble #99", desc: "Helm desain gelembung merah cerah dengan lekukan empuk futuristik dan visor bening.", size: "S – XL", weight: "1.440 g", status: "Tersedia", price: "Rp 3.590.000", sku: "GHC-CS-99" },
-        100: { category: "custom-edition", meta: "Custom Botanical · SNI 1811", title: "Garasi Red Toadstool Mushroom #100", desc: "Helm berbentuk tudung jamur hutan berwarna merah cerah dengan bintik-bintik putih klasik.", size: "S – XL", weight: "1.430 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-CS-100" }
-      };
-
-      const fullFaceSeriesTemplate = {
-        category: "full-face",
-        code: "FF",
-        meta: "Full Face · ECE 22.06 · SNI",
-        prefix: "Garasi Aero Full Face",
-        desc: "Helm full-face aerodinamis dengan cangkang komposit ringan, ventilasi multi-kanal, visor optik anti-gores, dan pengunci Double D-Ring.",
-        basePrice: 3250000,
-        weight: 1370,
-        size: "S – XL"
-      };
-
-      const customSeriesTemplates = [
-        { category: "custom-edition", code: "CS", meta: "Custom Edition · SNI 1811", prefix: "Garasi Artisan Custom", desc: "Karya tangan studio Bandung dengan lapisan cat multi-stage tahan cuaca serta peredam benturan Multi-Density EPS.", basePrice: 3990000, weight: 1480, size: "S – XL" },
-        { category: "custom-edition", code: "CS", meta: "Custom Heritage · SNI 1811", prefix: "Garasi Heritage Custom", desc: "Siluet kustom klasik dengan detail trim kulit sintetis jahitan tangan, aksen kuningan, dan interior suede.", basePrice: 3650000, weight: 1420, size: "S – XL" },
-        { category: "custom-edition", code: "CS", meta: "Custom Sculpted · SNI 1811", prefix: "Garasi Sculpted Concept", desc: "Cangkang komposit kustom berprofil unik dengan finishing airbrush presisi dan lapisan clear coat anti-UV.", basePrice: 4150000, weight: 1510, size: "M – XL" }
-      ];
-
-      const halfFaceTemplates = [
-        { category: "half-face", code: "HF", meta: "Half Face · SNI 1811", prefix: "Garasi Urban Half Face", desc: "Helm half-face ringan dengan double visor internal anti-UV dan ventilasi atas yang optimal untuk lalu lintas kota.", basePrice: 1450000, weight: 1180, size: "S – XL" },
-        { category: "half-face", code: "HF", meta: "Half Face · ECE 22.06 · SNI", prefix: "Garasi Horizon Half Face GT", desc: "Helm half-face touring dengan visor panjang pelindung angin penuh, busa hippoallergenic, dan slot interkom.", basePrice: 1850000, weight: 1220, size: "M – XXL" },
-        { category: "half-face", code: "HF", meta: "Half Face Classic · SNI 1811", prefix: "Garasi Heritage Half Face", desc: "Helm half-face bergaya klasik dengan trim kulit sintetis jahitan tangan dan kancing visor kuningan.", basePrice: 1650000, weight: 1190, size: "S – XL" }
-      ];
-
-      const variantNames = [
-        "Matte Obsidian", "Cobalt Strike", "Titanium Silver", "Crimson Apex", "Arctic White",
-        "Stealth Graphite", "Solar Flare", "Emerald Drift", "Bronze Patina", "Neon Circuit",
-        "Midnight Blue", "Sandstorm Tan", "Glacier Grey", "Volcanic Red"
-      ];
-
-      const statusPool = ["Tersedia", "Tersedia", "Tersedia", "Stok Terbatas", "Pre-Order"];
-      const allHelmets = [];
-
-      for (let i = 1; i <= 100; i++) {
-        const numStr = String(i).padStart(2, "0");
-        const isFullFace = FULL_FACE_NUMBERS.has(i);
-        const isCustom = CUSTOM_EDITION_NUMBERS.has(i);
-        const isHalfFace = !isFullFace && !isCustom;
-
-        if (specialSpecs[i]) {
-          allHelmets.push({
-            num: i,
-            isFullFace,
-            isCustom,
-            isHalfFace,
-            ...specialSpecs[i]
-          });
-        } else {
-          let series;
-          if (isFullFace) {
-            series = fullFaceSeriesTemplate;
-          } else if (isCustom) {
-            series = customSeriesTemplates[i % customSeriesTemplates.length];
-          } else {
-            series = halfFaceTemplates[i % halfFaceTemplates.length];
-          }
-
-          const variant = variantNames[i % variantNames.length];
-          const priceVal = series.basePrice + ((i % 5) * 75000);
-
-          allHelmets.push({
-            num: i,
-            isFullFace,
-            isCustom,
-            isHalfFace,
-            category: series.category,
-            meta: series.meta,
-            title: `${series.prefix} ${variant} #${numStr}`,
-            desc: series.desc,
-            size: series.size,
-            weight: `${(series.weight + (i % 4) * 15).toLocaleString("id-ID")} g`,
-            status: statusPool[i % statusPool.length],
-            price: "Rp " + priceVal.toLocaleString("id-ID"),
-            sku: `GHC-${series.code}-${numStr}`
-          });
-        }
-      }
-
-      const catalogGrid = document.getElementById("catalog-grid");
-      const totalBadge = document.getElementById("total-rendered-badge");
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      const categoryLinks = document.querySelectorAll("[data-cat-link]");
-
-      const categoryNames = {
-        all: "Semua Kategori",
-        "full-face": "Full Face",
-        "custom-edition": "Custom Edition",
-        "half-face": "Half Face"
-      };
-
-      function renderCatalog(filterKey = "all") {
-        const filtered =
-          filterKey === "all"
-            ? allHelmets
-            : allHelmets.filter((item) => item.category === filterKey);
-
-        catalogGrid.innerHTML = filtered
-          .map(
-            (item) => `
-            <article class="helmet-card">
-              <div class="media-frame card-media">
-                <span class="unit-pill tabular">#${String(item.num).padStart(2, "0")}</span>
-                <img
-                  src="gambar/${item.num}.jpg"
-                  alt="${item.title}"
-                  class="card-image"
-                  loading="lazy"
-                  onerror="handleImgError(this, ${item.num})"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-meta ${item.isFullFace ? "is-fullface" : item.isCustom ? "is-custom" : "is-halfface"}">${item.meta}</p>
-                <h3 class="card-title">${item.title}</h3>
-                <p class="card-summary">${item.desc}</p>
-                <div class="card-specs-row">
-                  <div class="card-spec-cell">
-                    <span class="card-spec-key">Ukuran</span>
-                    <span class="card-spec-val tabular">${item.size}</span>
-                  </div>
-                  <div class="card-spec-cell">
-                    <span class="card-spec-key">Bobot</span>
-                    <span class="card-spec-val tabular">${item.weight}</span>
-                  </div>
-                  <div class="card-spec-cell">
-                    <span class="card-spec-key">Status</span>
-                    <span class="card-spec-val">${item.status}</span>
-                  </div>
-                </div>
-                <div class="card-footer-row">
-                  <div>
-                    <span class="card-price">${item.price}</span>
-                    <span class="card-sku" style="display:block;">${item.sku}</span>
-                  </div>
-                  <a href="transaksi.html?add=${item.num}" class="primary-anchor" style="padding: 7px 13px; font-size: 0.75rem;">+ Keranjang</a>
-                </div>
-              </div>
-            </article>
-          `
-          )
-          .join("");
-
-        totalBadge.textContent =
-          filterKey === "all"
-            ? `Menampilkan ${filtered.length} Unit`
-            : `Menampilkan ${filtered.length} Unit · ${categoryNames[filterKey]}`;
-
-        filterButtons.forEach((btn) => {
-          btn.classList.toggle("is-active", btn.dataset.filter === filterKey);
-        });
-      }
-
-      filterButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          renderCatalog(btn.dataset.filter);
-        });
-      });
-
-      categoryLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          renderCatalog(link.dataset.catLink);
-        });
-      });
-
-      // Simpan data katalog ke localStorage agar transaksi.html memiliki data nama, deskripsi, dan harga yang identik
-      try {
-        localStorage.setItem("ghc_catalog_v1", JSON.stringify(allHelmets));
-        const savedCart = JSON.parse(localStorage.getItem("ghc_cart_v1") || "[]");
-        const totalQty = savedCart.reduce((acc, c) => acc + (c.qty || 1), 0);
-        const countEl = document.getElementById("header-cart-count");
-        if (countEl) countEl.textContent = totalQty;
-      } catch (e) {}
-
-      renderCatalog("all");
-    </script>
-  </body>
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Garasi Helm Custom — Katalog Helm Motor Resmi (100 Unit)</title>
+
+<meta
+
+name="description"
+
+content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Custom Edition, dan Half Face berstandar SNI dan ECE 22.06."
+
+/>
+
+<meta property="og:title" content="Garasi Helm Custom — Katalog Helm Motor Resmi" />
+
+<meta
+
+property="og:description"
+
+content="Webstore tampilan katalog resmi 100 unit helm motor Full Face, Custom Edition, dan Half Face berstandar SNI dan ECE 22.06."
+
+/>
+
+<meta property="og:type" content="website" />
+
+<meta name="twitter:card" content="summary_large_image" />
+
+<style>
+
+:root {
+
+--bg-canvas: #f5f6f8;
+
+--bg-surface: #ffffff;
+
+--bg-studio: #e9ecf1;
+
+--bg-subtle: #eef1f5;
+
+--ink-primary: #111317;
+
+--ink-secondary: #434b57;
+
+--ink-muted: #5d6675;
+
+--accent-cobalt: #1d4ed8;
+
+--accent-cobalt-hover: #1e40af;
+
+--border-hairline: #dce1e8;
+
+--border-strong: #c6cdd8;
+
+--shadow-card: 0 10px 28px -12px rgba(17, 19, 23, 0.12);
+
+
+
+--font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+--font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+
+
+--radius-sm: 6px;
+
+--radius-md: 10px;
+
+--radius-lg: 14px;
+
+--container-max: 1200px;
+
+}
+
+
+
+*,
+
+*::before,
+
+*::after {
+
+box-sizing: border-box;
+
+}
+
+
+
+html {
+
+scroll-behavior: smooth;
+
+font-size: 16px;
+
+-webkit-text-size-adjust: 100%;
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+html {
+
+scroll-behavior: auto;
+
+}
+
+}
+
+
+
+body {
+
+margin: 0;
+
+background-color: var(--bg-canvas);
+
+color: var(--ink-primary);
+
+font-family: var(--font-sans);
+
+line-height: 1.6;
+
+-webkit-font-smoothing: antialiased;
+
+}
+
+
+
+img {
+
+display: block;
+
+max-width: 100%;
+
+}
+
+
+
+a {
+
+color: inherit;
+
+text-decoration: none;
+
+}
+
+
+
+a:focus-visible,
+
+button:focus-visible {
+
+outline: 2px solid var(--accent-cobalt);
+
+outline-offset: 3px;
+
+border-radius: 3px;
+
+}
+
+
+
+.tabular {
+
+font-variant-numeric: tabular-nums;
+
+}
+
+
+
+.container {
+
+width: 100%;
+
+max-width: var(--container-max);
+
+margin-inline: auto;
+
+padding-inline: 24px;
+
+}
+
+
+
+.site-header {
+
+position: sticky;
+
+top: 0;
+
+z-index: 20;
+
+background-color: rgba(255, 255, 255, 0.94);
+
+backdrop-filter: blur(8px);
+
+border-bottom: 1px solid var(--border-hairline);
+
+}
+
+
+
+.header-inner {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 32px;
+
+min-height: 68px;
+
+}
+
+
+
+.brand-wordmark {
+
+font-size: 1.0625rem;
+
+font-weight: 700;
+
+letter-spacing: 0.04em;
+
+color: var(--ink-primary);
+
+white-space: nowrap;
+
+flex-shrink: 0;
+
+}
+
+
+
+.site-nav {
+
+display: flex;
+
+align-items: center;
+
+gap: 28px;
+
+}
+
+
+
+.nav-link {
+
+font-size: 0.875rem;
+
+font-weight: 500;
+
+color: var(--ink-secondary);
+
+white-space: nowrap;
+
+flex-shrink: 0;
+
+padding-block: 6px;
+
+border-bottom: 1.5px solid transparent;
+
+transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+
+border-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+
+
+.nav-link:hover {
+
+color: var(--ink-primary);
+
+border-bottom-color: var(--ink-primary);
+
+}
+
+
+
+.header-action {
+
+display: flex;
+
+align-items: center;
+
+flex-shrink: 0;
+
+}
+
+
+
+.primary-anchor {
+
+display: inline-flex;
+
+align-items: center;
+
+justify-content: center;
+
+padding: 9px 18px;
+
+font-size: 0.8125rem;
+
+font-weight: 600;
+
+color: #ffffff;
+
+background-color: var(--accent-cobalt);
+
+border-radius: var(--radius-sm);
+
+white-space: nowrap;
+
+flex-shrink: 0;
+
+transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+
+
+.primary-anchor:hover {
+
+background-color: var(--accent-cobalt-hover);
+
+}
+
+
+
+.hero-section {
+
+padding-block: 56px 64px;
+
+border-bottom: 1px solid var(--border-hairline);
+
+}
+
+
+
+.hero-grid {
+
+display: grid;
+
+grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+
+gap: 48px;
+
+align-items: stretch;
+
+}
+
+
+
+.hero-content {
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: center;
+
+}
+
+
+
+.eyebrow {
+
+margin: 0 0 14px;
+
+font-size: 0.8125rem;
+
+font-weight: 600;
+
+letter-spacing: 0.03em;
+
+color: var(--accent-cobalt);
+
+}
+
+
+
+.hero-title {
+
+margin: 0 0 18px;
+
+font-size: clamp(2.125rem, 3.6vw, 3.25rem);
+
+font-weight: 700;
+
+line-height: 1.1;
+
+letter-spacing: -0.025em;
+
+color: var(--ink-primary);
+
+text-wrap: balance;
+
+}
+
+
+
+.hero-lead {
+
+margin: 0 0 32px;
+
+max-width: 54ch;
+
+font-size: 1rem;
+
+line-height: 1.65;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.hero-specs {
+
+display: grid;
+
+grid-template-columns: repeat(3, minmax(0, 1fr));
+
+gap: 20px;
+
+padding-top: 24px;
+
+border-top: 1px solid var(--border-hairline);
+
+}
+
+
+
+.spec-item {
+
+display: flex;
+
+flex-direction: column;
+
+gap: 4px;
+
+}
+
+
+
+.spec-label {
+
+font-size: 0.75rem;
+
+font-weight: 500;
+
+color: var(--ink-muted);
+
+}
+
+
+
+.spec-value {
+
+font-size: 0.875rem;
+
+font-weight: 600;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.hero-media {
+
+display: flex;
+
+}
+
+
+
+.media-frame {
+
+position: relative;
+
+width: 100%;
+
+background-color: var(--bg-studio);
+
+border: 1px solid var(--border-hairline);
+
+border-radius: var(--radius-lg);
+
+overflow: hidden;
+
+}
+
+
+
+.hero-frame {
+
+aspect-ratio: 16 / 9;
+
+height: 100%;
+
+min-height: 340px;
+
+}
+
+
+
+.hero-image {
+
+width: 100%;
+
+height: 100%;
+
+object-fit: cover;
+
+}
+
+
+
+.catalog-section {
+
+padding-block: 72px;
+
+scroll-margin-top: 68px;
+
+}
+
+
+
+.section-header {
+
+display: flex;
+
+align-items: flex-end;
+
+justify-content: space-between;
+
+gap: 32px;
+
+margin-bottom: 24px;
+
+}
+
+
+
+.section-kicker {
+
+margin: 0 0 8px;
+
+font-size: 0.8125rem;
+
+font-weight: 600;
+
+color: var(--ink-muted);
+
+}
+
+
+
+.count-badge {
+
+display: inline-block;
+
+margin-left: 8px;
+
+padding: 2px 10px;
+
+font-size: 0.75rem;
+
+font-weight: 600;
+
+color: var(--accent-cobalt);
+
+background-color: rgba(29, 78, 216, 0.08);
+
+border-radius: 999px;
+
+}
+
+
+
+.section-title {
+
+margin: 0;
+
+font-size: clamp(1.5rem, 2.4vw, 2rem);
+
+font-weight: 700;
+
+letter-spacing: -0.02em;
+
+line-height: 1.2;
+
+color: var(--ink-primary);
+
+text-wrap: balance;
+
+}
+
+
+
+.section-note {
+
+margin: 0;
+
+max-width: 44ch;
+
+font-size: 0.875rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.filter-bar {
+
+display: flex;
+
+flex-wrap: wrap;
+
+gap: 10px;
+
+margin-bottom: 32px;
+
+}
+
+
+
+.filter-btn {
+
+appearance: none;
+
+border: 1px solid var(--border-hairline);
+
+background-color: var(--bg-surface);
+
+color: var(--ink-secondary);
+
+font-family: var(--font-sans);
+
+font-size: 0.8125rem;
+
+font-weight: 600;
+
+padding: 8px 16px;
+
+border-radius: 999px;
+
+cursor: pointer;
+
+transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+
+
+.filter-btn:hover {
+
+border-color: var(--border-strong);
+
+color: var(--ink-primary);
+
+}
+
+
+
+.filter-btn.is-active {
+
+background-color: var(--accent-cobalt);
+
+border-color: var(--accent-cobalt);
+
+color: #ffffff;
+
+}
+
+
+
+.catalog-grid {
+
+display: grid;
+
+grid-template-columns: repeat(3, minmax(0, 1fr));
+
+gap: 28px;
+
+}
+
+
+
+.helmet-card {
+
+display: flex;
+
+flex-direction: column;
+
+background-color: var(--bg-surface);
+
+border: 1px solid var(--border-hairline);
+
+border-radius: var(--radius-md);
+
+overflow: hidden;
+
+scroll-margin-top: 96px;
+
+transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+
+box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+
+
+.helmet-card:hover {
+
+transform: translateY(-2px);
+
+box-shadow: var(--shadow-card);
+
+}
+
+
+
+.card-media {
+
+position: relative;
+
+aspect-ratio: 4 / 3;
+
+background-color: var(--bg-studio);
+
+border-bottom: 1px solid var(--border-hairline);
+
+overflow: hidden;
+
+border-radius: 0;
+
+border-top: 0;
+
+border-inline: 0;
+
+}
+
+
+
+.unit-pill {
+
+position: absolute;
+
+top: 12px;
+
+left: 12px;
+
+z-index: 2;
+
+padding: 3px 9px;
+
+font-family: var(--font-mono);
+
+font-size: 0.75rem;
+
+font-weight: 600;
+
+color: var(--ink-primary);
+
+background-color: rgba(255, 255, 255, 0.92);
+
+border: 1px solid var(--border-hairline);
+
+border-radius: var(--radius-sm);
+
+}
+
+
+
+.card-image {
+
+width: 100%;
+
+height: 100%;
+
+object-fit: cover;
+
+transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+
+
+.helmet-card:hover .card-image {
+
+transform: scale(1.02);
+
+}
+
+
+
+.card-body {
+
+display: flex;
+
+flex-direction: column;
+
+flex: 1 1 auto;
+
+padding: 20px 22px 22px;
+
+}
+
+
+
+.card-meta {
+
+margin: 0 0 8px;
+
+font-size: 0.75rem;
+
+font-weight: 600;
+
+letter-spacing: 0.04em;
+
+text-transform: uppercase;
+
+color: var(--ink-muted);
+
+}
+
+
+
+.card-meta.is-fullface {
+
+color: var(--accent-cobalt);
+
+}
+
+
+
+.card-meta.is-custom {
+
+color: #0f766e;
+
+}
+
+
+
+.card-meta.is-halfface {
+
+color: #b45309;
+
+}
+
+
+
+.card-title {
+
+margin: 0 0 6px;
+
+font-size: 1.0625rem;
+
+font-weight: 600;
+
+line-height: 1.35;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.card-summary {
+
+margin: 0 0 18px;
+
+font-size: 0.875rem;
+
+line-height: 1.5;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.card-specs-row {
+
+display: grid;
+
+grid-template-columns: repeat(3, minmax(0, 1fr));
+
+gap: 12px;
+
+padding-block: 14px;
+
+margin-top: auto;
+
+border-top: 1px solid var(--border-hairline);
+
+border-bottom: 1px solid var(--border-hairline);
+
+}
+
+
+
+.card-spec-cell {
+
+display: flex;
+
+flex-direction: column;
+
+gap: 2px;
+
+}
+
+
+
+.card-spec-key {
+
+font-size: 0.6875rem;
+
+color: var(--ink-muted);
+
+}
+
+
+
+.card-spec-val {
+
+font-size: 0.8125rem;
+
+font-weight: 600;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.card-footer-row {
+
+display: flex;
+
+align-items: baseline;
+
+justify-content: space-between;
+
+gap: 12px;
+
+padding-top: 16px;
+
+}
+
+
+
+.card-price {
+
+font-size: 1rem;
+
+font-weight: 700;
+
+color: var(--ink-primary);
+
+font-variant-numeric: tabular-nums;
+
+}
+
+
+
+.card-sku {
+
+font-family: var(--font-mono);
+
+font-size: 0.75rem;
+
+color: var(--ink-muted);
+
+}
+
+
+
+.standards-section {
+
+padding-block: 72px;
+
+background-color: var(--bg-surface);
+
+border-top: 1px solid var(--border-hairline);
+
+border-bottom: 1px solid var(--border-hairline);
+
+scroll-margin-top: 68px;
+
+}
+
+
+
+.standards-layout {
+
+display: grid;
+
+grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+gap: 56px;
+
+align-items: start;
+
+}
+
+
+
+.standards-intro {
+
+margin: 14px 0 32px;
+
+max-width: 56ch;
+
+font-size: 0.9375rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.pillar-list {
+
+display: flex;
+
+flex-direction: column;
+
+}
+
+
+
+.pillar-item {
+
+padding-block: 20px;
+
+border-top: 1px solid var(--border-hairline);
+
+}
+
+
+
+.pillar-item:last-child {
+
+border-bottom: 1px solid var(--border-hairline);
+
+}
+
+
+
+.pillar-title {
+
+margin: 0 0 6px;
+
+font-size: 1rem;
+
+font-weight: 600;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.pillar-desc {
+
+margin: 0;
+
+font-size: 0.875rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.sizing-panel {
+
+background-color: var(--bg-canvas);
+
+border: 1px solid var(--border-hairline);
+
+border-radius: var(--radius-md);
+
+padding: 28px;
+
+}
+
+
+
+.sizing-title {
+
+margin: 0 0 6px;
+
+font-size: 1.125rem;
+
+font-weight: 600;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.sizing-subtitle {
+
+margin: 0 0 20px;
+
+font-size: 0.875rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.sizing-table {
+
+width: 100%;
+
+border-collapse: collapse;
+
+font-size: 0.875rem;
+
+}
+
+
+
+.sizing-table th {
+
+padding: 10px 8px;
+
+text-align: left;
+
+font-size: 0.75rem;
+
+font-weight: 600;
+
+color: var(--ink-muted);
+
+border-bottom: 1px solid var(--border-strong);
+
+}
+
+
+
+.sizing-table td {
+
+padding: 11px 8px;
+
+color: var(--ink-secondary);
+
+border-bottom: 1px solid var(--border-hairline);
+
+}
+
+
+
+.sizing-table tbody tr:last-child td {
+
+border-bottom: none;
+
+}
+
+
+
+.size-code {
+
+font-weight: 700;
+
+color: var(--ink-primary) !important;
+
+}
+
+
+
+.site-footer {
+
+padding-block: 48px 32px;
+
+background-color: var(--bg-canvas);
+
+}
+
+
+
+.footer-inner {
+
+display: grid;
+
+grid-template-columns: 1.4fr 1fr 1fr;
+
+gap: 40px;
+
+padding-bottom: 36px;
+
+border-bottom: 1px solid var(--border-hairline);
+
+}
+
+
+
+.footer-wordmark {
+
+display: block;
+
+margin-bottom: 10px;
+
+font-size: 1rem;
+
+font-weight: 700;
+
+letter-spacing: 0.04em;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.footer-copy {
+
+margin: 0;
+
+max-width: 38ch;
+
+font-size: 0.875rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.footer-heading {
+
+display: block;
+
+margin-bottom: 10px;
+
+font-size: 0.8125rem;
+
+font-weight: 600;
+
+color: var(--ink-primary);
+
+}
+
+
+
+.footer-info p {
+
+margin: 0 0 6px;
+
+font-size: 0.875rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.footer-links {
+
+display: flex;
+
+flex-direction: column;
+
+gap: 6px;
+
+font-size: 0.875rem;
+
+color: var(--ink-secondary);
+
+}
+
+
+
+.footer-links a:hover {
+
+color: var(--accent-cobalt);
+
+}
+
+
+
+.footer-bottom {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 16px;
+
+padding-top: 22px;
+
+font-size: 0.8125rem;
+
+color: var(--ink-muted);
+
+}
+
+
+
+@media (max-width: 1024px) {
+
+.hero-grid {
+
+grid-template-columns: 1fr;
+
+gap: 32px;
+
+}
+
+
+
+.hero-frame {
+
+min-height: 0;
+
+}
+
+
+
+.catalog-grid {
+
+grid-template-columns: repeat(2, minmax(0, 1fr));
+
+}
+
+
+
+.standards-layout {
+
+grid-template-columns: 1fr;
+
+gap: 40px;
+
+}
+
+}
+
+
+
+@media (max-width: 720px) {
+
+.header-inner {
+
+gap: 16px;
+
+min-height: 60px;
+
+}
+
+
+
+.site-nav {
+
+display: none;
+
+}
+
+
+
+.hero-section {
+
+padding-block: 36px 44px;
+
+}
+
+
+
+.hero-specs {
+
+grid-template-columns: 1fr;
+
+gap: 14px;
+
+}
+
+
+
+.section-header {
+
+flex-direction: column;
+
+align-items: flex-start;
+
+gap: 12px;
+
+}
+
+
+
+.catalog-grid {
+
+grid-template-columns: 1fr;
+
+}
+
+
+
+.footer-inner {
+
+grid-template-columns: 1fr;
+
+gap: 28px;
+
+}
+
+
+
+.footer-bottom {
+
+flex-direction: column;
+
+align-items: flex-start;
+
+}
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+.helmet-card,
+
+.card-image,
+
+.nav-link,
+
+.primary-anchor,
+
+.filter-btn {
+
+transition: none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+<div class="container header-inner">
+
+<a href="#top" class="brand-wordmark">GARASI HELM CUSTOM</a>
+
+
+
+<nav class="site-nav" aria-label="Kategori Katalog">
+
+<a href="#katalog" class="nav-link" data-cat-link="full-face">Full Face</a>
+
+<a href="#katalog" class="nav-link" data-cat-link="custom-edition">Custom Edition</a>
+
+<a href="#katalog" class="nav-link" data-cat-link="half-face">Half Face</a>
+
+<a href="#standar" class="nav-link">Standar</a>
+
+</nav>
+
+
+
+<div class="header-action">
+
+<a href="#katalog" class="primary-anchor" data-cat-link="all">Katalog 2026 (100 Unit)</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main id="top">
+
+<section class="hero-section">
+
+<div class="container hero-grid">
+
+<div class="hero-content">
+
+<p class="eyebrow">Koleksi Resmi & Custom 2026 · Bandung Showroom</p>
+
+<h1 class="hero-title">Perlindungan Presisi dengan Karakter Eksklusif.</h1>
+
+<p class="hero-lead">
+
+Katalog lengkap 100 edisi helm berkendara mulai dari model Full Face, seri Custom Edition eksklusif, hingga Half Face. Dirancang dengan cangkang komposit yang memenuhi regulasi keselamatan SNI 1811 dan ECE 22.06.
+
+</p>
+
+
+
+<div class="hero-specs" aria-label="Ringkasan Spesifikasi Koleksi">
+
+<div class="spec-item">
+
+<span class="spec-label">Total Koleksi</span>
+
+<span class="spec-value tabular">24 Full Face · 66 Custom · 10 Half Face</span>
+
+</div>
+
+<div class="spec-item">
+
+<span class="spec-label">Rentang Ukuran</span>
+
+<span class="spec-value tabular">XS – XXL (53–64 cm)</span>
+
+</div>
+
+<div class="spec-item">
+
+<span class="spec-label">Sertifikasi</span>
+
+<span class="spec-value">SNI 1811 · ECE 22.06</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="hero-media">
+
+<div class="media-frame hero-frame">
+
+<img
+
+src="gambar/1.jpg"
+
+alt="Helm Custom Studio Garasi Helm Custom Showcase"
+
+class="hero-image"
+
+onerror="handleImgError(this, 1)"
+
+/>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="katalog" class="catalog-section" aria-labelledby="catalog-heading">
+
+<div class="container">
+
+<div class="section-header">
+
+<div>
+
+<p class="section-kicker">
+
+Etalase Produk Lengkap
+<span id="total-rendered-badge" class="count-badge tabular">Menampilkan 100 Unit</span>
+
+</p>
+
+<h2 id="catalog-heading" class="section-title">Katalog Resmi & Edisi Kustom</h2>
+
+</div>
+
+<p class="section-note">
+
+Seluruh 100 model ditampilkan sesuai spesifikasi pabrik dan workshop resmi. Harga tercantum dalam Rupiah dan sudah termasuk tas pelindung helm.
+
+</p>
+
+</div>
+
+
+
+<div class="filter-bar" role="tablist" aria-label="Filter Kategori Helm">
+
+<button type="button" class="filter-btn is-active" data-filter="all">Semua (100)</button>
+
+<button type="button" class="filter-btn" data-filter="full-face">Full Face (24)</button>
+
+<button type="button" class="filter-btn" data-filter="custom-edition">Custom Edition (66)</button>
+
+<button type="button" class="filter-btn" data-filter="half-face">Half Face (10)</button>
+
+</div>
+
+
+
+<div id="catalog-grid" class="catalog-grid">
+
+<!-- Seluruh 100 item di-render ke dalam grid ini -->
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="standar" class="standards-section" aria-labelledby="standards-heading">
+
+<div class="container standards-layout">
+
+<div class="standards-pillars">
+
+<p class="section-kicker">02. Standar & Konstruksi</p>
+
+<h2 id="standards-heading" class="section-title">Spesifikasi Teknis & Keselamatan</h2>
+
+<p class="standards-intro">
+
+Setiap unit—baik edisi studio maupun kustom—melewati pengujian benturan multi-titik, ketahanan penetrasi visor polikarbonat anti-gores, dan uji keseimbangan bobot.
+
+</p>
+
+
+
+<div class="pillar-list">
+
+<div class="pillar-item">
+
+<h3 class="pillar-title">Struktur Multi-Density EPS</h3>
+
+<p class="pillar-desc">
+
+Lapisan peredam benturan berdensitas ganda yang menyerap energi kinetik secara progresif pada kecepatan rendah maupun tinggi.
+
+</p>
+
+</div>
+
+<div class="pillar-item">
+
+<h3 class="pillar-title">Sertifikasi SNI 1811 & ECE 22.06</h3>
+
+<p class="pillar-desc">
+
+Lolos uji standar nasional Indonesia serta regulasi Eropa terbaru untuk ketahanan tali dagu Double D-Ring dan Microlock baja.
+
+</p>
+
+</div>
+
+<div class="pillar-item">
+
+<h3 class="pillar-title">Interior Hippoallergenic Lepas-Pasang</h3>
+
+<p class="pillar-desc">
+
+Busa pipi dan mahkota berbahan kain breathable cepat kering, dilengkapi alur khusus pengguna kacamata dan slot interkom.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="sizing-panel">
+
+<h3 class="sizing-title">Panduan Lingkar Kepala</h3>
+
+<p class="sizing-subtitle">
+
+Ukur lingkar kepala tepat 2 cm di atas alis untuk menentukan ukuran cangkang yang presisi.
+
+</p>
+
+<table class="sizing-table">
+
+<thead>
+
+<tr>
+
+<th scope="col">Ukuran</th>
+
+<th scope="col">Lingkar Kepala</th>
+
+<th scope="col">Shell</th>
+
+<th scope="col">Kesesuaian</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td class="size-code">XS</td>
+
+<td class="tabular">53 – 54 cm</td>
+
+<td class="tabular">Shell 1</td>
+
+<td>Kompak</td>
+
+</tr>
+
+<tr>
+
+<td class="size-code">S</td>
+
+<td class="tabular">55 – 56 cm</td>
+
+<td class="tabular">Shell 1</td>
+
+<td>Presisi Rapat</td>
+
+</tr>
+
+<tr>
+
+<td class="size-code">M</td>
+
+<td class="tabular">57 – 58 cm</td>
+
+<td class="tabular">Shell 2</td>
+
+<td>Standar Asia</td>
+
+</tr>
+
+<tr>
+
+<td class="size-code">L</td>
+
+<td class="tabular">59 – 60 cm</td>
+
+<td class="tabular">Shell 2</td>
+
+<td>Reguler</td>
+
+</tr>
+
+<tr>
+
+<td class="size-code">XL</td>
+
+<td class="tabular">61 – 62 cm</td>
+
+<td class="tabular">Shell 3</td>
+
+<td>Lapang</td>
+
+</tr>
+
+<tr>
+
+<td class="size-code">XXL</td>
+
+<td class="tabular">63 – 64 cm</td>
+
+<td class="tabular">Shell 3</td>
+
+<td>Ekstra</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<footer class="site-footer">
+
+<div class="container footer-inner">
+
+<div class="footer-brand">
+
+<span class="footer-wordmark">GARASI HELM CUSTOM</span>
+
+<p class="footer-copy">
+
+Katalog tampilan resmi 100 unit perlengkapan keselamatan berkendara roda dua dan edisi kustom.
+
+</p>
+
+</div>
+
+
+
+<div class="footer-info">
+
+<span class="footer-heading">Showroom Utama</span>
+
+<p>Jl. Asia Afrika No. 118, Bandung 40111</p>
+
+<p class="tabular">Senin – Sabtu · 09.00 – 19.00 WIB</p>
+
+</div>
+
+
+
+<div class="footer-info">
+
+<span class="footer-heading">Kategori Koleksi</span>
+
+<div class="footer-links">
+
+<a href="#katalog" data-cat-link="full-face">Full Face (24 Unit)</a>
+
+<a href="#katalog" data-cat-link="custom-edition">Custom Edition (66 Unit)</a>
+
+<a href="#katalog" data-cat-link="half-face">Half Face (10 Unit)</a>
+
+<a href="#standar">Panduan Ukuran</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="container footer-bottom">
+
+<span>© 2026 Garasi Helm Custom Indonesia.</span>
+
+<span>Katalog Resmi · Edisi 2026 (100 Unit)</span>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+function handleImgError(imgEl, num) {
+
+const fallbackExts = ["jpeg", "png", "webp", "JPG"];
+
+const step = Number(imgEl.dataset.retry || 0);
+
+if (step < fallbackExts.length) {
+
+imgEl.dataset.retry = String(step + 1);
+
+imgEl.src = `gambar/${num}.${fallbackExts[step]}`;
+
+} else {
+
+imgEl.onerror = null;
+
+}
+
+}
+
+
+
+// Daftar resmi 24 nomor kategori Full Face
+
+const FULL_FACE_NUMBERS = new Set([
+
+1, 2, 3, 8, 11, 12, 16, 18, 19, 20, 21, 23, 27, 28, 32, 34, 35, 45, 51, 52, 71, 73, 74, 75
+
+]);
+
+
+
+// Daftar resmi 66 nomor kategori Custom Edition (termasuk nomor 4)
+
+const CUSTOM_EDITION_NUMBERS = new Set([
+
+4, 5, 6, 7, 13, 14, 15, 17, 22, 24, 25, 29, 30, 36, 38, 39, 40, 41, 42, 43, 44, 46, 48,
+
+53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72,
+
+76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100
+
+]);
+
+
+
+// Spesifikasi khusus untuk unit #01 s/d #21
+
+const specialSpecs = {
+
+1: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #01", desc: "Cangkang komposit serat karbon berprofil aerodinamis dengan lapisan finishing studio anti-gores.", size: "S – XL", weight: "1.350 g", status: "Tersedia", price: "Rp 3.250.000", sku: "GHC-FF-01" },
+
+2: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #02", desc: "Desain kontur modern untuk berkendara jarak jauh dengan ventilasi multi-saluran dan visor optik kelas 1.", size: "S – XL", weight: "1.380 g", status: "Tersedia", price: "Rp 3.300.000", sku: "GHC-FF-02" },
+
+3: { category: "full-face", meta: "Full Face · ECE 22.06 · SNI", title: "Garasi Studio Pro Series #03", desc: "Dilengkapi spoiler belakang terintegrasi, pengunci Double D-Ring, dan busa pipi pembuang kelembapan.", size: "XS – XL", weight: "1.360 g", status: "Tersedia", price: "Rp 3.350.000", sku: "GHC-FF-03" },
+
+4: { category: "custom-edition", meta: "Custom Studio · ECE 22.06 · SNI", title: "Garasi Studio Custom Spec #04", desc: "Konstruksi kustom berbobot seimbang dengan lapisan peredam akustik untuk mereduksi kebisingan angin.", size: "M – XXL", weight: "1.390 g", status: "Tersedia", price: "Rp 3.400.000", sku: "GHC-CS-04" },
+
+5: { category: "custom-edition", meta: "Custom Studio · ECE 22.06 · SNI", title: "Garasi Studio Custom Spec #05", desc: "Edisi studio kustom dengan sistem pelepas visor cepat tanpa alat serta dukungan penuh pemasangan Pinlock.", size: "S – XL", weight: "1.370 g", status: "Tersedia", price: "Rp 3.450.000", sku: "GHC-CS-05" },
+
+6: { category: "custom-edition", meta: "Custom Concept · SNI 1811", title: "Garasi Apollo Astronaut Spec #06", desc: "Terinspirasi helm penjelajah luar angkasa dengan visor panorama luas dan lapisan pelindung UV reflektif.", size: "M – XL", weight: "1.520 g", status: "Stok Terbatas", price: "Rp 4.650.000", sku: "GHC-CS-06" },
+
+7: { category: "custom-edition", meta: "Custom Armor · SNI 1811", title: "Garasi Sovereign Gold Knight #07", desc: "Finishing metalik emas bergaya zirah ksatria abad pertengahan dengan struktur pelindung dagu kokoh.", size: "M – L", weight: "1.580 g", status: "Stok Terbatas", price: "Rp 4.890.000", sku: "GHC-CS-07" },
+
+8: { category: "full-face", meta: "Full Face · Custom Heritage · SNI 1811", title: "Garasi Chronos Steampunk Ed. #08", desc: "Helm full-face dengan ornamen kuningan mekanis, aksen kulit klasik, dan lensa optik ganda berstandar SNI.", size: "S – XL", weight: "1.550 g", status: "Tersedia", price: "Rp 4.500.000", sku: "GHC-FF-08" },
+
+9: { category: "half-face", meta: "Half Face · Retro-Tech · SNI 1811", title: "Garasi RetroVision Half Face CRT-90 #09", desc: "Cangkang half-face kustom bergaya retro klasik 90-an dengan visor polikarbonat cembung jernih.", size: "M – XL", weight: "1.280 g", status: "Pre-Order", price: "Rp 2.750.000", sku: "GHC-HF-09" },
+
+10: { category: "half-face", meta: "Half Face · Sculpted Spec · SNI 1811", title: "Garasi Diablo Half Face Spec #10", desc: "Helm half-face dengan aksen aerodinamis fleksibel lepas-aman serta pengunci Microlock baja.", size: "S – XL", weight: "1.260 g", status: "Tersedia", price: "Rp 2.850.000", sku: "GHC-HF-10" },
+
+11: { category: "full-face", meta: "Full Face · Custom Sculpted · SNI 1811", title: "Garasi Monarch Crest Edition #11", desc: "Helm full-face berdetail mahkota dan ornamen relief timbul di atas shell komposit ABS berkekuatan tarik tinggi.", size: "M – XL", weight: "1.490 g", status: "Tersedia", price: "Rp 3.950.000", sku: "GHC-FF-11" },
+
+12: { category: "full-face", meta: "Full Face · Custom Form · SNI 1811", title: "Garasi Avant-Garde Form X #12", desc: "Helm full-face berstruktur pahatan kustom unik dengan lapisan peredam benturan Multi-Density EPS penuh.", size: "S – XL", weight: "1.510 g", status: "Tersedia", price: "Rp 4.100.000", sku: "GHC-FF-12" },
+
+13: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Cobalt Fur Monster #13", desc: "Balutan bulu sintetis biru kobalt tahan cuaca di atas cangkang helm kustom berstandar SNI dengan pandangan luas.", size: "S – XL", weight: "1.450 g", status: "Tersedia", price: "Rp 2.450.000", sku: "GHC-CS-13" },
+
+14: { category: "custom-edition", meta: "Custom Animal Series · SNI 1811", title: "Garasi Apex Great White Shark #14", desc: "Sirip punggung aerodinamis dan grafis rahang hiu agresif dengan sistem sirkulasi udara insang samping.", size: "S – XL", weight: "1.480 g", status: "Tersedia", price: "Rp 3.790.000", sku: "GHC-CS-14" },
+
+15: { category: "custom-edition", meta: "Custom Character · SNI 1811", title: "Garasi Ducky Yellow Edition #15", desc: "Helm kustom tematik kuning ikonik dengan visibilitas tinggi di jalan raya serta busa interior hippoallergenic.", size: "S – L", weight: "1.440 g", status: "Tersedia", price: "Rp 2.950.000", sku: "GHC-CS-15" },
+
+16: { category: "full-face", meta: "Full Face · Sci-Fi Spec · SNI 1811", title: "Garasi Xenomorph Green Alien #16", desc: "Helm full-face hijau metalik futuristik dengan kontur memanjang aerodinamis dan visor gelap anti-silau.", size: "M – XL", weight: "1.500 g", status: "Stok Terbatas", price: "Rp 3.890.000", sku: "GHC-FF-16" },
+
+17: { category: "custom-edition", meta: "Custom Sculpted · SNI 1811", title: "Garasi Musang King Edition #17", desc: "Tekstur pahatan elastomer lentur yang aman dan tidak melukai, dipadukan cangkang dalam berstandar SNI.", size: "M – XL", weight: "1.540 g", status: "Tersedia", price: "Rp 3.650.000", sku: "GHC-CS-17" },
+
+18: { category: "full-face", meta: "Full Face · Custom Airbrush · SNI 1811", title: "Garasi Fresh Watermelon Spec #18", desc: "Helm full-face airbrush presisi motif kulit dan daging segar dengan lapisan clear coat gloss tinggi.", size: "S – XL", weight: "1.390 g", status: "Tersedia", price: "Rp 2.750.000", sku: "GHC-FF-18" },
+
+19: { category: "full-face", meta: "Full Face · Custom 3D · SNI 1811", title: "Garasi Sculpted Bowl Edition #19", desc: "Helm full-face kustom 3D lengkap dengan detail ornamen pahatan presisi di atas cangkang ABS teruji.", size: "M – XL", weight: "1.560 g", status: "Stok Terbatas", price: "Rp 4.250.000", sku: "GHC-FF-19" },
+
+20: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Glazed Sprinkle Spec #20", desc: "Helm full-face dengan kontur membulat ergonomis, finishing gloss kustom, serta sirkulasi udara tersembunyi.", size: "XS – L", weight: "1.430 g", status: "Tersedia", price: "Rp 3.490.000", sku: "GHC-FF-20" },
+
+21: { category: "full-face", meta: "Full Face · Custom Edition · SNI 1811", title: "Garasi Golden Melt Spec #21", desc: "Helm full-face tekstur pahatan satin-gloss dengan sistem pengunci Microlock baja dan interior lepas-pasang.", size: "S – XL", weight: "1.420 g", status: "Tersedia", price: "Rp 3.390.000", sku: "GHC-FF-21" }
+
+};
+
+
+
+const fullFaceSeriesTemplate = {
+
+category: "full-face",
+
+code: "FF",
+
+meta: "Full Face · ECE 22.06 · SNI",
+
+prefix: "Garasi Aero Full Face",
+
+desc: "Helm full-face aerodinamis dengan cangkang komposit ringan, ventilasi multi-kanal, visor optik anti-gores, dan pengunci Double D-Ring.",
+
+basePrice: 3250000,
+
+weight: 1370,
+
+size: "S – XL"
+
+};
+
+
+
+const customSeriesTemplates = [
+
+{ category: "custom-edition", code: "CS", meta: "Custom Edition · SNI 1811", prefix: "Garasi Artisan Custom", desc: "Karya tangan studio Bandung dengan lapisan cat multi-stage tahan cuaca serta peredam benturan Multi-Density EPS.", basePrice: 3990000, weight: 1480, size: "S – XL" },
+
+{ category: "custom-edition", code: "CS", meta: "Custom Heritage · SNI 1811", prefix: "Garasi Heritage Custom", desc: "Siluet kustom klasik dengan detail trim kulit sintetis jahitan tangan, aksen kuningan, dan interior suede.", basePrice: 3650000, weight: 1420, size: "S – XL" },
+
+{ category: "custom-edition", code: "CS", meta: "Custom Sculpted · SNI 1811", prefix: "Garasi Sculpted Concept", desc: "Cangkang komposit kustom berprofil unik dengan finishing airbrush presisi dan lapisan clear coat anti-UV.", basePrice: 4150000, weight: 1510, size: "M – XL" }
+
+];
+
+
+
+const halfFaceTemplates = [
+
+{ category: "half-face", code: "HF", meta: "Half Face · SNI 1811", prefix: "Garasi Urban Half Face", desc: "Helm half-face ringan dengan double visor internal anti-UV dan ventilasi atas yang optimal untuk lalu lintas kota.", basePrice: 1450000, weight: 1180, size: "S – XL" },
+
+{ category: "half-face", code: "HF", meta: "Half Face · ECE 22.06 · SNI", prefix: "Garasi Horizon Half Face GT", desc: "Helm half-face touring dengan visor panjang pelindung angin penuh, busa hippoallergenic, dan slot interkom.", basePrice: 1850000, weight: 1220, size: "M – XXL" },
+
+{ category: "half-face", code: "HF", meta: "Half Face Classic · SNI 1811", prefix: "Garasi Heritage Half Face", desc: "Helm half-face bergaya klasik dengan trim kulit sintetis jahitan tangan dan kancing visor kuningan.", basePrice: 1650000, weight: 1190, size: "S – XL" }
+
+];
+
+
+
+const variantNames = [
+
+"Matte Obsidian", "Cobalt Strike", "Titanium Silver", "Crimson Apex", "Arctic White",
+
+"Stealth Graphite", "Solar Flare", "Emerald Drift", "Bronze Patina", "Neon Circuit",
+
+"Midnight Blue", "Sandstorm Tan", "Glacier Grey", "Volcanic Red"
+
+];
+
+
+
+const statusPool = ["Tersedia", "Tersedia", "Tersedia", "Stok Terbatas", "Pre-Order"];
+
+const allHelmets = [];
+
+
+
+for (let i = 1; i <= 100; i++) {
+
+const numStr = String(i).padStart(2, "0");
+
+const isFullFace = FULL_FACE_NUMBERS.has(i);
+
+const isCustom = CUSTOM_EDITION_NUMBERS.has(i);
+
+const isHalfFace = !isFullFace && !isCustom;
+
+
+
+if (specialSpecs[i]) {
+
+allHelmets.push({
+
+num: i,
+
+isFullFace,
+
+isCustom,
+
+isHalfFace,
+
+...specialSpecs[i]
+
+});
+
+} else {
+
+let series;
+
+if (isFullFace) {
+
+series = fullFaceSeriesTemplate;
+
+} else if (isCustom) {
+
+series = customSeriesTemplates[i % customSeriesTemplates.length];
+
+} else {
+
+series = halfFaceTemplates[i % halfFaceTemplates.length];
+
+}
+
+
+
+const variant = variantNames[i % variantNames.length];
+
+const priceVal = series.basePrice + ((i % 5) * 75000);
+
+
+
+allHelmets.push({
+
+num: i,
+
+isFullFace,
+
+isCustom,
+
+isHalfFace,
+
+category: series.category,
+
+meta: series.meta,
+
+title: `${series.prefix} ${variant} #${numStr}`,
+
+desc: series.desc,
+
+size: series.size,
+
+weight: `${(series.weight + (i % 4) * 15).toLocaleString("id-ID")} g`,
+
+status: statusPool[i % statusPool.length],
+
+price: "Rp " + priceVal.toLocaleString("id-ID"),
+
+sku: `GHC-${series.code}-${numStr}`
+
+});
+
+}
+
+}
+
+
+
+const catalogGrid = document.getElementById("catalog-grid");
+
+const totalBadge = document.getElementById("total-rendered-badge");
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+const categoryLinks = document.querySelectorAll("[data-cat-link]");
+
+
+
+const categoryNames = {
+
+all: "Semua Kategori",
+
+"full-face": "Full Face",
+
+"custom-edition": "Custom Edition",
+
+"half-face": "Half Face"
+
+};
+
+
+
+function renderCatalog(filterKey = "all") {
+
+const filtered =
+
+filterKey === "all"
+
+? allHelmets
+
+: allHelmets.filter((item) => item.category === filterKey);
+
+
+
+catalogGrid.innerHTML = filtered
+
+.map(
+
+(item) => `
+
+<article class="helmet-card">
+
+<div class="media-frame card-media">
+
+<span class="unit-pill tabular">#${String(item.num).padStart(2, "0")}</span>
+
+<img
+
+src="gambar/${item.num}.jpg"
+
+alt="${item.title}"
+
+class="card-image"
+
+loading="lazy"
+
+onerror="handleImgError(this, ${item.num})"
+
+/>
+
+</div>
+
+<div class="card-body">
+
+<p class="card-meta ${item.isFullFace ? "is-fullface" : item.isCustom ? "is-custom" : "is-halfface"}">${item.meta}</p>
+
+<h3 class="card-title">${item.title}</h3>
+
+<p class="card-summary">${item.desc}</p>
+
+<div class="card-specs-row">
+
+<div class="card-spec-cell">
+
+<span class="card-spec-key">Ukuran</span>
+
+<span class="card-spec-val tabular">${item.size}</span>
+
+</div>
+
+<div class="card-spec-cell">
+
+<span class="card-spec-key">Bobot</span>
+
+<span class="card-spec-val tabular">${item.weight}</span>
+
+</div>
+
+<div class="card-spec-cell">
+
+<span class="card-spec-key">Status</span>
+
+<span class="card-spec-val">${item.status}</span>
+
+</div>
+
+</div>
+
+<div class="card-footer-row">
+
+<span class="card-price">${item.price}</span>
+
+<span class="card-sku">${item.sku}</span>
+
+</div>
+
+</div>
+
+</article>
+
+`
+
+)
+
+.join("");
+
+
+
+totalBadge.textContent =
+
+filterKey === "all"
+
+? `Menampilkan ${filtered.length} Unit`
+
+: `Menampilkan ${filtered.length} Unit · ${categoryNames[filterKey]}`;
+
+
+
+filterButtons.forEach((btn) => {
+
+btn.classList.toggle("is-active", btn.dataset.filter === filterKey);
+
+});
+
+}
+
+
+
+filterButtons.forEach((btn) => {
+
+btn.addEventListener("click", () => {
+
+renderCatalog(btn.dataset.filter);
+
+});
+
+});
+
+
+
+categoryLinks.forEach((link) => {
+
+link.addEventListener("click", () => {
+
+renderCatalog(link.dataset.catLink);
+
+});
+
+});
+
+
+
+renderCatalog("all");
+
+</script>
+
+</body>
+
 </html>
